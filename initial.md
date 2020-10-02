@@ -7,6 +7,7 @@
 * BONUS: topics/categories
 * BONUS: Bookmarks
 * Stretch BONUS: stats dashboard (user/author)
+* Stretch BONUS: publication model/table
 
 ## Story Model
 
@@ -14,7 +15,8 @@
 2. title
 3. subtitle (beneath the title)
 4. excerpts (pullquotes)
-5. responses
+5. responses (array?)
+   1. responses can also have responses (and clapbacks)
 6. clapbacks(likes)
 7. date
 8. tags
