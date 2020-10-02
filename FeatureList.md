@@ -2,7 +2,9 @@
 
 - As a user, I want to be able to sign-up for Medium
 - As a user, I want to be able to log-in to Medium
-- As a user, I want to be able to publish a story
+- As a user, I want to be able to create a story
+  - I also want to be able to edit a story
+  - .... and delete my story (if necessary)
 - As a user, I want to be able view the stories published by others (feed)
 - As a user, I want to be able "like" stories
 - As a user, I want to be able to follow other users

@@ -2,7 +2,7 @@
 
 * Stories
 * Commenting on Stories
-* Follows and feed
+* Follows and feed (fetching 20 most recent stories, for example)
 * Likes
 * BONUS: topics/categories
 * BONUS: Bookmarks
@@ -35,9 +35,9 @@
 
 ## Friday TO-DO
 
-* Feature List
-* Database Schema
-* API Routes
-* Frontend Routes
+* ~~Feature List~~
+* ~~Database Schema~~
+* ~~API Routes~~
+* ~~Frontend Routes~~
 * Templates
 * Wireframes
