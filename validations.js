@@ -40,6 +40,27 @@ const signUpValidator = [
         }),
 ]
 
+const loginValidator = [
+    check("username")
+        .exists({checkFalsy: true})
+        .withMessage("Please provide a valid username.")
+        .isLength({ max: 50 })
+        .withMessage('Username must not be more than 50 characters long'),
+    check("password")
+        .exists({checkFalsy: true})
+        .withMessage("Please provide a valid password.")
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
+        .withMessage('Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")')
+        .isLength({ min: 8 })
+        .withMessage('Password must not be less than 8 characters long.'),
+]
+
+
+
+
+
+
+
 
 const handleValidationErrors = (req, res, next) => {
     const validationErrors = validationResult(req);
