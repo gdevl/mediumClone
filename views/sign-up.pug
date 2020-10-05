@@ -1,6 +1,10 @@
 extends layout
 block content
   .screen
+    #error-container
+      ul
+      for error in errors
+        li #{error}        
     .login-container
       .login-container_inner
         .login-title
@@ -12,17 +16,14 @@ block content
           .login-form
             .login-email-container
               div
-                .login-form
-                  //- .email-label
-                  //-   h4 Your Email
-                  form(method='POST' action='/users')
-                    label(for='username') Username
-                    input(type='text' name='username')
-                    label(for='email') Email
-                    input(type='email' name='email')
-                    label(for='password') Password
-                    input(type='password' name='password')
-                    label(for='passwordConfirmation') Confirm Password
-                    input(type='password' name='passwordConfirmation')
-                    input(type='submit' value='submit')  
+                form.login-form(method='POST' action='/users')
+                  label(for='username') Username
+                  input(type='text' name='username')
+                  label(for='email') Email
+                  input(type='email' name='email')
+                  label(for='password') Password
+                  input(type='password' name='password')
+                  label(for='passwordConfirmation') Confirm Password
+                  input(type='password' name='passwordConfirmation')
+                  input(type='submit' value='submit')  
             //- .login-button
