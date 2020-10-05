@@ -1,0 +1,40 @@
+.feed-container{
+  box-sizing: border-box;
+  color: rgba(0,0,0,0.8);
+  display: block;
+  font-weight: 400;
+}
+.feed-item-container{
+  height: 207.375px;
+}
+.feed-item{
+  padding-bottom: 48px;
+  color: rgba(0,0,0,0.8);
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  /* in case we add images to the right side of the feed */
+}
+.feed-item_text{
+  display: block;
+  margin-right: 20px;
+}
+.feed-item_author-container{
+  padding-bottom: 8px;
+  display: block;
+}
+.feed-item_author{
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.feed-item_img{
+  background-color: red;
+}
+.author{
+  font-size: 16px;
+  margin: 0px;
+}
