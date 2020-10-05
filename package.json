@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "start:back:dev": "nodemon -r dotenv/config ./bin/www",
-    "start:back:production": "./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,10 +18,15 @@
   },
   "homepage": "https://github.com/gdevl/mediumClone#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "pug": "^3.0.0"
+    "per-env": "^1.0.2",
+    "pug": "^3.0.0",
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "dotenv-cli": "^4.0.0",
+    "nodemon": "^2.0.4",
+    "sequelize-cli": "^6.2.0"
   }
 }
