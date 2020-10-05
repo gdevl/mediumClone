@@ -1,4 +1,5 @@
 .feed-container
+<<<<<<< HEAD
   if stories
     for story in stories
       .feed-item-container.feed-container
@@ -11,3 +12,15 @@
             p #{story.description}
           .feed-item_img place image bonus?
           
+=======
+  for story in stories
+    .feed-item-container.feed-container
+      .feed-item
+        .feed-item_author-container
+          .feed-item_author
+            p.author #{story.author}
+        .feed-item_text
+          h2 #{story.title}
+        .feed-item_img place image?
+        
+>>>>>>> 8273c69... started creation of feed template
