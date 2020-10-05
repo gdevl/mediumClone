@@ -28,9 +28,58 @@
   justify-content: center;
   text-align: center;
 }
-.login-textbox{
+.login-title{
   box-sizing: border-box;
   color: rgba(0, 0, 0, 0.8);
   display: block;
   text-align: center;
 }
+.login-textbox{
+  margin-top: 30px;
+  box-sizing: border-box;
+  display: block;
+  text-align: center;
+}
+.login-form-container{
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.8);
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+}
+.login-form{
+  align-items: center;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.login-email-container{
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.8);
+  display: block;
+  margin-bottom: 28px;
+  margin-top: 12px;
+  text-align: center;
+}
+.login-email{
+  align-items: center;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.email-label{
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+
+/*
+login-form = login-email 
+
+*/
