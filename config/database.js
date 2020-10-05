@@ -7,11 +7,11 @@ const database = db.database;
 const host = db.host;
 
 module.exports = {
-    development: {
-        username,
-        password,
-        database,
-        host,
-        dialect: "postgres",
-    },
+  development: {
+    username,
+    password,
+    database,
+    host,
+    dialect: "postgres",
+  },
 };
