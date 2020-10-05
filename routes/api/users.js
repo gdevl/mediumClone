@@ -1,5 +1,5 @@
 const express = require('express');
-const { handleValidationErrors } = require('../../validations');
+const { handleValidationErrors, signUpValidator } = require('../../validations');
 const {asyncHandler} = require('../../utils');
 
 
