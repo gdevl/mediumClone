@@ -1,13 +1,14 @@
 const express = require('express');
 const path = require('path');
 
-const indexAPIRouter = require('./routes/api/index');
+const usersAPIRouter = require('./routes/api/users');
+
 
 const app = express();
 
 app.use(express.json());
 app.set('view engine', 'pug');
-app.use('/', indexAPIRouter);
+app.use('/', usersAPIRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 
 /************************************************/
