@@ -14,11 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
       },
       firstName: {
-        allowNull: false,
         type: DataTypes.STRING(50),
       },
       lastName: {
-        allowNull: false,
         type: DataTypes.STRING(50),
       },
       bio: {
