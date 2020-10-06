@@ -5,25 +5,33 @@
     .overlay-body
         .center-overlay-body
             .welcome Join Medium.
-            form(id="signupForm" method="POST" action="/").sign-up-form
+            form(id="signupForm").sign-up-form
+                //- div
+                //-     label(for="firstName") First Name
                 div
-                    label(for="username") Username
+                    input(type="text" name='firstName' placeholder='First Name' required)
+                //- div
+                //-     label(for="lastName") Last Name
                 div
-                    input(type="text" name='username' placeholder='Username')
+                    input(type="text" name='lastName' placeholder='Last Name' required)
+                //- div
+                //-     label(for="username") Username
                 div
-                    label(for='email') Email
+                    input(type="text" name='username' placeholder='Username' required)
+                //- div
+                //-     label(for='email') Email
                 div
-                    input(type='email' name='email')
+                    input(type='email' name='email' placeholder='Email Address' required)
+                //- div
+                //-     label(for='password') Password
                 div
-                    label(for='password') Password
+                    input(type='password' name='password' placeholder='Password' required)
+                //- div
+                //-     label(for='confirmPassword') Confirm Password
                 div
-                    input(type='password' name='password')
+                    input(type='password' name='confirmPassword' placeholder='Confirm Password' required)
                 div
-                    label(for='passwordConfirmation') Confirm Password
-                div
-                    input(type='password' name='passwordConfirmation')
-                div
-                    button(id="signupSubmitButton" type="submit") Continue
+                    button(id="signupSubmitButton" type="submit") Sign Up!
                 div
                 span Already have an account?
                 a.log-in-link(href="") Log in.
