@@ -45,7 +45,7 @@ function clapAlreadyExistsError(id) {
   }
 
 //not sure about this story clap route
-router.post('/:id(\\d+)', asyncHandler (async (req, res, next) => {
+router.post('/:id(\\d+)/clap', asyncHandler (async (req, res, next) => {
     const storyId = req.params.id;
     const userClap = await StoryClap.findAll({
         where: {
@@ -59,7 +59,12 @@ router.post('/:id(\\d+)', asyncHandler (async (req, res, next) => {
             userId: req.user.id,
             storyId: storyId,
         });
-        res.json(newStoryClap);
+        const totalClaps = await StoryClap.findAll({
+            where: {
+
+            }
+        })
+        res.json(newStoryClap); // include number of current likes
     } else {
         next(clapAlreadyExistsError(storyId))
     }
