@@ -5,7 +5,7 @@
     .overlay-body
         .center-overlay-body
             .welcome Join Medium.
-            form.sign-up-form
+            form(id="signupForm" method="POST" action="/").sign-up-form
                 div
                     label(for="username") Username
                 div
@@ -23,7 +23,7 @@
                 div
                     input(type='password' name='passwordConfirmation')
                 div
-                    button(type="submit") Continue
+                    button(id="signupSubmitButton" type="submit") Continue
                 div
                 span Already have an account?
                 a.log-in-link(href="") Log in.

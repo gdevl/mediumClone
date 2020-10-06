@@ -33,16 +33,16 @@ app.use((req, res, next) => {
 // TODO Custom error handlers.
 
 // Generic error handler.
-app.use((err, req, res, next) => {
-  res.status(err.status || 500);
-  const isProduction = environment === "production";
-  res.json({
-    title: err.title || "Server Error",
-    message: err.message,
-    errors: err.errors,
-    stack: isProduction ? null : err.stack,
-  });
-});
+// app.use((err, req, res, next) => {
+//   res.status(err.status || 500);
+//   const isProduction = environment === "production";
+//   res.json({
+//     title: err.title || "Server Error",
+//     message: err.message,
+//     errors: err.errors,
+//     stack: isProduction ? null : err.stack,
+//   });
+// });
 
 /************************************************/
 

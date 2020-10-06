@@ -15,7 +15,7 @@ extends layout
                   .login-form
                     //- .email-label
                     //-   h4 Your Email
-                    form(method='POST' action='/users')
+                    form(method='POST' id="signupForm" action='/users')
                       label(for='username') Username
                       input(type='text' name='username')
                       label(for='email') Email
