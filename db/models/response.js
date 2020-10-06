@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   Response.associate = function (models) {
     Response.belongsTo(models.User, { foreignKey: "userId" });
     Response.belongsTo(models.Story, { foreignKey: "storyId" });
+
+    Response.hasMany(models.ResponseClap, { foreignKey: 'responseId'});
   };
   return Response;
 };

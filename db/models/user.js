@@ -14,11 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
       },
       firstName: {
-        allowNull: false,
         type: DataTypes.STRING(50),
       },
       lastName: {
-        allowNull: false,
         type: DataTypes.STRING(50),
       },
       bio: {
@@ -34,6 +32,24 @@ module.exports = (sequelize, DataTypes) => {
   );
   User.associate = function (models) {
     User.hasMany(models.Story, { foreignKey: "userId" });
+    User.hasMany(models.Response, { foreignKey: 'userId'});
+
+    User.hasMany(models.StoryClap, {foreignKey: 'userId'});
+    User.hasMany(models.ResponseClap, {foreignKey: 'userId'});
+
+    User.belongsToMany(models.User, {
+      as: 'followers',
+      through: 'Follow',
+      otherKey: 'followerId',
+      foreignKey: 'followeeId',
+    });
+
+    User.belongsToMany(models.User, {
+      as: 'follows',
+      through: 'Follow',
+      otherKey: 'followeeId',
+      foreignKey: 'followerId',
+    });
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
