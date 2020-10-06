@@ -33,7 +33,7 @@ router.post('/', signUpValidator, handleValidationErrors, asyncHandler(async(req
     })
 }))
 
-router.post('/', loginValidator, handleValidationErrors, asyncHandler(async (req, res) => {
+router.post('/log-in', loginValidator, handleValidationErrors, asyncHandler(async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({ where: { username: username }});
     
