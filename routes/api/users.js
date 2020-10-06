@@ -1,6 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const { User } = require("../../db/models");
+const { User, Stories } = require("../../db/models");
 const { getUserToken } = require("../../config/auth");
 
 const { asyncHandler } = require("../../utils");
@@ -64,5 +64,14 @@ router.post(
     });
   })
 );
+
+router.get(
+  "/id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const id = req.params.id;
+    const stories = await Stories.findAll({ where: {userId:id}});
+    res.render('user', { stories })
+  })
+)
 
 module.exports = router;
