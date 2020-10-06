@@ -1,18 +1,22 @@
-doctype html
+<!DOCTYPE html>
 html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet")
         link(rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous")
         link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
         link(href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet")
         link(rel="stylesheet", href="../style.css")
-        link(rel="stylesheet", href="../overlay.css")
         title Medium Clone
     body
-        block content
-    .sign-up-overlay.hidden
-        include includes/sign-up-overlay
-    .log-in-overlay.hidden
-        include includes/log-in-overlay
-    script(type="module" src="/js/index.js")
+    block content
+    .overlay
+        .background
+            .center-box
+                .close
+                    button.close-overlay
+                        i(class="fa fa-times" aria-hidden="true")
+                .overlay-body
+                    .center-overlay-body
+                        block overlay
