@@ -31,7 +31,7 @@ signupForm.addEventListener('submit', async (event) => {
     
     document
       .querySelector('.sign-up-overlay')
-      .classList.remove('hidden')
+      .classList.add('hidden')
   }
   catch (err) {
     handleErrors(err);
@@ -60,8 +60,8 @@ loginForm.addEventListener('submit', async (event) => {
     localStorage.setItem('MEDIUM_CLONE_CURRENT_USER_ID', id);
     
     document
-      .querySelector('.sign-up-overlay')
-      .classList.remove('hidden')
+      .querySelector('.log-in-overlay')
+      .classList.add('hidden')
   }
   catch (err) {
     handleErrors(err);
