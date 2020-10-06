@@ -11,10 +11,7 @@
   padding-bottom: 48px;
   color: rgba(0,0,0,0.8);
   display: flex;
-<<<<<<< HEAD
   flex-direction: column;
-=======
->>>>>>> c2a6f05... started creation of feed template
   flex-grow: 1;
   flex-shrink: 1;
   box-sizing: border-box;
