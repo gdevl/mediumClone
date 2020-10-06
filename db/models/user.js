@@ -39,6 +39,19 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.StoryClap, {foreignKey: 'userId'});
     User.hasMany(models.ResponseClap, {foreignKey: 'userId'});
 
+    User.belongsToMany(models.User, {
+      as: 'followers',
+      through: 'Follow',
+      otherKey: 'followerId',
+      foreignKey: 'followeeId',
+    });
+
+    User.belongsToMany(models.User, {
+      as: 'follows',
+      through: 'Follow',
+      otherKey: 'followeeId',
+      foreignKey: 'followerId',
+    });
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
