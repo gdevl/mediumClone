@@ -1,18 +1,36 @@
 const express = require('express');
 const path = require('path');
 
+
 const usersAPIRouter = require('./routes/api/users');
+
+
+// const indexAPIRouter = require('./routes/api/index');
 
 
 const app = express();
 
 app.use(express.json());
 app.set('view engine', 'pug');
+
 app.use('/', usersAPIRouter);
+
+// app.use('/', indexAPIRouter);
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 /************************************************/
 
+app.get('/', (req, res) => {
+    res.render('index')
+})
+
+
+
+
+
+
+/************************************************/
 // Catch unhandled requests and forward to error handler.
 app.use((req, res, next) => {
     const err = new Error("The requested resource couldn't be found.");
@@ -21,7 +39,7 @@ app.use((req, res, next) => {
 });
 
 
-//TODO Custom error handlers.
+// TODO Custom error handlers.
 
 
 // Generic error handler.
@@ -38,4 +56,7 @@ app.use((err, req, res, next) => {
 
 
 /************************************************/
-module.exports = app;
+
+// module.exports = app;
+app.listen(8000, () => console.log(`Listening on port 8000...`))
+
