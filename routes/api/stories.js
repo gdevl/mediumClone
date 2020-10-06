@@ -1,5 +1,5 @@
 const express = require('express');
-const { Story } = require('../../db/models');
+const { StoryClap, Story, User } = require('../../db/models');
 
 const { asyncHandler } = require('../../utils');
 const {
@@ -21,22 +21,9 @@ router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req
   res.status(201).json({story})
 }))
 
-module.exports = router;
-const { StoryClap, Story, User } = require('../../db/models');
 // const { getUserToken } = require('../../config/auth');
 
-const { asyncHandler } = require('../../utils');
-const {
-    handleValidationErrors,
-    signUpValidator,
-    loginValidator
-} = require('../../validations');
-
-
-const router = express.Router();
-
 // story not found error handler
-
 function clapAlreadyExistsError(id) {
     let error = new Error(`Story with ${id} has already been clapped.`);
     error.title = "Clap already exists.";
@@ -61,10 +48,11 @@ router.post('/:id(\\d+)/clap', asyncHandler (async (req, res, next) => {
         });
         const totalClaps = await StoryClap.findAll({
             where: {
-
+                storyId: storyId,
             }
-        })
-        res.json(newStoryClap); // include number of current likes
+        });
+        const numClaps = totalClaps.length;
+        res.json({newStoryClap, numClaps: numClaps}); // include number of current likes
     } else {
         next(clapAlreadyExistsError(storyId))
     }
