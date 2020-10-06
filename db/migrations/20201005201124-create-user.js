@@ -19,11 +19,9 @@ module.exports = {
         unique: true,
       },
       firstName: {
-        allowNull: false,
         type: Sequelize.STRING(50),
       },
       lastName: {
-        allowNull: false,
         type: Sequelize.STRING(50),
       },
       bio: {

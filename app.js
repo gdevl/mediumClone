@@ -4,6 +4,7 @@ const path = require("path");
 
 const usersAPIRouter = require("./routes/api/users");
 const { environment } = require('./config');
+const storiesAPIRouter = require("./routes/api/stories")
 
 // const indexAPIRouter = require('./routes/api/index');
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.set("view engine", "pug");
 
 app.use("/api/users", usersAPIRouter);
+app.use("/stories", storiesAPIRouter)
 
 // app.use('/', indexAPIRouter);
 
