@@ -7,10 +7,11 @@ signupForm.addEventListener('submit', async (event) => {
     email: formData.get(`email`),
     password: formData.get(`password`),
     confirmPassword: formData.get(`confirmPassword`),
+    firstName: formData.get('firstName'),
+    lastName: formData.get('lastName')
   }
 
   try {
-    debugger;
     const res = await fetch('/api/users', {
       method: 'POST',
       body: JSON.stringify(newUser),
