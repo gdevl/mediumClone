@@ -1,12 +1,13 @@
 .feed-container
-  for story in stories
-    .feed-item-container.feed-container
-      .feed-item
-        .feed-item_author-container
-          .feed-item_author
-            p.author #{story.author}
-        .feed-item_text
-          h2 #{story.title}
-          p #{story.description}
-        .feed-item_img place image bonus?
-        
+  if stories
+    for story in stories
+      .feed-item-container.feed-container
+        .feed-item
+          .feed-item_author-container
+            .feed-item_author
+              p.author #{story.author}
+          .feed-item_text
+            h2 #{story.title}
+            p #{story.description}
+          .feed-item_img place image bonus?
+          
