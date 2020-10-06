@@ -69,7 +69,7 @@ router.post(
 );
 
 router.get(
-  "/id(\\d+)",
+  "/users/id(\\d+)",
   asyncHandler(async (req, res, next) => {
     const id = req.params.id;
     const stories = await Stories.findAll({ where: {userId:id}});
