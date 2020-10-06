@@ -14,10 +14,10 @@ extends layout
                 div
                   .login-form
                     form(method='POST' action='/users')
-                      label(for='email') Email
-                      input(type='email' name='email')
-                      label(for='password') Password
-                      input(type='password' name='password')
+                      //- label(for='email') Email
+                      input(type='email' name='email' placeholder="Email Address")
+                      //- label(for='password') Password
+                      input(type='password' name='password' placeholder="Password")
                       input(type='submit' value='submit')  
                     
               //- .login-button
