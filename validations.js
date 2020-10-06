@@ -5,38 +5,38 @@ const signUpValidator = [
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid username.")
     .isLength({ max: 50 })
-    .withMessage("Username must not be more than 50 characters long"),
+    .withMessage("Username must not be more than 50 characters long."),
   check("email")
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage("Please provide a valid email.")
     .isLength({ max: 100 })
-    .withMessage("Email address must not be more than 100 characters long"),
+    .withMessage("Email address must not be more than 100 characters long."),
   check("firstName")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a first name.")
     .isLength({ max: 50 })
-    .withMessage("First name must not be more than 50 characters long"),
+    .withMessage("First name must not be more than 50 characters long."),
   check("lastName")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a last name.")
     .isLength({ max: 50 })
-    .withMessage("Last name must not be more than 50 characters long"),
+    .withMessage("Last name must not be more than 50 characters long."),
   check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid password.")
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
     .withMessage(
-      'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'
+      'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*").'
     )
     .isLength({ min: 8 })
     .withMessage("Password must not be less than 8 characters long."),
   check("confirmPassword")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a value for Confirm Password")
+    .withMessage("Please provide a value for Confirm Password.")
     .custom((value, { req }) => {
       if (value !== req.body.password) {
-        throw new Error("Confirm Password does not match Password");
+        throw new Error("Confirm Password does not match Password.");
       }
       return true;
     }),
@@ -47,13 +47,13 @@ const loginValidator = [
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid username.")
     .isLength({ max: 50 })
-    .withMessage("Username must not be more than 50 characters long"),
+    .withMessage("Username must not be more than 50 characters long."),
   check("password")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a valid password.")
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
     .withMessage(
-      'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'
+      'Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*").'
     )
     .isLength({ min: 8 })
     .withMessage("Password must not be less than 8 characters long."),
@@ -64,18 +64,24 @@ const storyValidator = [
     .exists({ checkFalsy: true })
     .withMessage("Please provide a title.")
     .isLength({ max: 100 })
-    .withMessage("Titles must not be more than 100 characters long"),
+    .withMessage("Titles must not be more than 100 characters long."),
   check("subtitle")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a subtitle")
+    .withMessage("Please provide a subtitle.")
     .isLength({ max: 200 })
     .withMessage("Subtitles must not be more than 200 characters long."),
   check("content")
     .exists({ checkFalsy: true })
-    .withMessage("Please add content to your story"),
+    .withMessage("Please add content to your story."),
   check("userId")
     .exists({ checkFalsy: true })
-    .withMessage("Only valid users can create stories")
+    .withMessage("Only valid users can create stories.")
+];
+
+const responseValidator = [
+  check("content")
+    .exists({checkFalsy: true })
+    .withMessage("Please provide a response."),
 ]
 
 const handleValidationErrors = (req, res, next) => {
@@ -88,6 +94,9 @@ const handleValidationErrors = (req, res, next) => {
     err.status = 400;
     err.title = "Bad Request";
     err.errors = errors;
+    
+    console.log(`Errors:  ${errors}`)
+    
     return next(err);
   }
   next();
@@ -98,4 +107,5 @@ module.exports = {
   signUpValidator,
   loginValidator,
   storyValidator,
+  responseValidator,
 };
