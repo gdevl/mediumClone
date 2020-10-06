@@ -27,3 +27,8 @@
                 div
                 span Already have an account?
                 a.log-in-link(href="") Log in.
+    .errors-container
+      if errors
+        each error in errors
+          p= error
+
