@@ -59,6 +59,25 @@ const loginValidator = [
     .withMessage("Password must not be less than 8 characters long."),
 ];
 
+const storyValidator = [
+  check("title")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a title.")
+    .isLength({ max: 100 })
+    .withMessage("Titles must not be more than 100 characters long"),
+  check("subtitle")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a subtitle")
+    .isLength({ max: 200 })
+    .withMessage("Subtitles must not be more than 200 characters long."),
+  check("content")
+    .exists({ checkFalsy: true })
+    .withMessage("Please add content to your story"),
+  check("userId")
+    .exists({ checkFalsy: true })
+    .withMessage("Only valid users can create stories")
+]
+
 const handleValidationErrors = (req, res, next) => {
   const validationErrors = validationResult(req);
 
@@ -78,4 +97,5 @@ module.exports = {
   handleValidationErrors,
   signUpValidator,
   loginValidator,
+  storyValidator,
 };
