@@ -2,8 +2,7 @@ const express = require("express");
 const path = require("path");
 
 const usersAPIRouter = require("./routes/api/users");
-const storiesAPIRouter = require("./routes/api/stories")
-
+const storiesAPIRouter = require("./routes/api/stories");
 // const indexAPIRouter = require('./routes/api/index');
 
 const app = express();
@@ -12,8 +11,7 @@ app.use(express.json());
 app.set("view engine", "pug");
 
 app.use("/", usersAPIRouter);
-app.use("/stories", storiesAPIRouter)
-
+app.use("/stories", storiesAPIRouter);
 // app.use('/', indexAPIRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
