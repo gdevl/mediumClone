@@ -20,3 +20,5 @@ router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req
   });
   res.status(201).json({story})
 }))
+
+module.exports = router;
