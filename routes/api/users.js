@@ -13,7 +13,7 @@ const {
 const router = express.Router();
 
 router.post(
-  "/",
+  "/sign-up",
   signUpValidator,
   handleValidationErrors,
   asyncHandler(async (req, res, next) => {
@@ -49,15 +49,12 @@ router.post(
     const { username, password } = req.body;
     const user = await User.findOne({ where: { username: username } });
     
-    // demilogan is the demo user and will not be subjected to password validation
-    if (username !== 'demilogan') {
-      if (!user || !user.validatePassword(password)) {
-        const err = new Error("Login failed.");
-        err.status(401);
-        err.title("Login failed.");
-        err.errors = ["The provided credentials were invalid"];
-        return next(err);
-      }
+    if (!user || !user.validatePassword(password)) {
+      const err = new Error("Login failed.");
+      err.status = 401;
+      err.title = "Login failed.";
+      err.errors = ["The provided credentials were invalid"];
+      return next(err);
     }
 
     const token = getUserToken(user);
