@@ -1,7 +1,7 @@
 import { handleErrors } from "./utils.js";
 
 /*********************************************************/
-//* Post User to API and store token in local storage of User
+//* Function to reduce repetitive code
 const fetchPostUserAndStoreToken = async (user) => {
   try{
     const res = await fetch(`/api/users/log-in`, {
