@@ -12,16 +12,11 @@ router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
     const id = req.params.id;
-    const foundStories = await Story.findAll({ where: { userId: id } });
-    const user = await User.findOne({ where: { id } });
-    const stories = foundStories.map(story => {
-      return {
-        user: user.username,
-        title: story.title,
-        subtitle: story.subtitle,
-        content: story.content,
-      }
-    })
+    const stories = await Story.findAll(
+      {
+        where: { userId: id }, 
+        include: {model: User},
+      });
     res.render('user', { stories })
   })
 )

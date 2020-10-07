@@ -7,7 +7,11 @@ const { environment } = require("./config");
 const storiesAPIRouter = require("./routes/api/stories");
 const responsesAPIRouter = require("./routes/api/responses");
 const usersFERouter = require("./routes/fe-users");
+
 const createStoriesFERouter = require('./routes/fe-createStories');
+const indexFERouter = require("./routes/fe-index")
+
+
 // const indexAPIRouter = require('./routes/api/index');
 
 const app = express();
@@ -18,17 +22,18 @@ app.use("/users", usersFERouter);
 app.use("/api/users", usersAPIRouter);
 app.use("/api/stories/:id(\\d+)/responses", responsesAPIRouter);
 
+
 app.use("/stories", createStoriesFERouter);
+app.use("/", indexFERouter);
+
+
 app.use("/api/stories", storiesAPIRouter);
-// app.use('/', indexAPIRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
 
 /************************************************/
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+
 
 /************************************************/
 // Catch unhandled requests and forward to error handler.
