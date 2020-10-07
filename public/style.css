@@ -44,6 +44,8 @@
 .author{
   font-size: 16px;
   margin: 0px;
+  color: inherit;
+  text-decoration: inherit;
 }
 .home-grid-section{
   justify-content: center;
