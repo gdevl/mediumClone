@@ -45,7 +45,7 @@ router.post(
   "/log-in",
   loginValidator,
   handleValidationErrors,
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (req, res, next) => {
     const { username, password } = req.body;
     const user = await User.findOne({ where: { username: username } });
     

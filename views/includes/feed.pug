@@ -5,10 +5,12 @@
         .feed-item
           .feed-item_author-container
             .feed-item_author
-              p.author #{story.user}
+              p
+                a.author(href=`/users/${story.userId}`) #{story.User.firstName} #{story.User.lastName}
           .feed-item_text
-            h2 #{story.title}
-            p #{story.subtitle}
-        .feed-item_img place image bonus?
+            h3.title #{story.title}
+            p.subtitle #{story.subtitle}
+            p.subtitle #{story.createdAt}
+        .feed-item_img(style={'background-image':`url(${story.imageUrl})`})
   else
     p There are no stories
