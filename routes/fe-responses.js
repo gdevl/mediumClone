@@ -5,7 +5,7 @@ const { asyncHandler } = require("../utils");
 
 const router = express.Router();
 
-// this will be absorbed by stories.js
+// this will be absorbed by fe-stories.js
 
 router.get(
   "/stories/:id(\\d+)/responses",
