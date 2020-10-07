@@ -16,7 +16,8 @@ router.get(
     const user = await User.findOne({ where: { id } });
     const stories = foundStories.map(story => {
       return {
-        user: user.username,
+        username: user.username,
+        userId: user.id,
         title: story.title,
         subtitle: story.subtitle,
         content: story.content,

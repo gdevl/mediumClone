@@ -5,7 +5,8 @@
         .feed-item
           .feed-item_author-container
             .feed-item_author
-              p.author #{story.user}
+              p
+                a.author(href=`/users/${story.userId}`) #{story.username}
           .feed-item_text
             h2 #{story.title}
             p #{story.subtitle}
