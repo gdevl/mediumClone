@@ -5,9 +5,13 @@ block content
         button.nav-bar__sign-up-btn Sign Up
         button.nav-bar__log-in-btn Log In
     .screen
-        h2 Stories
-        .home-grid-section
-            .user-grid-container
-                .user-grid
-                    .user-feed-container
-                        include includes/feed
+      .home-grid-section
+        .user-grid-container
+          .user-grid
+            .userProfile
+              h2.userName= stories[0].User.username
+              .userDetails
+                p.userBio= stories[0].User.bio
+                img(src=`${stories[0].User.avatarUrl}`).userAvatar
+            .user-feed-container
+                include includes/feed

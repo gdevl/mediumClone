@@ -59,6 +59,7 @@
   max-width: 100%;
 }
 .author {
+  font-family: "Fira Sans", sans-serif;
   font-size: 12px;
   margin: 0px;
   color: inherit;
@@ -68,7 +69,7 @@
   justify-content: center;
   display: flex;
   padding-top: 56px;
-  border-top: 1px solid rgba(230, 230, 230, 1);
+  /* border-top: 1px solid rgba(230, 230, 230, 1); */
 }
 .home-grid-container {
   display: block;
@@ -99,6 +100,39 @@
   margin-left: 64px;
   margin-right: 64px;
   width: 100%;
+}
+
+.userProfile {
+  display: flex;
+  grid-column: 2 / span 6;
+  flex-direction: column;
+}
+
+.userDetails {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.userAvatar {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.userBio {
+  font-size: 13px;
+}
+
+.userName {
+  font-family: "Playfair Display", serif;
+  margin-bottom: 4px;
+}
+
+.userBio {
+  font-family: "Fira Sans", sans-serif;
+  margin-top: 0;
 }
 .user-grid {
   display: grid;
@@ -141,7 +175,8 @@
   .user-grid-container {
     margin: 0 24px;
   }
-  .user-feed-container {
+  .user-feed-container,
+  .userProfile {
     grid-column: 1 / span 8;
   }
 }
