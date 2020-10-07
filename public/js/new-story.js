@@ -33,7 +33,7 @@ createStoryForm.addEventListener('submit', async (e) => {
             window.location.href = '/index';
             return;
         }
-        // window.location.href = '/'; // not created yet
+        window.location.href = '/'; // story-view page not created yet
     } catch (err) {
         handleErrors(err);
     }

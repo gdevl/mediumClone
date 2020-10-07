@@ -16,13 +16,14 @@ router.get('/create', (req, res) => {
 })
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const { user, title, subtitle, content } = req.body;
+  const { user, title, subtitle, content, imageUrl} = req.body;
   const userId = user.id;
   const story = await Story.create({
     userId,
     title,
     subtitle,
     content,
+    imageUrl,
   });
   res.status(201).json({story})
 }))
