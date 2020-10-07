@@ -16,10 +16,10 @@ app.use(express.json());
 app.set("view engine", "pug");
 app.use("/users", usersFERouter);
 app.use("/api/users", usersAPIRouter);
-app.use("/stories/:id(\\d+)/responses", responsesAPIRouter);
+app.use("/api/stories/:id(\\d+)/responses", responsesAPIRouter);
 
 app.use("/stories", storiesFERouter);
-app.use("/stories", storiesAPIRouter);
+app.use("/api/stories", storiesAPIRouter);
 // app.use('/', indexAPIRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
