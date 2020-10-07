@@ -17,7 +17,7 @@ createStoryForm.addEventListener('submit', async (e) => {
     const body = { title, subtitle, content, imageUrl, userId };
 
     try {
-        const res =  await fetch('/routes/api/stories', {
+        const res =  await fetch('/stories', {
             method: 'POST',
             body: JSON.stringify(body),
             headers: {
@@ -33,7 +33,7 @@ createStoryForm.addEventListener('submit', async (e) => {
             window.location.href = '/index';
             return;
         }
-        window.location.href = '/story-view'; // not created yet
+        // window.location.href = '/'; // not created yet
     } catch (err) {
         handleErrors(err);
     }
