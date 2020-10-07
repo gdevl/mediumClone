@@ -12,8 +12,7 @@ createStoryForm.addEventListener('submit', async (e) => {
     const content = formData.get('content');
     const imageUrl = formData.get('imageUrl');
 
-    const userId = localStorage.setItem('MEDIUM_CLONE_CURRENT_USER_ID');
-    // ask about addition of user identifier (userId?);
+    const userId = localStorage.getItem('MEDIUM_CLONE_CURRENT_USER_ID');
 
     const body = { title, subtitle, content, imageUrl, userId };
 
@@ -29,6 +28,7 @@ createStoryForm.addEventListener('submit', async (e) => {
             }
         });
 
+        console.log(res);
         if (res.status === 401) {
             window.location.href = '/index';
             return;
