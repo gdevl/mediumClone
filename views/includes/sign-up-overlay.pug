@@ -1,11 +1,13 @@
-.center-box
-    .close
-        button.close-sign-up
+.sign-up-overlay__center-box
+    .center-box__close
+        button.sign-up-form__demo-login Demo Login 
+        button.close__sign-up
             i(class="fa fa-times" aria-hidden="true")
-    .overlay-body
-        .center-overlay-body
-            .welcome Join Medium.
-            form(id="signupForm").sign-up-form
+    .center-box__overlay-body
+        .overlay-body__center
+            .center__welcome Join Medium.
+            .center-box__sign-up-errors-container
+            form(id="signupForm").center__sign-up-form
                 //- div
                 //-     label(for="firstName") First Name
                 div
@@ -30,10 +32,10 @@
                 //-     label(for='confirmPassword') Confirm Password
                 div
                     input(type='password' name='confirmPassword' placeholder='Confirm Password' required)
-                div
-                    button(id="signupSubmitButton" type="submit") Sign Up!
+                .sign_up_form__btn-container
+                    button.sign-up-form__submit(type="submit") Sign Up!
                 div
                 span Already have an account?
-                a.log-in-link(href="") Log in.
-    .errors-container
+                a.sign-up-form__log-in-link(href="") Log in.
+    
 
