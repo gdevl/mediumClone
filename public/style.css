@@ -27,6 +27,11 @@
 .feed-item_text{
   display: block;
   margin-right: 20px;
+  font-family: 'Fira Sans', sans-serif;
+
+}
+.title{
+  font-family: 'Fira Sans', sans-serif;
 }
 .subtitle{
   font-size: 12px;
