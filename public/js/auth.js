@@ -11,12 +11,12 @@ const fetchPostUserAndStoreToken = async (user, overlay) => {
     });
     console.log(res)
     if (!res.ok) throw res;
-    
+
     const { token, user: { id } } = await res.json();
-    
+
     localStorage.setItem('MEDIUM_CLONE_ACCESS_TOKEN', token);
     localStorage.setItem('MEDIUM_CLONE_CURRENT_USER_ID', id);
-    
+
     document
       .querySelector(`.${overlay}-overlay`)
       .classList.add('hidden')
