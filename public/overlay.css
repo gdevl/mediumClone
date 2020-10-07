@@ -25,9 +25,16 @@
 
 .center-box__close {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: 10px;
     margin-right: 10px;
+    margin-left: 10px;
+}
+
+.close__sign-up,
+.close__log-in {
+    width: 30px;
+    height: 30px;
 }
 
 .close-overlay {
@@ -61,7 +68,8 @@
     font-weight: bold;
 }
 
-.center__sign-up-form {
+.center__sign-up-form,
+.center__log-in-form {
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -80,12 +88,14 @@
     padding: 5px;
 }
 
-#signupSubmitButton:hover {
+.sign-up-form__submit:hover,
+.log-in-form__submit:hover {
     background-color: black;
     transition: cubic-bezier(300ms);
 }
 
-#signupSubmitButton {
+.sign-up-form__submit,
+.log-in-form__submit {
     margin: 5px;
     border-radius: 5px;
     border: 0;
@@ -95,11 +105,13 @@
     color: white;
 }
 
-#demoLogin:hover {
+.sign-up-form__demo-login:hover,
+.log-in-form__demo-login:hover {
     background-color: rgb(11, 83, 216);
 }
 
-#demoLogin {
+.sign-up-form__demo-login,
+.log-in-form__demo-login {
     margin: 5px;
     transition: background-color 300ms ease-in-out;
     background-color: rgb(42, 114, 248);
