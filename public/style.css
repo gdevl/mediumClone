@@ -138,4 +138,10 @@
     height: 100px;
     width: 100px;
   }
+  .user-grid-container {
+    margin: 0 24px;
+  }
+  .user-feed-container {
+    grid-column: 1 / span 8;
+  }
 }
