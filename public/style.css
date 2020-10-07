@@ -41,6 +41,9 @@
   background-color: red;
   width: 200px;
 }
+.feed-img{
+  max-width: 100%;
+}
 .author{
   font-size: 16px;
   margin: 0px;
