@@ -68,7 +68,7 @@ router.post(
   })
 );
 
-app.get(
+router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
     const id = req.params.id;
