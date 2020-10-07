@@ -16,8 +16,8 @@ router.get('/create', (req, res) => {
 })
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const { user, title, subtitle, content, imageUrl} = req.body;
-  const userId = user.id;
+  const { userId, title, subtitle, content, imageUrl} = req.body;
+
   const story = await Story.create({
     userId,
     title,

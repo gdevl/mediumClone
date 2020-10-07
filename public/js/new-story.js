@@ -23,12 +23,11 @@ createStoryForm.addEventListener('submit', async (e) => {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem(
-                    'MEDIUM_CLONE_ACCESS_TOKEN'
-                )}`
+                    'MEDIUM_CLONE_ACCESS_TOKEN')}`
             }
         });
 
-        console.log(res);
+        // console.log(res);
         if (res.status === 401) {
             window.location.href = '/index';
             return;
