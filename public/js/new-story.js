@@ -11,9 +11,11 @@ createStoryForm.addEventListener('submit', async (e) => {
     const subtitle = formData.get('subtitle');
     const content = formData.get('content');
     const imageUrl = formData.get('imageUrl');
+
+    const userId = localStorage.setItem('MEDIUM_CLONE_CURRENT_USER_ID');
     // ask about addition of user identifier (userId?);
 
-    const body = { title, subtitle, content, imageUrl };
+    const body = { title, subtitle, content, imageUrl, userId };
 
     try {
         const res =  await fetch('/routes/api/stories', {
@@ -31,7 +33,7 @@ createStoryForm.addEventListener('submit', async (e) => {
             window.location.href = '/index';
             return;
         }
-        window.location.href = '/home';
+        window.location.href = '/story-view'; // not created yet
     } catch (err) {
         handleErrors(err);
     }

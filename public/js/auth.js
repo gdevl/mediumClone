@@ -21,14 +21,14 @@ signupForm.addEventListener('submit', async (event) => {
       body: JSON.stringify(newUser),
       headers: { 'Content-Type': 'application/json' }
     })
-    
+
     if (!res.ok) throw res;
-    
+
     const { token, user: { id } } = await res.json();
-    
+
     localStorage.setItem('MEDIUM_CLONE_ACCESS_TOKEN', token);
     localStorage.setItem('MEDIUM_CLONE_CURRENT_USER_ID', id);
-    
+
     document
       .querySelector('.sign-up-overlay')
       .classList.add('hidden')
@@ -44,21 +44,21 @@ loginForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const formData = new FormData(loginForm);
   const user = { username: formData.username, password: formData.password };
-  
+
   try{
     const res = await fetch(`/api/users/log-in`, {
       method: 'Post',
       body: JSON.stringify(user),
       headers: { 'Content-Type': 'application/json' }
     });
-    
+
     if (!res.ok) throw res;
-    
+
     const { token, user: { id } } = await res.json();
-    
+
     localStorage.setItem('MEDIUM_CLONE_ACCESS_TOKEN', token);
     localStorage.setItem('MEDIUM_CLONE_CURRENT_USER_ID', id);
-    
+
     document
       .querySelector('.log-in-overlay')
       .classList.add('hidden')
