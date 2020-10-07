@@ -11,10 +11,6 @@ const {
 
 const router = express.Router();
 
-router.get('/create', (req, res) => {
-    res.render('new-story');
-})
-
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const { userId, title, subtitle, content, imageUrl} = req.body;
 
