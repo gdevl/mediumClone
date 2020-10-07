@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const showSignUpBox = () => {
     document
+        .querySelectorAll('.center-box__sign-up-errors-container')
+        .map(container => container.innerHTML = '');
+    document
         .querySelector('.sign-up-overlay')
         .classList.remove('hidden')
 }

@@ -34,7 +34,7 @@ signupForm.addEventListener('submit', async (event) => {
       .classList.add('hidden')
   }
   catch (err) {
-    handleErrors(err);
+    handleErrors(err, 'sign-up');
   }
 })
 
@@ -64,6 +64,6 @@ loginForm.addEventListener('submit', async (event) => {
       .classList.add('hidden')
   }
   catch (err) {
-    handleErrors(err);
+    handleErrors(err, 'log-in');
   }
 })

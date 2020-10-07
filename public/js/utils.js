@@ -1,7 +1,7 @@
-export const handleErrors = async (err) => {
+export const handleErrors = async (err, overlay) => {
     if (err.status >= 400 && err.status < 600) {
         const errorRes = await err.json();
-        const errorsContainer = document.querySelector('.errors-container');
+        const errorsContainer = document.querySelector(`.center-box__${overlay}-errors-container`);
         let errorsHtml = [
             `
                 <div class="errors">
