@@ -12,7 +12,6 @@ router.get('/', asyncHandler(async (req, res, next) => {
     order: [['userId', 'DESC']],
     include: {
       model: User,
-      attributes:['username', 'id'],
     }
   })
   // console.log(sstories)
