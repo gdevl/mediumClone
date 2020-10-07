@@ -1,6 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const { User, Stories } = require("../../db/models");
+const { User, Story } = require("../../db/models");
 const { getUserToken } = require("../../config/auth");
 
 const { asyncHandler } = require("../../utils");
@@ -68,13 +68,24 @@ router.post(
   })
 );
 
-router.get(
-  "/users/:id(\\d+)",
+app.get(
+  "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
     const id = req.params.id;
-    const stories = await Stories.findAll({ where: {userId:id}});
+    const foundStories = await Story.findAll({ where: { userId: id } });
+    const user = await User.findOne({ where: { id } });
+    const stories = foundStories.map(story => {
+      return {
+        user: user.username,
+        title: story.title,
+        subtitle: story.subtitle,
+        content: story.content,
+      }
+    })
     res.render('user', { stories })
   })
 )
+
+
 
 module.exports = router;

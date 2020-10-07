@@ -59,7 +59,7 @@
 }
 .home-grid{
   display: grid;
-  grid-template-rows: repeate(13, 1fr);
+  grid-template-columns: repeat(13, 1fr);
   grid-template-rows: 1fr;
   font-weight: 400;
 }
@@ -73,4 +73,24 @@
   grid-row-start: 1;
   grid-column: 9 / span 4;
   background-color:blue;
+}
+.user-grid{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 1fr;
+}
+.user-feed-container{
+  grid-column: 2 / span 6;
+  display: block;
+}
+.user-item{
+  padding-bottom: 48px;
+  padding-top: 10px;
+  display: block;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
 }
