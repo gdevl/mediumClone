@@ -1,0 +1,14 @@
+h1 Responses
+
+div(id='response-container')
+for response in responseObjs
+    .responses__response-info
+        .response-info__author
+            img.author__image(src=response.user.avatarUrl, alt="")
+        .response-info__container
+            .container__author-name #{response.user.firstName response.user.lastName}
+            .container__date=response.updatedAt
+    .responses__content=response.content
+    .responses__icons
+        img.icons__claps(src="/images/clapping1.png", alt="clap")
+        .icons__claps-count=response.numClaps

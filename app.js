@@ -7,7 +7,7 @@ const { environment } = require("./config");
 const storiesAPIRouter = require("./routes/api/stories");
 const responsesAPIRouter = require("./routes/api/responses");
 const usersFERouter = require("./routes/fe-users");
-const storiesFERouter = require('./routes/fe-stories');
+const createStoriesFERouter = require('./routes/fe-createStories');
 // const indexAPIRouter = require('./routes/api/index');
 
 const app = express();
@@ -18,7 +18,7 @@ app.use("/users", usersFERouter);
 app.use("/api/users", usersAPIRouter);
 app.use("/api/stories/:id(\\d+)/responses", responsesAPIRouter);
 
-app.use("/stories", storiesFERouter);
+app.use("/stories", createStoriesFERouter);
 app.use("/api/stories", storiesAPIRouter);
 // app.use('/', indexAPIRouter);
 
