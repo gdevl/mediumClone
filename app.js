@@ -6,13 +6,14 @@ const usersAPIRouter = require("./routes/api/users");
 const { environment } = require("./config");
 const storiesAPIRouter = require("./routes/api/stories");
 const responsesAPIRouter = require("./routes/api/responses");
+const usersFERouter = require("./routes/fe-users");
 // const indexAPIRouter = require('./routes/api/index');
 
 const app = express();
 
 app.use(express.json());
 app.set("view engine", "pug");
-
+app.use("/users", usersFERouter);
 app.use("/api/users", usersAPIRouter);
 app.use("/stories/:id(\\d+)/responses", responsesAPIRouter);
 app.use("/stories", storiesAPIRouter);

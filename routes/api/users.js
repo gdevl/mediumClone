@@ -1,6 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const { User } = require("../../db/models");
+const { User, Story } = require("../../db/models");
 const { getUserToken } = require("../../config/auth");
 
 const { asyncHandler } = require("../../utils");
