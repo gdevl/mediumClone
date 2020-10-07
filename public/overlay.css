@@ -11,7 +11,8 @@
     bottom: 0px;
 }
 
-.center-box {
+.sign-up-overlay__center-box,
+.log-in-overlay__center-box {
     z-index: 2;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 10px;
     border-radius: 4px;
@@ -22,11 +23,18 @@
     flex-flow: column;
 }
 
-.close {
+.center-box__close {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: 10px;
     margin-right: 10px;
+    margin-left: 10px;
+}
+
+.close__sign-up,
+.close__log-in {
+    width: 30px;
+    height: 30px;
 }
 
 .close-overlay {
@@ -35,27 +43,39 @@
     
 }
 
-.overlay-body {
+.center-box__overlay-body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.center-overlay-body {
+.overlay-body__center {
     width: 300px;
     justify-items: center;
     height: auto;
 }
 
-.welcome {
+.center__welcome {
     font-family: 'Playfair Display', Georgia, Cambria, "Times New Roman", Times, serif;
     font-size: xx-large;
     margin-bottom: 100px;
     text-align: center;
 }
 
-.log-in-link {
+.center-box__errors-container {
+    color: red;
+    font-weight: bold;
+}
+
+.center__sign-up-form,
+.center__log-in-form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.sign-up-form__log-in-link {
     margin-left: 10px;
 }
 
@@ -63,7 +83,40 @@
     display: none;
 }
 
-.sign-up-form div,
-.log-in-form div {
+.center__sign-up-form div,
+.center__log-in-form div {
     padding: 5px;
+}
+
+.sign-up-form__submit:hover,
+.log-in-form__submit:hover {
+    background-color: black;
+    transition: cubic-bezier(300ms);
+}
+
+.sign-up-form__submit,
+.log-in-form__submit {
+    margin: 5px;
+    border-radius: 5px;
+    border: 0;
+    padding: 7px;
+    transition: background-color 300ms ease-in-out;
+    background-color: rgb(36, 34, 34);
+    color: white;
+}
+
+.sign-up-form__demo-login:hover,
+.log-in-form__demo-login:hover {
+    background-color: rgb(11, 83, 216);
+}
+
+.sign-up-form__demo-login,
+.log-in-form__demo-login {
+    margin: 5px;
+    transition: background-color 300ms ease-in-out;
+    background-color: rgb(42, 114, 248);
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    padding: 7px;
 }
