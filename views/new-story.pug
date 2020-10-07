@@ -7,7 +7,7 @@ block content
         button.nav-bar__log-in-btn Log In
     .errors-container
     .new-story-form-container
-        form(class="create-form")
+        form(class="new-story-form")
             .form-group
                 label(for="title") Title
                 input(type="text", name="title", placeholder="Title")
@@ -17,6 +17,9 @@ block content
             .form-group
                 label(for="content")
                 input(type="textarea", name="content", placeholder="Tell your story...")
+            .form-group
+                label(for="imageUrl") Add an image
+                input(type="url", name="imageUrl", placeholder="https://example.com/image.jpg")
             button(type="submit") Publish
 
     //- script(src="js/create.js")
