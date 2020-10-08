@@ -48,8 +48,9 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { username, password } = req.body;
     const user = await User.findOne({ where: { username: username } });
-    
-    if (!user || !user.validatePassword(password)) {
+    console.log(user.hashedPassword);
+
+    if (!user || !(await user.validatePassword(password))) {
       const err = new Error("Login failed.");
       err.status = 401;
       err.title = "Login failed.";
@@ -58,6 +59,7 @@ router.post(
     }
 
     const token = getUserToken(user);
+    res.cookie('auth-token', token);
     res.json({
       token,
       user: { id: user.id },

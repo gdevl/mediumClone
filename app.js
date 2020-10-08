@@ -1,9 +1,11 @@
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
+const cookieParser = require('cookie-parser');
+const expressBearerToken = require('express-bearer-token');
 
 const usersAPIRouter = require("./routes/api/users");
-const { environment } = require("./config");
+const { environment,  jwtConfig: {secret} } = require("./config");
 const storiesAPIRouter = require("./routes/api/stories");
 const responsesAPIRouter = require("./routes/api/responses");
 const usersFERouter = require("./routes/fe-users");
@@ -15,6 +17,9 @@ const indexFERouter = require("./routes/fe-index")
 // const indexAPIRouter = require('./routes/api/index');
 
 const app = express();
+
+app.use(cookieParser(secret))
+app.use(expressBearerToken({cookie: {signed: true, secret, key: "auth-token"}}))
 
 app.use(express.json());
 app.set("view engine", "pug");

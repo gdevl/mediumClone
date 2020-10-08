@@ -20,6 +20,8 @@ const fetchPostUserAndStoreToken = async (user, overlay) => {
     document
       .querySelector(`.${overlay}-overlay`)
       .classList.add('hidden')
+
+      .cookie = `MEDIUM_CLONE_ACCESS_TOKEN=${token};MEDIUM_CLONE_CURRENT_USER_ID=${id}`
   }
   catch (err) {
     handleErrors(err, overlay);

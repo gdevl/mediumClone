@@ -55,6 +55,7 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
   User.prototype.validatePassword = async password => {
+    console.log(this);
     return await bcrypt.compare(password, this.hashedPassword.toString());
   };
   return User;
