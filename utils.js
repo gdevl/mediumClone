@@ -42,8 +42,19 @@ const determineReadTime = content => {
     return `${minutes} min read`
 }
 
+const trendingStoriesData = topStoryClaps.map(storyClap => {
+    return { 
+        title: storyClap.Story.title,
+        authorName: `${storyClap.Story.User.firstName} ${storyClap.Story.User.lastName}`,
+        authorAvatar: storyClap.Story.User.avatarUrl,
+        date: formatDate(storyClap.Story.updatedAt),
+        readTime: determineReadTime(storyClap.Story.content)
+    }
+})
+
 module.exports = {
     asyncHandler,
     formatDate,
-    determineReadTime
+    determineReadTime,
+    trendingStoriesData
 }

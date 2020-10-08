@@ -202,6 +202,7 @@ body {
   justify-content: center;
 }
 
+
 @media screen and (max-width: 800px) {
   .home-reading-list-container {
     display: none;
@@ -230,3 +231,4 @@ body {
     padding: 0 32px;
   }
 }
+
