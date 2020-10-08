@@ -17,7 +17,7 @@ createStoryForm.addEventListener('submit', async (e) => {
     const body = { title, subtitle, content, imageUrl, userId };
 
     try {
-        const res =  await fetch('/stories', {
+        const res =  await fetch('/api/stories', {
             method: 'POST',
             body: JSON.stringify(body),
             headers: {
