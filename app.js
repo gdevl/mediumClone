@@ -24,18 +24,14 @@ app.use("/api/users", usersAPIRouter);
 app.use("/api/stories/:id(\\d+)/responses", responsesAPIRouter);
 app.use("/api/follow", followAPIRouter);
 
-
 app.use("/stories", createStoriesFERouter);
 app.use("/", indexFERouter);
-
 
 app.use("/api/stories", storiesAPIRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
 
 /************************************************/
-
-
 
 /************************************************/
 // Catch unhandled requests and forward to error handler.
@@ -46,7 +42,6 @@ app.use((req, res, next) => {
 });
 
 // TODO Custom error handlers.
-
 
 // Generic error handler.
 app.use((err, req, res, next) => {
