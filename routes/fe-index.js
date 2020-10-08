@@ -28,4 +28,19 @@ router.get('/', asyncHandler(async (req, res, next) => {
   res.render('home', { stories, trendingStoriesData });
 }))
 
+router.get(
+  "/",
+  asyncHandler(async (req, res, next) => {
+    const stories = await Story.findAll({
+      limit: 10,
+      order: [["userId", "DESC"]],
+      include: {
+        model: User,
+      },
+    });
+    // console.log(sstories)
+    res.render("home", { stories, user: req.user });
+  })
+);
+
 module.exports = router;

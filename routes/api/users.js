@@ -17,13 +17,7 @@ router.post(
   signUpValidator,
   handleValidationErrors,
   asyncHandler(async (req, res, next) => {
-    const {
-      username,
-      password,
-      email,
-      firstName,
-      lastName,
-    } = req.body;
+    const { username, password, email, firstName, lastName } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({
       username,
@@ -34,6 +28,7 @@ router.post(
     });
 
     const token = getUserToken(user);
+    res.cookie("auth-token", token);
     res.status(201).json({
       user: { id: user.id },
       token,
@@ -47,9 +42,16 @@ router.post(
   handleValidationErrors,
   asyncHandler(async (req, res, next) => {
     const { username, password } = req.body;
+    // debugger;
+
     const user = await User.findOne({ where: { username: username } });
-    
-    if (!user || !user.validatePassword(password)) {
+    console.log(password);
+    // return bcrypt.compareSync(password, user.hashedPassword.toString());
+
+    if (
+      !user ||
+      !bcrypt.compareSync(password, user.hashedPassword.toString())
+    ) {
       const err = new Error("Login failed.");
       err.status = 401;
       err.title = "Login failed.";
@@ -58,6 +60,8 @@ router.post(
     }
 
     const token = getUserToken(user);
+    console.log(token);
+    res.cookie("auth-token", token);
     res.json({
       token,
       user: { id: user.id },
