@@ -9,19 +9,23 @@ const fetchPostUserAndStoreToken = async (user, overlay) => {
       body: JSON.stringify(user),
       headers: { 'Content-Type': 'application/json' }
     });
-    console.log(res)
+
     if (!res.ok) throw res;
 
-    const { token, user: { id } } = await res.json();
+    // code to store token in localStorage;
 
-    localStorage.setItem('MEDIUM_CLONE_ACCESS_TOKEN', token);
-    localStorage.setItem('MEDIUM_CLONE_CURRENT_USER_ID', id);
+    // const { token, user: { id } } = await res.json();
+
+    // localStorage.setItem('MEDIUM_CLONE_ACCESS_TOKEN', token);
+    // localStorage.setItem('MEDIUM_CLONE_CURRENT_USER_ID', id);
 
     document
       .querySelector(`.${overlay}-overlay`)
       .classList.add('hidden')
+
   }
   catch (err) {
+    // only demo log in works
     handleErrors(err, overlay);
   }
 }
