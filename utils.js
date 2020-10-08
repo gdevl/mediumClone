@@ -43,6 +43,7 @@ const determineReadTime = content => {
 const createTrendingStories = searchReturn => {
     return searchReturn.map(storyClap => {
         return { 
+            id: storyClap.Story.id,
             title: storyClap.Story.title,
             authorName: `${storyClap.Story.User.firstName} ${storyClap.Story.User.lastName}`,
             authorAvatar: storyClap.Story.User.avatarUrl,

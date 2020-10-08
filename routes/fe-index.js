@@ -8,17 +8,10 @@ const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res, next) => {
   const topStoryClaps = await StoryClap.findAll({
-    // where: {
-    //   createdAt: {
-    //       [Op.gte]: [moment().subtract(7, 'days').toDate()]
-    //   }
-    // },
-    include: { 
-      model: Story, 
-      include: { model: User }
-    },
-    limit: 6,
-    order: [['storyId', 'DESC']],
+    group: ['Story.id'],
+    include: { model: StoryClap, attributes: [] },
+    attributes: ['title', 'subtitle', [db.sequelize.fn('COUNT', db.sequelize.col('StoryClaps.id')), 'num_claps']],
+    order: [[db.sequelize.literal('num_claps'), 'DESC']]
   });
   
   const trendingStoriesData = createTrendingStories(topStoryClaps);
