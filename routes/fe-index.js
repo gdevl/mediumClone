@@ -1,19 +1,36 @@
 const express = require("express");
-const { User, Story, StoryClap, Follow } = require("../db/models");
 
 
+const { User, Story, StoryClap, sequelize } = require("../db/models");
 const { asyncHandler, createTrendingStories } = require("../utils");
 
 
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const topStoryClaps = await StoryClap.findAll({
-    group: ['Story.id'],
-    include: { model: StoryClap, attributes: [] },
-    attributes: ['title', 'subtitle', [db.sequelize.fn('COUNT', db.sequelize.col('StoryClaps.id')), 'num_claps']],
-    order: [[db.sequelize.literal('num_claps'), 'DESC']]
+  let topStoryClaps = await Story.findAll({
+    group: ['Story.id', 'User.id'],
+    include: [{ 
+      model: StoryClap, 
+      attributes: [], 
+    },
+    { 
+      model: User, 
+      attributes: ['id', 'firstName', 'lastName', 'avatarUrl', 'bio'] 
+    }], 
+    attributes: [
+      'id',
+      'title', 
+      'subtitle', 
+      'userId', 
+      'updatedAt',
+      'content', 
+      [sequelize.fn('COUNT', sequelize.col('StoryClaps.id')), 'num_claps']
+    ],
+    order: [[sequelize.literal('num_claps'), 'DESC']],
   });
+  
+  topStoryClaps = topStoryClaps.splice(0, 6);
   
   const trendingStoriesData = createTrendingStories(topStoryClaps);
   

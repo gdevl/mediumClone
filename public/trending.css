@@ -46,12 +46,16 @@
     padding-left: 10px;
     font-size: 13px;
     font-weight: bold;
+    text-decoration: none;
+    color: black;
 }
 
 .info__title {
     font-size: 18px;
     font-weight: bold;
     font-family: 'Fira Sans', sans-serif;
+    text-decoration: none;
+    color: black;
     margin: 5px 0;
     
 }
