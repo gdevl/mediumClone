@@ -1,5 +1,3 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
 const { User, Story } = require("../db/models");
 const { getUserToken } = require("../config/auth");
 
