@@ -45,6 +45,7 @@ const createTrendingStories = searchReturn => {
         return { 
             id: story.id,
             title: story.title,
+            authorId: story.User.id,
             authorName: `${story.User.firstName} ${story.User.lastName}`,
             authorAvatar: story.User.avatarUrl,
             date: formatDate(story.updatedAt),

@@ -6,7 +6,7 @@
                 .story__info
                     .info__author 
                         img.author__img(src= trendingStory.authorAvatar, alt="Author Image")
-                        span.author__name= trendingStory.authorName
+                        a.author__name(href=`/user/${trendingStory.authorId}`)= trendingStory.authorName
                     a.info__title(href=`story/${trendingStory.id}`) #{trendingStory.title}
                     .info__details
                         span.details__date= trendingStory.date

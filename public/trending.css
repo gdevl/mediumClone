@@ -46,6 +46,8 @@
     padding-left: 10px;
     font-size: 13px;
     font-weight: bold;
+    text-decoration: none;
+    color: black;
 }
 
 .info__title {
