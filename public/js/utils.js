@@ -28,6 +28,3 @@ export const handleErrors = async (err, overlay) => {
     };
 }
 
-export const populateTrending = async () => {
-    
-}

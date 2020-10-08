@@ -2,22 +2,36 @@ const express = require("express");
 const { User, Story, StoryClap, Follow } = require("../db/models");
 const { getUserToken } = require("../config/auth");
 
-const { asyncHandler } = require("../utils");
+const { asyncHandler, formatDate, determineReadTime } = require("../utils");
+
 
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const mostPopularData = await StoryClap.findAndCountAll({
-    include: { model: Story },
+  const topStoryClaps = await StoryClap.findAll({
+    // where: {
+    //   createdAt: {
+    //       [Op.gte]: [moment().subtract(7, 'days').toDate()]
+    //   }
+    // },
+    include: { 
+      model: Story, 
+      include: { model: User }
+      
+    },
     limit: 6,
     order: [['storyId', 'DESC']],
-    where: {
-      createdAt: {
-          [Op.gte]: moment().subtract(7, 'days').toDate()
-      }
-    }
   });
-  console.log(mostPopularData)
+
+  const trendingStoriesData = topStoryClaps.map(storyClap => {
+    return { 
+      title: storyClap.Story.title,
+      authorName: `${storyClap.Story.User.firstName} ${storyClap.Story.User.lastName}`,
+      authorAvatar: storyClap.Story.User.avatarUrl,
+      date: formatDate(storyClap.Story.updatedAt),
+      readTime: determineReadTime(storyClap.Story.content)
+    }
+  })
   
   const stories = await Story.findAll({
     limit: 5,
@@ -26,8 +40,8 @@ router.get('/', asyncHandler(async (req, res, next) => {
       model: User,
     }
   })
-  // console.log(sstories)
-  res.render('home', {stories});
+  // console.log(stories)
+  res.render('home', { stories, trendingStoriesData });
 }))
 
 module.exports = router;
