@@ -14,7 +14,7 @@ const router = express.Router();
 // response creation route
 router.post('/create', responseValidator, handleValidationErrors, asyncHandler(async( req, res, next) => {
     const { content } = req.body;
-    const userId = req.user.id;
+    const userId = localStorage.getItem('MEDIUM_CLONE_CURRENT_USER_ID');
     const storyId = req.params.id;
 
     const newResponse = await Response.create({

@@ -12,10 +12,11 @@ html(lang="en")
 
         title Medium Clone
     body
-        block content
-    .sign-up-overlay.hidden
-        include includes/sign-up-overlay
-    .log-in-overlay.hidden
-        include includes/log-in-overlay
-    script(type="module" src="/js/auth.js")
-    script(type="module" src="/js/index.js")
+      include includes/navbar
+      block content
+      .sign-up-overlay.hidden
+          include includes/sign-up-overlay
+      .log-in-overlay.hidden
+          include includes/log-in-overlay
+      script(type="module" src="/js/auth.js")
+      script(type="module" src="/js/index.js")
