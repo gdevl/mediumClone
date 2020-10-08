@@ -172,7 +172,7 @@
 
 .userName {
   font-family: "Fira Sans", sans-serif;
-  margin-bottom: 4px;
+  margin: 0;
 }
 
 .userBio {
@@ -187,6 +187,31 @@
 .user-feed-container {
   grid-column: 2 / span 6;
   display: block;
+}
+.userProfile__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0;
+}
+.user-followButton-container{
+}
+.user-followButton{
+  margin-left: 20px;
+}
+.user-followButton button{
+  margin: 0;
+  border: 1px solid rgba(3, 168, 124, 1);
+  border-radius: 4px;
+  font-size: 15px;
+  fill: rgba(3, 168, 124, 1);
+  color: rgba(2, 158, 116, 1);
+  background: 0;
+}
+.user-followButton button:hover{
+  color: #008000;
+  border-color: #008000;
+  fill: #008000;
 }
 .user-item {
   padding-bottom: 48px;
