@@ -2,12 +2,13 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 
-const usersAPIRouter = require("./routes/api/users");
 const { environment } = require("./config");
+
+const usersAPIRouter = require("./routes/api/users");
 const storiesAPIRouter = require("./routes/api/stories");
 const responsesAPIRouter = require("./routes/api/responses");
-const usersFERouter = require("./routes/fe-users");
 
+const usersFERouter = require("./routes/fe-users");
 const createStoriesFERouter = require('./routes/fe-createStories');
 const indexFERouter = require("./routes/fe-index")
 
