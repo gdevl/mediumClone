@@ -1,7 +1,9 @@
 .nav-bar
   .nav-bar__inner
-    .brand-container
+    .nav-bar__inner-brand-container
       a(href="/").brand Medium
-    .links-container
-      i(class="fa fa-lg fa-user-plus nav-bar__sign-up-btn")
-      i(class="fa fa-lg fa-sign-in nav-bar__log-in-btn")
+    .nav-bar__inner-links-container
+      i(class="fa fa-user-plus nav-bar__sign-up-btn" data-tooltip="Sign Up")
+      i(class="fa fa-sign-in nav-bar__log-in-btn" data-tooltip="Log In")
+      div(class="nav-bar__user-avatar")
+        span(class="nav-bar__user-avatar__initials")
