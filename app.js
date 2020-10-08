@@ -2,14 +2,16 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 
-const usersAPIRouter = require("./routes/api/users");
 const { environment } = require("./config");
+const usersAPIRouter = require("./routes/api/users");
 const storiesAPIRouter = require("./routes/api/stories");
 const responsesAPIRouter = require("./routes/api/responses");
-const usersFERouter = require("./routes/fe-users");
+const followAPIRouter = require("./routes/api/follow");
 
-const createStoriesFERouter = require("./routes/fe-createStories");
-const indexFERouter = require("./routes/fe-index");
+const usersFERouter = require("./routes/fe-users");
+const createStoriesFERouter = require('./routes/fe-createStories');
+const indexFERouter = require("./routes/fe-index")
+
 
 // const indexAPIRouter = require('./routes/api/index');
 
@@ -20,6 +22,7 @@ app.set("view engine", "pug");
 app.use("/users", usersFERouter);
 app.use("/api/users", usersAPIRouter);
 app.use("/api/stories/:id(\\d+)/responses", responsesAPIRouter);
+app.use("/api/follow", followAPIRouter);
 
 app.use("/stories", createStoriesFERouter);
 app.use("/", indexFERouter);
