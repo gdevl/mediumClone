@@ -16,10 +16,12 @@ router.get(
       include: { model: User },
     });
 
-    // const follows = await Follow.findAll({
-    //   where: { followedId: currentUserId },
-    // });
-    res.render("user", { stories });
+    const follows = await Follow.findAll({
+      where: { followerId: req.user.id, followedId: req.params.id },
+    });
+    // if follows.length ==== 0
+    console.log("follows: ", follows);
+    res.render("user", { stories, follows, user: req.user });
   })
 );
 
