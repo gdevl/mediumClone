@@ -8,9 +8,8 @@ const storiesAPIRouter = require("./routes/api/stories");
 const responsesAPIRouter = require("./routes/api/responses");
 const usersFERouter = require("./routes/fe-users");
 
-const createStoriesFERouter = require('./routes/fe-createStories');
-const indexFERouter = require("./routes/fe-index")
-
+const createStoriesFERouter = require("./routes/fe-createStories");
+const indexFERouter = require("./routes/fe-index");
 
 // const indexAPIRouter = require('./routes/api/index');
 
@@ -22,18 +21,14 @@ app.use("/users", usersFERouter);
 app.use("/api/users", usersAPIRouter);
 app.use("/api/stories/:id(\\d+)/responses", responsesAPIRouter);
 
-
 app.use("/stories", createStoriesFERouter);
 app.use("/", indexFERouter);
-
 
 app.use("/api/stories", storiesAPIRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
 
 /************************************************/
-
-
 
 /************************************************/
 // Catch unhandled requests and forward to error handler.
@@ -44,7 +39,6 @@ app.use((req, res, next) => {
 });
 
 // TODO Custom error handlers.
-
 
 // Generic error handler.
 app.use((err, req, res, next) => {
