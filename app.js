@@ -12,14 +12,17 @@ const usersFERouter = require("./routes/fe-users");
 
 const createStoriesFERouter = require('./routes/fe-createStories');
 const indexFERouter = require("./routes/fe-index")
+const { checkUser } = require('./config/auth')
 
 
 // const indexAPIRouter = require('./routes/api/index');
+
 
 const app = express();
 
 app.use(cookieParser(secret))
 app.use(expressBearerToken({cookie: {signed: true, secret, key: "auth-token"}}))
+app.use(checkUser);
 
 app.use(express.json());
 app.set("view engine", "pug");

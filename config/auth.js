@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const user = require("../db/models/user");
 const { jwtConfig } = require("./index");
 const { User } = require('../db/models');
 
@@ -23,9 +22,8 @@ const getUserToken = (user) => {
 const checkUser = (req, res, next) => {
   const { token } = req
   if (!token) {
-    const err = new Error("Not logged in.");
-    err.status = 401;
-    return next(err);
+    req.user = null;
+    return next();
   }
 
   return jwt.verify(token, secret, null, async (err, jwtPayload) => {
@@ -41,9 +39,8 @@ const checkUser = (req, res, next) => {
     } catch (err) {
       return next(err);
     }
-
+    next();
   })
-  return next();
 }
 
 module.exports = {

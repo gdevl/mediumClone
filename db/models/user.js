@@ -54,9 +54,9 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'followerId',
     });
   };
-  User.prototype.validatePassword = async password => {
+  User.prototype.validatePassword = (password) => {
     console.log(this);
-    return await bcrypt.compare(password, this.hashedPassword.toString());
+    return bcrypt.compareSync(password, this.hashedPassword.toString());
   };
   return User;
 };
