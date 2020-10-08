@@ -1,5 +1,16 @@
 h2 Responses
-
+.responses-container__new-response
+    .new-response__header--hidden
+        .header__user-img
+            img(src= user.username)
+        .header__user-name
+            span.user-name__fullName #{user.firstName} #{user.lastName}
+    form.new-response__new-response-form
+        .new-response-form__content
+            input(type="textarea", name="content", placeholder="What are your thoughts?")
+        .new-response-form__buttons--hidden
+            button.buttons__cancel Cancel
+            button(type="submit") Respond
 div(id='response-container')
     for response in responseObjs
         .responses__response-info
@@ -12,3 +23,4 @@ div(id='response-container')
         .responses__icons
             img.icons__claps(src="/images/clapping1.png", alt="clap")
             .icons__claps-count=response.numClaps
+
