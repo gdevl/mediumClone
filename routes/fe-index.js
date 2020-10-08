@@ -17,7 +17,7 @@ router.get(
       },
     });
     // console.log(sstories)
-    res.render("home", { stories });
+    res.render("home", { stories, user: req.user });
   })
 );
 
