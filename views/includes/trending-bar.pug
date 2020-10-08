@@ -3,4 +3,11 @@
         each story, index in topStories   
             div(class="content__story#{index + 1}")
                 .story__rank 0#{index + 1}
-                .story__
+                .story__info
+                    .info__author 
+                        img.author__img(src= story.User.avatarUrl, alt="Author Image")
+                        span.author__name #{story.User.firstName story.User.lastName}
+                    .info__title= story.title
+                    .info__details
+                        span.details__date= story.date
+                        span.read-time= story.readTime

@@ -1,5 +1,4 @@
 .trending-bar {
-    max-width: 1200px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -10,6 +9,26 @@
     
 }
 
+.content__story1,
+.content__story2,
+.content__story3,
+.content__story4,
+.content__story5,
+.content__story6 {
+    padding: 0 5px;
+    margin: 5px 0;
+    display: flex;
+}
+
 .story__rank {
     width: 40px;
+}
+
+.story__info {
+    display: flex;
+    flex-flow: column;
+}
+
+.author__img {
+    width: 20px;
 }
