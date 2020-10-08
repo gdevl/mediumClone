@@ -20,8 +20,10 @@
   "dependencies": {
     "@prisma-labs/prettier-config": "^0.1.0",
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-bearer-token": "^2.4.0",
     "express-validator": "^6.6.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",

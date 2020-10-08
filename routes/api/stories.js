@@ -1,6 +1,7 @@
 const express = require('express');
 const { StoryClap, Story, User } = require('../../db/models');
 // const { getUserToken } = require('../../config/auth');
+// const { checkUser } = require('../../config/auth')
 
 const { asyncHandler } = require('../../utils');
 const {
