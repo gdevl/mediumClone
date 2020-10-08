@@ -1,6 +1,51 @@
 .body {
   color: rgba(0, 0, 0, 0.8);
 }
+
+.brand {
+  color: inherit;
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.nav-bar {
+  align-items: center;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 64px;
+}
+
+.nav-bar__inner {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  width: 100%;
+}
+
+.brand-container {
+  grid-column: 1;
+}
+
+.links-container {
+  grid-column: 13;
+}
+/* 
+.nav-bar__inner,
+.links-container,
+.brand-container {
+  outline: 1px solid red;
+} */
+
+.links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100px;
+}
 .feed-container {
   box-sizing: border-box;
   display: block;
@@ -126,7 +171,7 @@
 }
 
 .userName {
-  font-family: "Playfair Display", serif;
+  font-family: "Fira Sans", sans-serif;
   margin-bottom: 4px;
 }
 
@@ -173,10 +218,13 @@
     width: 100px;
   }
   .user-grid-container {
-    margin: 0 24px;
+    margin: 0 32px;
   }
   .user-feed-container,
   .userProfile {
     grid-column: 1 / span 8;
+  }
+  .nav-bar {
+    padding: 0 32px;
   }
 }
