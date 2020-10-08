@@ -10,15 +10,16 @@ html(lang="en")
         link(href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet")
         link(rel="stylesheet", href="/style.css")
         link(rel="stylesheet", href="/overlay.css")
+        link(rel="stylesheet", href="/trending.css")
         link(rel="icon" type="png" href="https://miro.medium.com/fit/c/336/336/1*6_fgYnisCa9V21mymySIvA.png")
 
         title Medium Clone
     body
-      include includes/navbar
-      block content
-      .sign-up-overlay.hidden
-          include includes/sign-up-overlay
-      .log-in-overlay.hidden
-          include includes/log-in-overlay
-      script(type="module" src="/js/auth.js")
-      script(type="module" src="/js/index.js")
+        include includes/navbar
+        block content
+        .sign-up-overlay.hidden
+            include includes/sign-up-overlay
+        .log-in-overlay.hidden
+            include includes/log-in-overlay
+        script(type="module" src="/js/auth.js")
+        script(type="module" src="/js/index.js")
