@@ -62,10 +62,7 @@ router.post(
     const token = getUserToken(user);
     console.log(token);
     res.cookie("auth-token", token);
-    res.json({
-      token,
-      user: { id: user.id },
-    });
+    res.json({ id: user.id });
   })
 );
 

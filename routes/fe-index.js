@@ -55,7 +55,6 @@ router.get(
         model: User,
       },
     });
-    // console.log(sstories)
     res.render("home", { stories, user: req.user });
   })
 );
