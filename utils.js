@@ -41,14 +41,14 @@ const determineReadTime = content => {
 }
 
 const createTrendingStories = searchReturn => {
-    return searchReturn.map(storyClap => {
+    return searchReturn.map(story => {
         return { 
-            id: storyClap.Story.id,
-            title: storyClap.Story.title,
-            authorName: `${storyClap.Story.User.firstName} ${storyClap.Story.User.lastName}`,
-            authorAvatar: storyClap.Story.User.avatarUrl,
-            date: formatDate(storyClap.Story.updatedAt),
-            readTime: determineReadTime(storyClap.Story.content)
+            id: story.id,
+            title: story.title,
+            authorName: `${story.User.firstName} ${story.User.lastName}`,
+            authorAvatar: story.User.avatarUrl,
+            date: formatDate(story.updatedAt),
+            readTime: determineReadTime(story.content)
         }
     })
 }
