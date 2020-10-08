@@ -2,7 +2,7 @@ const express = require("express");
 const { User, Story, StoryClap, Follow } = require("../db/models");
 
 
-const { asyncHandler, trendingStoriesData } = require("../utils");
+const { asyncHandler, createTrendingStories } = require("../utils");
 
 
 const router = express.Router();
@@ -22,6 +22,8 @@ router.get('/', asyncHandler(async (req, res, next) => {
     order: [['storyId', 'DESC']],
   });
   
+  const trendingStoriesData = createTrendingStories(topStoryClaps);
+  
   const stories = await Story.findAll({
     limit: 5,
     order: [['userId', 'DESC']],
@@ -29,7 +31,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
       model: User,
     }
   })
-  // console.log(stories)
+
   res.render('home', { stories, trendingStoriesData });
 }))
 

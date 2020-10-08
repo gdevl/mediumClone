@@ -36,25 +36,26 @@ const formatDate = date => {
 }
 
 const determineReadTime = content => {
-    console.log('CONTENT: ', content)
     const wordCount = content.split(' ').length;
     const minutes = Math.round(wordCount / 300);
     return `${minutes} min read`
 }
 
-const trendingStoriesData = topStoryClaps.map(storyClap => {
-    return { 
-        title: storyClap.Story.title,
-        authorName: `${storyClap.Story.User.firstName} ${storyClap.Story.User.lastName}`,
-        authorAvatar: storyClap.Story.User.avatarUrl,
-        date: formatDate(storyClap.Story.updatedAt),
-        readTime: determineReadTime(storyClap.Story.content)
-    }
-})
+const createTrendingStories = searchReturn => {
+    return searchReturn.map(storyClap => {
+        return { 
+            title: storyClap.Story.title,
+            authorName: `${storyClap.Story.User.firstName} ${storyClap.Story.User.lastName}`,
+            authorAvatar: storyClap.Story.User.avatarUrl,
+            date: formatDate(storyClap.Story.updatedAt),
+            readTime: determineReadTime(storyClap.Story.content)
+        }
+    })
+}
 
 module.exports = {
     asyncHandler,
     formatDate,
     determineReadTime,
-    trendingStoriesData
+    createTrendingStories
 }

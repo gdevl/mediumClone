@@ -1,5 +1,3 @@
-import storyclap from "../../db/models/storyclap";
-
 export const handleErrors = async (err, overlay) => {
     if (err.status >= 400 && err.status < 600) {
         const errorRes = await err.json();
