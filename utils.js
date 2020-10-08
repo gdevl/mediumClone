@@ -1,7 +1,6 @@
 const asyncHandler = (handler) => (req,res,next) => handler(req,res,next).catch(next);
 
 
-const date = new Date();
 const formatDate = date => {
     const month = date.getMonth() + 1;
     const day = date.getDate();
