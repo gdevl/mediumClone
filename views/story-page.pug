@@ -1,0 +1,52 @@
+extends layout
+
+block content
+    .left-side-panel
+        .left-side-panel__follow-box
+            .follow-box__author
+            button.follow-box__follow-button
+        .left-side-panel__widgets-box
+            .widgets-box__claps
+                img.claps__img(src="/images/clapping.png", alt="clap")
+                span.claps__claps-count
+            .widgets-box__responses
+                i.responses__icon(class="fa fa-comment-o" aria-hidden="true")
+                span.responses__responses-count
+            .widgets-box__bookmark
+                i.bookmark__icon(class="fa fa-bookmark-o" aria-hidden="true") 
+    .story
+        .story__title= story.title
+        .story__subtitle= story.subtitle
+        .story__info
+            img.info__author-img(src= story.User.avatarUrl, alt="author picture")
+            .info__container
+                .container__author
+                    .author__name#{story.User.firstName story.User.lastName}
+                    button.author__follow-button
+                .container__story-data
+                    span.story-data__date= story.updatedAt
+                    span.story-data__read-time
+            .info__bookmark
+                i.bookmark__icon(class="fa fa-bookmark-o" aria-hidden="true")
+        .story__content-container
+            .content-container__content= story.content
+        .story__below-content
+            .below-content__content-icons
+                .content-icons__claps
+                    img.claps__img(src="/images/clapping.png", alt="clap")
+                    span.claps__claps-count
+                .content-icons__responses
+                    i.responses__icon(class="fa fa-comment-o" aria-hidden="true")
+                    span.responses__responses-count= //responses.responsesNum
+                .content-icons__bookmark
+                    i.bookmark__icon(class="fa fa-bookmark-o" aria-hidden="true")
+            .below-content__author-info
+                .author-info__img-container
+                    img.img-container__author-img(src= story.User.avatarUrl, alt="Author Picture")
+                .author-info__author-text
+                    .author-text__written-by WRITTEN BY
+                    .author-text__name #{story.User.firstName story.User.lastName}
+                    .author-text__bio= story.User.bio
+                .author-info__follow-container
+                    button.follow-container__follow-button Follow
+                
