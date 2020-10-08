@@ -51,7 +51,6 @@ router.post(
     debugger;
 
     const user = await User.findOne({ where: { username: username } });
-    console.log(password);
     // return bcrypt.compareSync(password, user.hashedPassword.toString());
 
     if (!user || !(bcrypt.compareSync(password, user.hashedPassword.toString()))) {
@@ -63,7 +62,6 @@ router.post(
     }
 
     const token = getUserToken(user);
-    console.log(token);
     res.cookie('auth-token', token);
     res.json({
       token,
