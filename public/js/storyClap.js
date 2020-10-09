@@ -2,8 +2,11 @@ import { handleErrors } from "./utils.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const clapImg = document.getElementById("claps__img");
-  clapImg.addEventListener("click", () => isClapping(clapImg));
+  const clapImg = document.querySelectorAll(".claps__img");
+
+  clapImg.forEach((img) => {
+    img.addEventListener("click", () => isClapping(clapImg));
+  })
 });
 
 const postClap = async (storyId) => {
@@ -21,19 +24,31 @@ const postClap = async (storyId) => {
     if (res.status === 401) {
       return;
     }
+
+    let responseJson = await res.json();
+    let numClaps = responseJson.numClaps;
+    let spanCount = document.querySelectorAll('.claps__claps-count');
+    spanCount.forEach((ele) => {
+      ele.innerHTML = numClaps;
+    })
   } catch (err) {
     handleErrors(err);
   }
 };
 
-const isClapping = (element) => {
-  console.log("loggggging: ", element.dataset.value);
-  if (element.dataset.value === 'toBeClapped') {
-    element.dataset.value = 'unclap';
-    postClap(element.dataset.storyId);
-  } else if (element.dataset.value === 'unclap'){
-    element.dataset.value = "toBeClapped";
-    destroyClap(element.dataset.storyId);
+const isClapping = (elements) => {
+  if (elements[0].dataset.value === 'toBeClapped') {
+    elements.forEach((img) => {
+      img.dataset.value = 'unclap';
+      img.src = "/images/clapped3.png";
+    })
+    postClap(elements[0].dataset.storyId);
+  } else if (elements[0].dataset.value === 'unclap'){
+        elements.forEach((img) => {
+          img.dataset.value = "toBeClapped";
+          img.src = "/images/clapping1.png";
+        })
+    destroyClap(elements[0].dataset.storyId);
   } else {
     alert('Currently not signed in.')
   }
@@ -53,6 +68,12 @@ const destroyClap = async (storyId) => {
     if (res.status === 401) {
       return;
     }
+    let responseJson = await res.json();
+    let numClaps = responseJson.numClaps;
+    let spanCount = document.querySelectorAll('.claps__claps-count');
+    spanCount.forEach((ele) => {
+      ele.innerHTML = numClaps;
+    })
   } catch (err) {
     handleErrors(err);
   }
