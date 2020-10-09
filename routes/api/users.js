@@ -42,10 +42,8 @@ router.post(
   handleValidationErrors,
   asyncHandler(async (req, res, next) => {
     const { username, password } = req.body;
-    // debugger;
 
     const user = await User.findOne({ where: { username: username } });
-    console.log(password);
     // return bcrypt.compareSync(password, user.hashedPassword.toString());
 
     if (
@@ -60,7 +58,6 @@ router.post(
     }
 
     const token = getUserToken(user);
-    console.log(token);
     res.cookie("auth-token", token);
     res.json({ id: user.id });
   })

@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const { User, Story, Follow } = require("../db/models");
 const { getUserToken } = require("../config/auth");
 
-const { asyncHandler } = require("../utils");
+const { asyncHandler, formatDate } = require("../utils");
 
 const router = express.Router();
 
@@ -16,12 +16,36 @@ router.get(
       include: { model: User },
     });
 
-    const follows = await Follow.findAll({
-      where: { followerId: req.user.id, followedId: req.params.id },
-    });
-    // if follows.length ==== 0
-    console.log("follows: ", follows);
-    res.render("user", { stories, follows, user: req.user });
+    const storiesData = (query) => {
+      return query.map((story) => {
+        return {
+          id: story.id,
+          bio: `${story.User.bio}`,
+          avatarUrl: `${story.User.avatarUrl}`,
+          title: story.title,
+          subtitle: story.subtitle,
+          authorId: story.User.id,
+          image: story.imageUrl,
+          authorName: `${story.User.firstName} ${story.User.lastName}`,
+          date: formatDate(story.createdAt),
+        };
+      });
+    };
+
+    if (req.user) {
+      const follows = await Follow.findAll({
+        where: { followerId: req.user.id, followedId: req.params.id },
+      });
+      res.render("user", {
+        storiesData: storiesData(stories),
+        follows,
+        user: req.user,
+      });
+    } else {
+      res.render("user", {
+        storiesData: storiesData(stories),
+      });
+    }
   })
 );
 
