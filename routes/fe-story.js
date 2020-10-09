@@ -11,14 +11,6 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const storyData = await Story.findOne({ 
         where: { id: storyId },
         include: User,
-        // attributes: [
-        //     'id', 
-        //     'title', 
-        //     'subtitle', 
-        //     'content', 
-        //     'updatedAt',
-        //     'imageUrl'
-        // ]
     });
     
     const storyClaps = await StoryClap.findAndCountAll({
@@ -46,6 +38,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     }
     res.render('story-page', { story });
 }));
+
 
 
 
