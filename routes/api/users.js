@@ -63,4 +63,12 @@ router.post(
   })
 );
 
+router.delete(
+  "/log-out",
+  asyncHandler(async (req, res, next) => {
+    res.clearCookie("auth-token");
+    res.status(200);
+    res.json("Successfully logged out");
+  })
+);
 module.exports = router;

@@ -76,3 +76,30 @@ document
   .addEventListener("click", () => {
     fetchAndClose("log-in");
   });
+
+/*********************************************************/
+//* Logout Functionality
+
+document
+  .querySelector(".nav-bar__log-out-btn")
+  .addEventListener("click", () => {
+    logUserOut();
+  });
+
+const logOutBtn = document.querySelector(".nav-bar__log-out-btn");
+const logUserOut = async () => {
+  try {
+    const res = await fetch("/api/users/log-out", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.status === 401) {
+      return;
+    }
+    window.location.reload();
+  } catch (err) {
+    handleErrors(err);
+  }
+};
