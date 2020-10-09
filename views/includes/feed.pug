@@ -9,7 +9,7 @@
                 a.author(href=`/users/${story.authorId}`) #{story.authorName}
           .feed-item_text
             h3.title 
-              a(href=`story/${story.id}`) #{story.title}
+              a(href=`/story/${story.id}`) #{story.title}
             p.subtitle #{story.subtitle}
             p.subtitle #{story.date}
         .feed-item_img(style={'background-image':`url(${story.image})`})
