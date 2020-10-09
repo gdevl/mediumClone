@@ -15,7 +15,6 @@ const {
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const storyId = parseInt(req.params.id, 10);
-    const currentUser = req.user;
     const storyData = await Story.findOne({
         where: { id: storyId },
         include: User,
@@ -25,18 +24,23 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         where: { storyId: storyId }
     });
 
-    const isStoryClapped = await StoryClap.findOne({
-        where: {
-            storyId: storyId,
-            userId: currentUser.id,
-        }
-    })
-    
     let isClapped;
-    if (!isStoryClapped) {
-        isClapped = 'toBeClapped'
+    let currentUser;
+    if (req.user) {
+        currentUser = req.user;
+        const isStoryClapped = await StoryClap.findOne({
+            where: {
+                storyId: storyId,
+                userId: currentUser.id,
+            }
+        })
+        if (!isStoryClapped) {
+            isClapped = 'toBeClapped'
+        } else {
+            isClapped = 'unclap'
+        }
     } else {
-        isClapped = 'unclap'
+        isClapped = "NoUser";
     }
 
     const storyResponses = await Response.findAndCountAll({
@@ -67,6 +71,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         responsesCount: storyResponses.count,
         responses: storyResponses,      
         isClapped,
+        // imageClapped
     }
     res.render('story-page', { story, currentUser });
 }));

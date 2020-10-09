@@ -4,7 +4,7 @@ const followBtn = document.getElementById("follow");
 
 document.addEventListener("DOMContentLoaded", () => {
   if (followBtn) {
-    button.addEventListener("click", () => isFollowing(button));
+    followBtn.addEventListener("click", () => isFollowing(followBtn));
   }
 });
 

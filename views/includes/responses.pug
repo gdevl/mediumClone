@@ -2,9 +2,9 @@ h2 Responses
 .responses-container__new-response
     .new-response__header--hidden
         .header__user-img
-            img(src= user.username)
+            img(src= currentUser.username)
         .header__user-name
-            span.user-name__fullName #{user.firstName} #{user.lastName}
+            span.user-name__fullName #{currentUser.firstName} #{currentUser.lastName}
     form.new-response__new-response-form
         .new-response-form__content
             input(type="textarea", name="content", placeholder="What are your thoughts?")
