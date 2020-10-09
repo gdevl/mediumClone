@@ -33,6 +33,8 @@ function clapAlreadyExistsError(id) {
     return error;
 }
 
+
+
 // clap creation route
 router.post('/:id(\\d+)/clap', asyncHandler (async (req, res, next) => {
     const storyId = req.params.id;
@@ -59,6 +61,7 @@ router.post('/:id(\\d+)/clap', asyncHandler (async (req, res, next) => {
         next(clapAlreadyExistsError(storyId))
     }
 }));
+
 
 
 module.exports = router;

@@ -10,15 +10,19 @@ html(lang="en")
         link(rel="stylesheet", href="/style.css")
         link(rel="stylesheet", href="/overlay.css")
         link(rel="stylesheet", href="/trending.css")
+        link(rel="stylesheet", href="/story.css")
+        link(rel="stylesheet", href="/footer.css")
         link(rel="icon" type="png" href="https://miro.medium.com/fit/c/336/336/1*6_fgYnisCa9V21mymySIvA.png")
 
         title Medium Clone
     body
-        include includes/navbar
-        block content
-        .sign-up-overlay.hidden
-            include includes/sign-up-overlay
-        .log-in-overlay.hidden
-            include includes/log-in-overlay
-        script(type="module" src="/js/auth.js")
-        script(type="module" src="/js/index.js")
+        main.body__main
+            include includes/navbar
+            block content
+            .sign-up-overlay.hidden
+                include includes/sign-up-overlay
+            .log-in-overlay.hidden
+                include includes/log-in-overlay
+        include includes/footer
+    script(type="module" src="/js/auth.js")
+    script(type="module" src="/js/index.js")

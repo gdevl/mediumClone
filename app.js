@@ -13,30 +13,28 @@ const followAPIRouter = require("./routes/api/follow");
 
 const usersFERouter = require("./routes/fe-users");
 const createStoriesFERouter = require('./routes/fe-createStories');
-const indexFERouter = require("./routes/fe-index")
-const { checkUser } = require('./config/auth')
-
-
-// const indexAPIRouter = require('./routes/api/index');
-
+const indexFERouter = require("./routes/fe-index");
+const storyFERouter = require('./routes/fe-story');
+const { checkUser } = require('./config/auth');
 
 const app = express();
 
-app.use(cookieParser(secret))
-app.use(expressBearerToken({cookie: {signed: true, secret, key: "auth-token"}}))
+app.use(cookieParser(secret));
+app.use(expressBearerToken({cookie: {signed: true, secret, key: "auth-token"}}));
 app.use(checkUser);
 
 app.use(express.json());
 app.set("view engine", "pug");
-app.use("/users", usersFERouter);
+
 app.use("/api/users", usersAPIRouter);
 app.use("/api/stories/:id(\\d+)/responses", responsesAPIRouter);
+app.use("/api/stories", storiesAPIRouter);
 app.use("/api/follow", followAPIRouter);
 
 app.use("/stories", createStoriesFERouter);
+app.use('/story', storyFERouter);
+app.use("/users", usersFERouter);
 app.use("/", indexFERouter);
-
-app.use("/api/stories", storiesAPIRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
 
