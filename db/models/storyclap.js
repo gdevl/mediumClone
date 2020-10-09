@@ -20,3 +20,4 @@ module.exports = (sequelize, DataTypes) => {
   };
   return StoryClap;
 };
+

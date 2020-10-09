@@ -13,16 +13,16 @@ const {
 const router = express.Router();
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const { userId, title, subtitle, content, imageUrl} = req.body;
+    const { userId, title, subtitle, content, imageUrl} = req.body;
 
-  const story = await Story.create({
-    userId,
-    title,
-    subtitle,
-    content,
-    imageUrl,
-  });
-  res.status(201).json({story})
+    const story = await Story.create({
+        userId,
+        title,
+        subtitle,
+        content,
+        imageUrl,
+    });
+    res.status(201).json({story})
 }))
 
 // clap already exists error handler
@@ -31,7 +31,9 @@ function clapAlreadyExistsError(id) {
     error.title = "Clap already exists.";
     error.status = 400;
     return error;
-  }
+}
+
+
 
 // clap creation route
 router.post('/:id(\\d+)/clap', asyncHandler (async (req, res, next) => {
@@ -59,6 +61,7 @@ router.post('/:id(\\d+)/clap', asyncHandler (async (req, res, next) => {
         next(clapAlreadyExistsError(storyId))
     }
 }));
+
 
 
 module.exports = router;

@@ -50,6 +50,10 @@
     color: black;
 }
 
+.author__name {
+    text-decoration: underline;
+}
+
 .info__title {
     font-size: 18px;
     font-weight: bold;
@@ -57,7 +61,10 @@
     text-decoration: none;
     color: black;
     margin: 5px 0;
-    
+}
+
+.info__title:hover {
+    text-decoration: underline;
 }
 
 .info__details {
