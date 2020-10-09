@@ -1,8 +1,11 @@
 import { handleErrors } from "./utils.js";
 
+const followBtn = document.getElementById("follow");
+
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("follow");
-  button.addEventListener("click", () => isFollowing(button));
+  if (followBtn) {
+    button.addEventListener("click", () => isFollowing(button));
+  }
 });
 
 const postFollow = async (val) => {
