@@ -8,19 +8,33 @@ const { User, Story, StoryClap, Response } = require('../db/models');
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const storyId = parseInt(req.params.id, 10);
-    const storyData = await Story.findOne({ 
+    const currentUser = req.user.id;
+    const storyData = await Story.findOne({
         where: { id: storyId },
         include: User,
     });
-    
+
     const storyClaps = await StoryClap.findAndCountAll({
         where: { storyId: storyId }
     });
-    
+
+    const isStoryClapped = await StoryClap.findOne({
+        where: {
+            storyId: storyId,
+            userId: currentUser,
+        }
+    })
+    let isClapped;
+    if (!isStoryClapped) {
+        isClapped = 'toBeClapped'
+    } else {
+        isClapped = 'unclap'
+    }
+
     const storyResponses = await Response.findAndCountAll({
         where: { storyId: storyId }
     });
-    
+
     const story = {
         id: storyData.id,
         title: storyData.title,
@@ -34,7 +48,8 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         avatarUrl: storyData.User.avatarUrl,
         bio: storyData.User.bio,
         clapsCount: storyClaps.count,
-        responsesCount: storyResponses.count
+        responsesCount: storyResponses.count,
+        isClapped,
     }
     res.render('story-page', { story });
 }));

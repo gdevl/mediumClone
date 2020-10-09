@@ -18,7 +18,7 @@ router.get('/', (req,res) => {
 })
 // clap creation route
 router.post('/', asyncHandler (async (req, res, next) => {
-    const storyId = req.params.id;
+    const { storyId } = req.body;
     const userClap = await StoryClap.findAll({
         where: {
             userId: req.user.id,
@@ -37,10 +37,29 @@ router.post('/', asyncHandler (async (req, res, next) => {
             }
         });
         const numClaps = totalClaps.length;
-        res.json({newStoryClap, numClaps: numClaps}); // include number of current likes
+
+        res.status(201).json({newStoryClap, numClaps: numClaps}); // include number of current likes
     } else {
         next(clapAlreadyExistsError(storyId))
     }
 }));
+
+router.delete('/', asyncHandler (async(req,res, next) => {
+    const { storyId }= req.body;
+    const userClap = await StoryClap.findOne({
+        where: {
+            userId: req.user.id,
+            storyId: storyId
+        }
+    })
+    let removeClap = await userClap.destroy();
+    const totalClaps = await StoryClap.findAll({
+        where: {
+            storyId: storyId,
+        }
+    });
+    const numClaps = totalClaps.length;
+    res.json(numClaps);
+}))
 
 module.exports = router;

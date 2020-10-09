@@ -2,27 +2,23 @@ import { handleErrors } from "./utils.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("clapButton");
-  button.addEventListener("click", () => isFollowing(button));
+  const clapImg = document.getElementById("claps__img");
+  clapImg.addEventListener("click", () => isClapping(clapImg));
 });
 
-const postFollow = async (val) => {
-  const followedId = val;
-  const followerId = localStorage.getItem("MEDIUM_CLONE_CURRENT_USER_ID");
-  const body = { followerId, followedId };
+const postClap = async (storyId) => {
+  const userId = localStorage.getItem("MEDIUM_CLONE_CURRENT_USER_ID");
+  const body = { userId, storyId };
   try {
-    const res = await fetch("/api/follow", {
+    const res = await fetch(`/api/stories/${storyId}/clap`, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem(
-          "MEDIUM_CLONE_ACCESS_TOKEN"
-        )}`,
       },
     });
 
-    console.log("res", await res.json());
+    // console.log("res", await res.json());
     if (res.status === 401) {
       return;
     }
@@ -32,29 +28,25 @@ const postFollow = async (val) => {
 };
 
 const isClapping = (element) => {
-  console.log("element.innerHTML", element.innerHTML);
-  if (element.value === 'clap') {
-    element.value = 'unclap';
-    postFollow(element.value);
+  console.log("loggggging: ", element.dataset.value);
+  if (element.dataset.value === 'toBeClapped') {
+    element.dataset.value = 'unclap';
+    postClap(element.dataset.storyId);
   } else {
-    element.innerHTML = "Follow";
-    destroyFollow(element.value);
+    element.dataset.value = "toBeClapped";
+    destroyClap(element.dataset.storyId);
   }
 };
 
-const destroyFollow = async (val) => {
-  const followedId = val;
-  const followerId = localStorage.getItem("MEDIUM_CLONE_CURRENT_USER_ID");
-  const body = { followerId, followedId };
+const destroyClap = async (storyId) => {
+  const userId = localStorage.getItem("MEDIUM_CLONE_CURRENT_USER_ID");
+  const body = { userId, storyId };
   try {
-    const res = await fetch("/api/follow", {
+    const res = await fetch(`/api/stories/${storyId}/clap`, {
       method: "DELETE",
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem(
-          "MEDIUM_CLONE_ACCESS_TOKEN"
-        )}`,
       },
     });
     if (res.status === 401) {
