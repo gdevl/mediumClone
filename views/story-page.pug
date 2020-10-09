@@ -1,57 +1,57 @@
 extends layout
 
 block content
-    .main__left-side-panel
-        .left-side-panel__follow-box
-            .follow-box__author
-            button.follow-box__follow-button
-        .left-side-panel__widgets-box
-            .widgets-box__claps
-                img#claps__img(src="/images/clapping1.png" alt="clap" data-value=story.isClapped data-story-id= story.id)
-                span.claps__claps-count
-            .widgets-box__responses
-                i.responses__icon(class="fa fa-comment-o fa-lg" aria-hidden="true")
-                span.responses__responses-count
-            .widgets-box__bookmark
-                i.bookmark__icon(class="fa fa-bookmark-o fa-lg" aria-hidden="true")
-    .main__story-container
-        .story-container__story
-            .story__title= story.title
-            .story__subtitle= story.subtitle
-            .story__information
-                img.information__author-img(src= story.avatarUrl, alt="author picture")
-                .information__container
-                    .container__author
-                        a.author__name-link(href=`/users/${story.authorId}`)= story.authorName
-                        button.author__follow-button Follow
-                    .container__story-data
-                        span.story-data__date= story.date
-                        span.story-data__read-time= story.readTime
-                .information__bookmark
-                    i.bookmark__icon(class="fa fa-bookmark-o fa-lg" aria-hidden="true")
-            .story__image-container
-                img.image-container__img(src= story.imageUrl)
-            .story__content-container
-                .content-container__content= story.content
-            .story__below-content
-                .below-content__content-icons
-                    .content-icons__claps
-                        img.claps__img(src="/images/clapping1.png", alt="clap")
-                        span.claps__claps-count #{story.clapsCount} Claps
-                    .content-icons__responses
-                        i.responses__icon(class="fa fa-comment-o fa-2x" aria-hidden="true")
-                        span.responses__responses-count #{story.responsesCount} Responses
-                    .content-icons__bookmark
-                        i.bookmark__icon(class="fa fa-bookmark-o fa-2x" aria-hidden="true")
-                .below-content__author-info
-                    .author-info__img-container
-                        img.img-container__author-img(src= story.avatarUrl, alt="Author Picture")
-                    .author-info__author-text
-                        .author-text__written-by WRITTEN BY
-                        .author-text__name= story.authorName
-                        .author-text__bio= story.bio
-                    .author-info__follow-container
-                        button.follow-container__follow-button Follow
-    .main__responses-container
-    script(type="module" src="/js/storyClap.js")
-    //- include includes/trending
+  .main__left-side-panel
+      .left-side-panel__follow-box
+          .follow-box__author
+          button.follow-box__follow-button
+      .left-side-panel__widgets-box
+          .widgets-box__claps
+              img#claps__img(src="/images/clapping1.png" alt="clap" data-value=story.isClapped data-story-id= story.id)
+              span.claps__claps-count
+          .widgets-box__responses
+              i.responses__icon(class="fa fa-comment-o fa-lg" aria-hidden="true")
+              span.responses__responses-count
+          .widgets-box__bookmark
+              i.bookmark__icon(class="fa fa-bookmark-o fa-lg" aria-hidden="true")
+  .main__story-container
+      .story-container__story
+          .story__title= story.title
+          .story__subtitle= story.subtitle
+          .story__information
+              img.information__author-img(src= story.avatarUrl, alt="author picture")
+              .information__container
+                  .container__author
+                      a.author__name-link(href=`/users/${story.authorId}`)= story.authorName
+                      button.author__follow-button Follow
+                  .container__story-data
+                      span.story-data__date= story.date
+                      span.story-data__read-time= story.readTime
+              .information__bookmark
+                  i.bookmark__icon(class="fa fa-bookmark-o fa-lg" aria-hidden="true")
+          .story__image-container
+              img.image-container__img(src= story.imageUrl)
+          .story__content-container
+              .content-container__content= story.content
+          .story__below-content
+              .below-content__content-icons
+                  .content-icons__claps
+                      img.claps__img(src="/images/clapping1.png", alt="clap")
+                      span.claps__claps-count #{story.clapsCount} Claps
+                  .content-icons__responses
+                      i.responses__icon(class="fa fa-comment-o fa-2x" aria-hidden="true")
+                      span.responses__responses-count #{story.responsesCount} Responses
+                  .content-icons__bookmark
+                      i.bookmark__icon(class="fa fa-bookmark-o fa-2x" aria-hidden="true")
+              .below-content__author-info
+                  .author-info__img-container
+                      img.img-container__author-img(src= story.avatarUrl, alt="Author Picture")
+                  .author-info__author-text
+                      .author-text__written-by WRITTEN BY
+                      .author-text__name= story.authorName
+                      .author-text__bio= story.bio
+                  .author-info__follow-container
+                      button.follow-container__follow-button Follow
+  .main__responses-container
+  script(type="module" src="/js/storyClap.js")
+  //- include includes/trending
