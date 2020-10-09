@@ -3,12 +3,19 @@ const express = require("express");
 const router = express.Router();
 
 const { asyncHandler, formatDate, determineReadTime } = require("../utils");
-const { User, Story, StoryClap, Response } = require('../db/models');
+const { 
+    User, 
+    Story, 
+    StoryClap, 
+    Response,
+    ResponseClap,
+    sequelize 
+} = require('../db/models');
 
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const storyId = parseInt(req.params.id, 10);
-    const currentUser = req.user.id;
+    const currentUser = req.user;
     const storyData = await Story.findOne({
         where: { id: storyId },
         include: User,
@@ -21,9 +28,10 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const isStoryClapped = await StoryClap.findOne({
         where: {
             storyId: storyId,
-            userId: currentUser,
+            userId: currentUser.id,
         }
     })
+    
     let isClapped;
     if (!isStoryClapped) {
         isClapped = 'toBeClapped'
@@ -32,7 +40,14 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     }
 
     const storyResponses = await Response.findAndCountAll({
-        where: { storyId: storyId }
+        where: { storyId: storyId },
+        include: [
+            User,
+            {
+                model: ResponseClap,
+                attributes: [],
+            },
+        ],
     });
 
     const story = {
@@ -44,14 +59,16 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         readTime: determineReadTime(storyData.content),
         date: formatDate(storyData.updatedAt),
         authorId: storyData.User.id,
+        authorUsername: storyData.User.username,
         authorName: `${storyData.User.firstName} ${storyData.User.lastName}`,
         avatarUrl: storyData.User.avatarUrl,
         bio: storyData.User.bio,
         clapsCount: storyClaps.count,
         responsesCount: storyResponses.count,
+        responses: storyResponses,      
         isClapped,
     }
-    res.render('story-page', { story });
+    res.render('story-page', { story, currentUser });
 }));
 
 
