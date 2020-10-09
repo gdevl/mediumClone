@@ -66,26 +66,4 @@ router.get(
   })
 );
 
-// router.get(
-//   "/",
-//   asyncHandler(async (req, res, next) => {
-//     const stories = await Story.findAll({
-//       limit: 10,
-//       attributes: [
-//         "id",
-//         "title",
-//         "subtitle",
-//         "userId",
-//         "content",
-//         formatDate(story.createdAt),
-//       ],
-//       order: [["userId", "DESC"]],
-//       include: {
-//         model: User,
-//       },
-//     });
-//     res.render("home", { stories, user: req.user });
-//   })
-// );
-
 module.exports = router;
