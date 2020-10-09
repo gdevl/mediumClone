@@ -80,13 +80,14 @@ document
 /*********************************************************/
 //* Logout Functionality
 
-document
-  .querySelector(".nav-bar__log-out-btn")
-  .addEventListener("click", () => {
+const logOutBtn = document.querySelector(".nav-bar__log-out-btn");
+
+if (logOutBtn) {
+  logOutBtn.addEventListener("click", () => {
     logUserOut();
   });
+}
 
-const logOutBtn = document.querySelector(".nav-bar__log-out-btn");
 const logUserOut = async () => {
   try {
     const res = await fetch("/api/users/log-out", {

@@ -1,17 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document
-    .querySelector(".nav-bar__sign-up-btn")
-    .addEventListener("click", showSignUpBox);
-  document
-    .querySelector(".nav-bar__log-in-btn")
-    .addEventListener("click", showLogInBox);
+  const signUpBtn = document.querySelector(".nav-bar__sign-up-btn");
+  if (signUpBtn) {
+    signUpBtn.addEventListener("click", showSignUpBox);
+  }
 
-  document
-    .querySelector(".close__sign-up")
-    .addEventListener("click", hideSignUpBox);
-  document
-    .querySelector(".close__log-in")
-    .addEventListener("click", hideLogInBox);
+  const logInBtn = document.querySelector(".nav-bar__log-in-btn");
+  if (logInBtn) {
+    logInBtn.addEventListener("click", showLogInBox);
+  }
+
+  const closeSignUpBtn = document.querySelector(".close__sign-up");
+  if (closeSignUpBtn) {
+    closeSignUpBtn.addEventListener("click", hideSignUpBox);
+  }
+
+  const closeLogInBtn = document.querySelector(".close__log-in");
+  if (closeLogInBtn) {
+    closeLogInBtn.addEventListener("click", hideLogInBox);
+  }
 });
 
 const showSignUpBox = () => {
