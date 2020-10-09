@@ -9,6 +9,8 @@ router.post(
   "/",
   asyncHandler(async (req, res, next) => {
     const { followerId, followedId } = req.body;
+    // console.log(`FollowedId: ${followedId}`);
+    console.log("req.body: ", req.body);
     const newFollow = await Follow.create({ followerId, followedId });
 
     res.status(201).json({ newFollow });

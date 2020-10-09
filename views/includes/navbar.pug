@@ -5,7 +5,10 @@
     .nav-bar__inner-links-container
       if user
         i(class="fa fa-sign-out nav-bar__log-out-btn" data-tooltip="Log Out")
+        i(class="fa fa-user-plus nav-bar__sign-up-btn hidden" data-tooltip="Sign Up")
+        i(class="fa fa-sign-in nav-bar__log-in-btn hidden" data-tooltip="Log In")
       else
+        i(class="fa fa-sign-out nav-bar__log-out-btn hidden" data-tooltip="Log Out")
         i(class="fa fa-user-plus nav-bar__sign-up-btn" data-tooltip="Sign Up")
         i(class="fa fa-sign-in nav-bar__log-in-btn" data-tooltip="Log In")
       div(class="nav-bar__user-avatar")

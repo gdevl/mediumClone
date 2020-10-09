@@ -8,10 +8,12 @@ block content
           .userProfile
             .userProfile__header
               h2.userName= storiesData[0].authorName
-              if user
-                .user-followButton-container
-                  .user-followButton
-                    button#follow(value=`${storiesData[0].userId}`) Follow
+              .user-followButton-container
+                .user-followButton
+                  if user
+                    button#follow(value=`${storiesData[0].authorId}`) Follow
+                  else
+                    button#follow(class="hidden" value=`${storiesData[0].authorId}`) Follow
             .userDetails
               p.userBio= storiesData[0].bio
               img(src=`${storiesData[0].avatarUrl}`).userAvatar
