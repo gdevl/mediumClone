@@ -8,7 +8,6 @@ const { User, Story, StoryClap, Response } = require('../db/models');
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const storyId = parseInt(req.params.id, 10);
-    const currentUser = req.user.id;
     const storyData = await Story.findOne({
         where: { id: storyId },
         include: User,
@@ -18,17 +17,22 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         where: { storyId: storyId }
     });
 
-    const isStoryClapped = await StoryClap.findOne({
-        where: {
-            storyId: storyId,
-            userId: currentUser,
-        }
-    })
     let isClapped;
-    if (!isStoryClapped) {
-        isClapped = 'toBeClapped'
+    if (req.user) {
+        const currentUser = req.user.id;
+        const isStoryClapped = await StoryClap.findOne({
+            where: {
+                storyId: storyId,
+                userId: currentUser,
+            }
+        })
+        if (!isStoryClapped) {
+            isClapped = 'toBeClapped'
+        } else {
+            isClapped = 'unclap'
+        }
     } else {
-        isClapped = 'unclap'
+        isClapped = "NoUser";
     }
 
     const storyResponses = await Response.findAndCountAll({
