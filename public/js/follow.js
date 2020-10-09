@@ -15,12 +15,8 @@ const postFollow = async (val) => {
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem(
-          "MEDIUM_CLONE_ACCESS_TOKEN"
-        )}`,
       },
     });
-
     console.log("res", await res.json());
     if (res.status === 401) {
       return;
@@ -51,9 +47,6 @@ const destroyFollow = async (val) => {
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem(
-          "MEDIUM_CLONE_ACCESS_TOKEN"
-        )}`,
       },
     });
     if (res.status === 401) {
