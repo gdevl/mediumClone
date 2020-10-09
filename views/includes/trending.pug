@@ -1,10 +1,10 @@
 .trending-bar
     .trending-bar__content
-        each trendingStory, index in trendingStoriesData   
+        each trendingStory, index in trendingStoriesData
             .content__story
                 span.story__rank 0#{index + 1}
                 .story__info
-                    .info__author 
+                    .info__author
                         img.author__img(src= trendingStory.authorAvatar, alt="Author Image")
                         a.author__name(href=`/users/${trendingStory.authorId}`)= trendingStory.authorName
                     a.info__title(href=`story/${trendingStory.id}`) #{trendingStory.title}

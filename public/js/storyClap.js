@@ -18,7 +18,6 @@ const postClap = async (storyId) => {
       },
     });
 
-    // console.log("res", await res.json());
     if (res.status === 401) {
       return;
     }
@@ -32,9 +31,11 @@ const isClapping = (element) => {
   if (element.dataset.value === 'toBeClapped') {
     element.dataset.value = 'unclap';
     postClap(element.dataset.storyId);
-  } else {
+  } else if (element.dataset.value === 'unclap'){
     element.dataset.value = "toBeClapped";
     destroyClap(element.dataset.storyId);
+  } else {
+    alert('Currently not signed in.')
   }
 };
 
