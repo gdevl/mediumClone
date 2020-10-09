@@ -46,17 +46,20 @@ body {
 }
 
 .nav-bar__sign-up-btn,
-.nav-bar__log-in-btn {
+.nav-bar__log-in-btn,
+.nav-bar__log-out-btn {
   font-size: 1.25em;
 }
 
 .nav-bar__sign-up-btn:hover,
-.nav-bar__log-in-btn:hover {
+.nav-bar__log-in-btn:hover,
+.nav-bar__log-out-btn:hover {
   color: lightgray;
 }
 
 .nav-bar__sign-up-btn:hover::after,
-.nav-bar__log-in-btn:hover::after {
+.nav-bar__log-in-btn:hover::after,
+.nav-bar__log-out-btn:hover::after {
   font-family: "Fira Sans", sans-serif;
   font-size: 60%;
   position: absolute;
