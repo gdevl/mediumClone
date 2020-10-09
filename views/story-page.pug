@@ -7,8 +7,8 @@ block content
             button.follow-box__follow-button Follow
         .left-side-panel__widgets-box
             .widgets-box__claps
-                img#claps__img(src="/images/clapping1.png" alt="clap" data-value=story.isClapped data-story-id= story.id)
-                span.claps__claps-count
+                img.claps__img#claps__img(src="/images/clapping1.png" alt="clap" data-value=story.isClapped data-story-id= story.id)
+                span.claps__claps-count #{story.clapsCount} Claps
             .widgets-box__responses
                 i.responses__icon(class="fa fa-comment-o fa-lg" aria-hidden="true")
                 span.responses__responses-count #{story.responsesCount} Responses
