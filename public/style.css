@@ -14,7 +14,7 @@ body {
 .nav-bar {
   align-items: center;
   box-sizing: border-box;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px 0px;
+  /* box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px 0px; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -181,12 +181,12 @@ body {
 .home-feed-container {
   display: block;
   grid-row-start: 1;
-  grid-column: 1 / span 8;
+  grid-column: 1 / span 7;
 }
 .home-reading-list-container {
   display: block;
   grid-row-start: 1;
-  grid-column: 10 / span 4;
+  grid-column: 9 / span 5;
   background-color: rgb(250, 250, 250);
 }
 .user-grid-container {
