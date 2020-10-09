@@ -272,6 +272,14 @@
   justify-content: center;
 }
 
+.clap_btn:hover {
+  color: grey;
+}
+
+.clap_pressed {
+  fill: black;
+}
+
 @media screen and (max-width: 800px) {
   .home-reading-list-container {
     display: none;

@@ -13,6 +13,9 @@ function clapAlreadyExistsError(id) {
     return error;
 }
 
+router.get('/', (req,res) => {
+    res.render('includes/clapButton');
+})
 // clap creation route
 router.post('/', asyncHandler (async (req, res, next) => {
     const storyId = req.params.id;
