@@ -63,14 +63,7 @@
     border: rgba(3, 168, 124, 1) solid 1px;
     border-radius: 3px;
     margin-left:  15px;
-    transition: color 250ms ease-in-out;
 }
-
-/* .author__follow-button:hover,
-.follow-container__follow-button:hover {
-    background-color: rgba(3, 168, 124, 1);
-    color: white;
-} */
 
 .container__story-data {
     color: rgba(117, 117, 117, 1);
@@ -190,10 +183,35 @@
     top: 100px;
     width: 100%;
     font-family: 'Fira Sans', sans-serif;
+    opacity: 0;
+    
 }
 
+.main__left-side-panel div {
+    margin: 15px 0;
+}
 
+.main__left-side-panel i {
+    width: 25px;
+}
 
+.follow-box__follow-button {
+    background-color: white;
+    color: rgba(3, 168, 124, 1);
+    border: rgba(3, 168, 124, 1) solid 1px;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+}
 
+.left-side-panel__widgets-box div {
+    display: flex;
+    align-items: center;
+}
+
+.claps__img {
+    height: 25px;
+    width: 25px;
+}
 
 /******************* Responses *******************/

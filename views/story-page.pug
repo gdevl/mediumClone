@@ -3,15 +3,15 @@ extends layout
 block content
     .main__left-side-panel
         .left-side-panel__follow-box
-            .follow-box__author
-            button.follow-box__follow-button
+            .follow-box__author= story.authorName
+            button.follow-box__follow-button Follow
         .left-side-panel__widgets-box
             .widgets-box__claps
                 img.claps__img(src="/images/clapping1.png", alt="clap")
-                span.claps__claps-count
+                span.claps__claps-count.story-claps #{story.clapsCount} Claps
             .widgets-box__responses
                 i.responses__icon(class="fa fa-comment-o fa-lg" aria-hidden="true")
-                span.responses__responses-count
+                span.responses__responses-count #{story.responsesCount} Responses
             .widgets-box__bookmark
                 i.bookmark__icon(class="fa fa-bookmark-o fa-lg" aria-hidden="true") 
     .main__story-container
@@ -37,7 +37,7 @@ block content
                 .below-content__content-icons
                     .content-icons__claps
                         img.claps__img(src="/images/clapping1.png", alt="clap")
-                        span.claps__claps-count #{story.clapsCount} Claps
+                        span.claps__claps-count.story-claps #{story.clapsCount} Claps
                     .content-icons__responses
                         i.responses__icon(class="fa fa-comment-o fa-2x" aria-hidden="true")
                         span.responses__responses-count #{story.responsesCount} Responses
@@ -53,5 +53,5 @@ block content
                     .author-info__follow-container
                         button.follow-container__follow-button Follow
     .main__responses-container
-        
     //- include includes/trending
+    script(type="module" src="/js/story.js")
