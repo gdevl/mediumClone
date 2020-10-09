@@ -1,17 +1,17 @@
 .feed-container
-  if stories
-    for story in stories
+  if storiesData
+    for story in storiesData
       .feed-item-container
         .feed-item
           .feed-item_author-container
             .feed-item_author
               p
-                a.author(href=`/users/${story.userId}`) #{story.User.firstName} #{story.User.lastName}
+                a.author(href=`/users/${story.authorId}`) #{story.authorName}
           .feed-item_text
             h3.title 
               a(href=`story/${story.id}`) #{story.title}
             p.subtitle #{story.subtitle}
-            p.subtitle #{story.createdAt}
-        .feed-item_img(style={'background-image':`url(${story.imageUrl})`})
+            p.subtitle #{story.date}
+        .feed-item_img(style={'background-image':`url(${story.image})`})
   else
     p There are no stories
