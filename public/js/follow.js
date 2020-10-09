@@ -17,7 +17,6 @@ const postFollow = async (val) => {
         "Content-Type": "application/json",
       },
     });
-    console.log("res", await res.json());
     if (res.status === 401) {
       return;
     }
@@ -27,7 +26,6 @@ const postFollow = async (val) => {
 };
 
 const isFollowing = (element) => {
-  console.log("element.innerHTML", element.innerHTML);
   if (element.innerHTML === "Follow") {
     element.innerHTML = "Following";
     postFollow(element.value);
