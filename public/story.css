@@ -1,9 +1,9 @@
+/******************* Main Story Section *******************/
+
 .main__story-container {
     max-width: 680px;
     margin: auto;
 }
-
-
 
 .story-container__story {
     display: flex;
@@ -85,10 +85,20 @@
     margin-left: auto;
 }
 
+.story__image-container {
+    display: flex;
+    margin: 20px 0;
+}
+
+.image-container__img {
+    width: 100%;
+}
+
 .story__content-container {
     font-family: 'Playfair Display', serif;
     font-size: 21px;
     line-height: 2;
+    margin-top: 20px;
 }
 
 .story__below-content {
@@ -172,3 +182,18 @@
     border-radius: 5px;
     padding: 5px
 }
+
+/******************* Left Bar *******************/
+
+.main__left-side-panel {
+    position: fixed;
+    top: 100px;
+    width: 100%;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+
+
+
+
+/******************* Responses *******************/

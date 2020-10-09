@@ -29,16 +29,18 @@ block content
                         span.story-data__read-time= story.readTime
                 .information__bookmark
                     i.bookmark__icon(class="fa fa-bookmark-o fa-lg" aria-hidden="true")
+            .story__image-container
+                img.image-container__img(src= story.imageUrl)
             .story__content-container
                 .content-container__content= story.content
             .story__below-content
                 .below-content__content-icons
                     .content-icons__claps
                         img.claps__img(src="/images/clapping1.png", alt="clap")
-                        span.claps__claps-count Get Clap Count
+                        span.claps__claps-count #{story.clapsCount} Claps
                     .content-icons__responses
                         i.responses__icon(class="fa fa-comment-o fa-2x" aria-hidden="true")
-                        span.responses__responses-count Get Responses Count
+                        span.responses__responses-count #{story.responsesCount} Responses
                     .content-icons__bookmark
                         i.bookmark__icon(class="fa fa-bookmark-o fa-2x" aria-hidden="true")
                 .below-content__author-info
