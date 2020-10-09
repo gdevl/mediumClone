@@ -25,6 +25,7 @@ router.delete(
         followedId,
       },
     });
+    res.status(201).json("Follow deleted");
   })
 );
 

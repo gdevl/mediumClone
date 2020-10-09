@@ -13,14 +13,14 @@ router.get(
     const id = req.params.id;
     // const story = await Story.findByPK(id);
     const responsesJson = await Response.findAll({
-        where: { storyId: id },
-        order: [['createdAt', 'DESC']],
-        include: [{ model: User, as: 'user' }],
+      where: { storyId: id },
+      order: [["createdAt", "DESC"]],
+      include: [{ model: User, as: "user" }],
     });
 
     const responseObjs = res.json(responsesJson);
-    res.render('responses', { responseObjs });
+    res.render("responses", { responseObjs, user: req.user });
   })
-)
+);
 
 module.exports = router;

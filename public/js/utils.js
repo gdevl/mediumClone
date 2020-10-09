@@ -25,3 +25,4 @@ export const handleErrors = async (err, overlay) => {
         alert('Something went wrong. Please check your internet connection and try again.');
     };
 }
+

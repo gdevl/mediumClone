@@ -13,17 +13,18 @@ const {
 const router = express.Router();
 
 router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const { userId, title, subtitle, content, imageUrl} = req.body;
+    const { userId, title, subtitle, content, imageUrl} = req.body;
 
-  const story = await Story.create({
-    userId,
-    title,
-    subtitle,
-    content,
-    imageUrl,
-  });
-  res.status(201).json({story})
+    const story = await Story.create({
+        userId,
+        title,
+        subtitle,
+        content,
+        imageUrl,
+    });
+    res.status(201).json({story})
 }))
+
 
 
 

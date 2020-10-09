@@ -7,13 +7,14 @@ block content
         .user-grid
           .userProfile
             .userProfile__header
-              h2.userName= stories[0].User.username
-              .user-followButton-container
-                .user-followButton
-                  button#follow(value=`${stories[0].User.id}`) Follow
+              h2.userName= storiesData[0].authorName
+              if user
+                .user-followButton-container
+                  .user-followButton
+                    button#follow(value=`${storiesData[0].userId}`) Follow
             .userDetails
-              p.userBio= stories[0].User.bio
-              img(src=`${stories[0].User.avatarUrl}`).userAvatar
+              p.userBio= storiesData[0].bio
+              img(src=`${storiesData[0].avatarUrl}`).userAvatar
           .user-feed-container
               include includes/feed
   script(type="module" src="/js/follow.js")
