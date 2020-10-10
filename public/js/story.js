@@ -1,10 +1,12 @@
-const responseTextArea = document.querySelector('.form-content__text-area--sm');
+//***************************** Global Variables ***********************************/
+
+const responseTextArea = document.getElementById('responses-textarea');
 const responseHeader = document.getElementById('new-response__header');
 const responseFormBtn = document.getElementById('new-response-form__buttons');
 const responseBackground = document.getElementById('responses-background');
-const responsePanel = document.getElementById('responses-container')
+const responsePanel = document.getElementById('responses-container');
 
-//*************************************************************/
+//***************************** Functions ******************************************/
 
 const showCompactResponseForm = () => {
     console.log('Compact Click')
@@ -33,7 +35,13 @@ const hideResponsePanel = () => {
     responsePanel.classList.remove('slide-left');
 }
 
-//*************************************************************/
+const toggleRespondSubmitBtn = () => {
+    if (responseTextArea.value === '') {
+        document.querySelector('.')
+    }
+}
+
+//***************************** DOM Manipulation ***********************************/
 
 document.addEventListener('scroll', () => {
     const leftSidePanel = document.querySelector('.main__left-side-panel');
@@ -73,17 +81,47 @@ document
     .getElementById('responses-background')
     .addEventListener('click', (event) => {
         event.stopPropagation();
-        
         const targetId = event.target.id
-        console.log("targetId", targetId)
         
         if (targetId === 'responses-background' ||
             targetId === 'responses-close-btn' ||
             targetId === 'responses-close-icon'
-            ) {
-                
-                console.log('CLOSE CLICK')
-                hideResponsePanel()
-            }
+            ) hideResponsePanel()
 })
+
+
+responseTextArea.addEventListener('input', () => {
+    const responseFormSubmitBtn = document.querySelector('.buttons__respond');
+    responseTextArea.value === ''  ?  responseFormSubmitBtn.disabled = true  :  responseFormSubmitBtn.disabled = false;
+})
+
+
+document
+    .querySelector('.form-container__new-response-form')
+    .addEventListener('submit', async () => {
+        const url = window.location.pathname;
+        const storyId = url.match(/\d+$/)[0];
+        try {
+            await fetch(`../../api/stories/${storyId}/responses`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(responseTextArea.value)
+            });
+            
+            const res = await fetch(`/stories/${storyId}/responses`);
+            
+            if (!res.ok) {
+                console.log('YES!!!!')
+            }
+            else {
+                throw new Error(res)
+            }
+        }
+        catch (err) {
+            console.error(err)
+        }
+})
+
+
+//***************************** Fetch Calls ****************************************/
 

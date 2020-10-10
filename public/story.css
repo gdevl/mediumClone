@@ -354,7 +354,10 @@
 #new-response-form__buttons {
     display: flex;
     justify-content: flex-end;
-    
+}
+
+.buttons__respond:disabled {
+    opacity: 0.3;
 }
 
 .buttons__cancel {
@@ -362,6 +365,7 @@
     border: 0;
     font-size: 14px;
     font-weight: 400;
+    margin-right: 15px;
 }
 
 .buttons__respond {
@@ -373,4 +377,17 @@
     font-weight: 400;
     border-radius: 4px;
     border-width: 0px;
+}
+
+.responses-container__responses-display {
+    margin-top: 50px;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.responses-display__no-responses {
+    margin: 0 auto;
+    color: rgba(0, 0, 0, 0.5);
+    
 }

@@ -11,10 +11,10 @@
     .new-response__form-container
         form.form-container__new-response-form
             .new-response-form__content
-                textarea.form-content__text-area--sm(name="content", placeholder="What are your thoughts?")
+                textarea#responses-textarea.form-content__text-area--sm(name="content", placeholder="What are your thoughts?")
             #new-response-form__buttons.hidden
                 button.buttons__cancel Cancel
-                button.buttons__respond(type="submit") Respond
+                button.buttons__respond(type="submit" disabled) Respond
 .responses-container__responses-display#response-container
     if story.responsesCount > 0
         for response in story.responses
@@ -28,4 +28,6 @@
             .responses-display__icons
                 img.icons__claps(src="/images/clapping1.png", alt="clap")
                 .icons__claps-count=response.numClaps
+    else
+        .responses-display__no-responses Be the first response!
 

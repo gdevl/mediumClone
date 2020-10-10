@@ -22,6 +22,7 @@ router.post('/create', responseValidator, handleValidationErrors, asyncHandler(a
         storyId,
         content,
     });
+    
     res.status(201).json({newResponse})
 }))
 
