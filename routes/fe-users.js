@@ -36,9 +36,16 @@ router.get(
       const follows = await Follow.findAll({
         where: { followerId: req.user.id, followedId: req.params.id },
       });
+      let followBtnText;
+      if(follows.length > 0){
+        followBtnText = 'Following'
+      }else{
+        followBtnText = 'Follow'
+      }
       res.render("user", {
         storiesData: storiesData(stories),
         follows,
+        followBtnText,
         user: req.user,
       });
     } else {
