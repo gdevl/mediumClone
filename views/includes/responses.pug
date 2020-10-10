@@ -1,16 +1,20 @@
-h2 Responses
+.responses-container__header
+    h3 Responses
+    .header__close-button
+        i(class="fa fa-times" aria-hidden="true")
 .responses-container__new-response
-    .new-response__header--hidden
+    #new-response__header.hidden
         .header__user-img
-            img(src= currentUser.username)
+            img.user-img__img(src= currentUser.username)
         .header__user-name
             span.user-name__fullName #{currentUser.firstName} #{currentUser.lastName}
-    form.new-response__new-response-form
-        .new-response-form__content
-            input(type="textarea", name="content", placeholder="What are your thoughts?")
-        .new-response-form__buttons--hidden
-            button.buttons__cancel Cancel
-            button(type="submit") Respond
+    .new-response__form-container
+        form.form-container__new-response-form
+            .new-response-form__content
+                textarea.form-content__text-area--sm(name="content", placeholder="What are your thoughts?")
+            #new-response-form__buttons.hidden
+                button.buttons__cancel Cancel
+                button.buttons__respond(type="submit") Respond
 .responses-container__responses-display#response-container
     if story.responsesCount > 0
         for response in story.responses
