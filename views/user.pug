@@ -11,7 +11,7 @@ block content
               if user
                 .user-followButton-container
                   .user-followButton
-                    button#follow(value=`${storiesData[0].authorId}`) Follow
+                    button.follow(value=`${storiesData[0].authorId}`) #{followBtnText}
             .userDetails
               p.userBio= storiesData[0].bio
               img(src=`${storiesData[0].avatarUrl}`).userAvatar

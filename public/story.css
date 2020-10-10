@@ -70,6 +70,13 @@
     outline: none;
 }
 
+.author__follow-button:hover,
+.follow-container__follow-button:hover {
+  color: #008000;
+  border-color: #008000;
+  fill: #008000;
+}
+
 .container__story-data {
   color: rgba(117, 117, 117, 1);
   font-size: 14px;
@@ -178,7 +185,7 @@
 }
 
 .follow-container__follow-button {
-  width: 68px;
+  min-width: 68px;
   height: 32px;
   border-radius: 5px;
   padding: 5px;

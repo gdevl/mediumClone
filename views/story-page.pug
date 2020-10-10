@@ -26,7 +26,7 @@ block content
                 .information__container
                     .container__author
                         a.author__name-link(href=`/users/${story.authorId}`)= story.authorName
-                        button.author__follow-button Follow
+                        button.author__follow-button.follow(value=`${story.authorId}`) #{followBtnText}
                     .container__story-data
                         span.story-data__date= story.date
                         span.story-data__read-time= story.readTime
@@ -57,10 +57,11 @@ block content
                         .author-text__name= story.authorName
                         .author-text__bio= story.bio
                     .author-info__follow-container
-                        button.follow-container__follow-button Follow
+                        button.follow-container__follow-button.follow(value=`${story.authorId}`) #{followBtnText}
     #responses-background.main__responses-background.hidden
         #responses-container
             include includes/responses
     script(type="module" src="/js/storyClap.js")
+    script(type="module" src="/js/follow.js")
     //- include includes/trending
     script(type="module" src="/js/story.js")
