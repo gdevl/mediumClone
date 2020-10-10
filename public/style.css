@@ -201,7 +201,6 @@
 }
 .home-grid {
   display: grid;
-  /* grid-template-columns: repeat(13, 1fr); */
   grid-template-columns: repeat(8, 1fr) repeat(4, minmax(48px, 1fr));
   grid-template-rows: 1fr;
   font-weight: 400;
@@ -340,5 +339,9 @@
   .new-story-form-container {
     width: 80%;
     /* padding: 0 32px; */
+  }
+  .story-container__story {
+    margin: 0 auto;
+    width: 75%;
   }
 }
