@@ -5,7 +5,7 @@
 .responses-container__new-response
     #new-response__header.hidden
         .header__user-img
-            img.user-img__img(src= currentUser.username)
+            img.user-img__img(src= currentUser.avatarUrl)
         .header__user-name
             span.user-name__fullName #{currentUser.firstName} #{currentUser.lastName}
     .new-response__form-container

@@ -1,3 +1,5 @@
+
+
 //***************************** Global Variables ***********************************/
 
 const responseTextArea = document.getElementById('responses-textarea');
@@ -9,6 +11,7 @@ const responsePanel = document.getElementById('responses-container');
 //***************************** Functions ******************************************/
 
 const showCompactResponseForm = () => {
+    console.log('Compact Click')
     responseTextArea.classList.add('form-content__text-area--sm'); 
     responseTextArea.classList.remove('form-content__text-area--lg'); 
     responseHeader.classList.add('hidden');
@@ -119,36 +122,37 @@ document
                 div.classList.add('responses-display__container');
                 
                 const response = await res.json();
-                console.log('RESPONSE: ', response)
                 
-                const userRes = await fetch(`/users/${userId}`);
-                const user = await userRes.json();
-                console.log("user", user)
                 
-                response.User = user;
+                console.log('RESPONSE: ', response.newResponse)
+                console.log('DATE: ', response.date)
                 
                 
                 
-                console.log(response.date)
+                
+                // if (!response.User.avatarUrl) {
+                //     response.User.avatarUrl = `""`;
+                // }
+                
                 
                 div.innerHTML = 
                 
                     `<div class="container__response-info">
                         <div class="response-info__author">
-                            <img class="author__image" src=${response.User.avatarUrl}/>
+                            <img class="author__image" src=${response.user.avatarUrl}/>
                         </div>
                         <div class="response-info__container">
                             <div class="container__author-name">
-                                ${response.User.firstName} ${response.User.lastName}
+                                ${response.user.firstName} ${response.user.lastName}
                             </div>
                             <div class="container__date"> ${response.date}
                         </div>
                     <div class="container__content">
-                        ${response.content}
+                        ${response.newResponse.content}
                     </div>
                     <div class="container__icons">
                         <img class="icon__claps" src="/images/clapping1.png"/>
-                        <div class="icons__clap-count>${response.numClaps}</div>
+                        <div class="icons__clap-count>${response.newResponse.numClaps}</div>
                     </div>
                     </div>`;
                 
