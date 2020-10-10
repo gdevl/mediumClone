@@ -2,24 +2,19 @@ extends layout.pug
 
 
 block content
-    .nav-bar
-        button.nav-bar__sign-up-btn Sign Up
-        button.nav-bar__log-in-btn Log In
-    .errors-container
-    .new-story-form-container
-        form(class="new-story-form")
-            .form-group
-                label(for="title") Title
-                input(type="text", name="title", placeholder="Title")
-            .form-group
-                label(for="subtitle") Subheader
-                input(type="text", name="subtitle", placeholder="Subheader")
-            .form-group
-                label(for="content")
-                input(type="textarea", name="content", placeholder="Tell your story...")
-            .form-group
-                label(for="imageUrl") Add an image
-                input(type="url", name="imageUrl", placeholder="https://example.com/image.jpg")
-            button(type="submit") Publish
+  .errors-container
+  .new-story-form-container
+      form(class="new-story-form pure-form pure-form-stacked")
+        fieldset
+          .form-group
+              input(class="pure-input-1" type="text", name="title", placeholder="Title")
+          .form-group
+              input(class="pure-input-1" type="text", name="subtitle", placeholder="Subtitle")
+          .form-group
+              textarea(rows="25" class="pure-input-1 new-story-textarea" name="content", placeholder="Tell your story...")
+          .form-group
+              label(for="imageUrl") Add an image
+              input(class="pure-input-1" type="url", name="imageUrl", placeholder="https://example.com/image.jpg")
+          button(type="submit" class="make-it-black pure-button pure-button-primary") Publish
 
-    script(type="module" src="/js/new-story.js")
+  script(type="module" src="/js/new-story.js")
