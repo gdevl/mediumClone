@@ -65,6 +65,11 @@
   transition: color 250ms ease-in-out;
 }
 
+.author__follow-button:focus,
+.follow-container__follow-button:focus {
+    outline: none;
+}
+
 .container__story-data {
   color: rgba(117, 117, 117, 1);
   font-size: 14px;
@@ -208,6 +213,10 @@
     margin-bottom: 15px;
 }
 
+.follow-box__follow-button:focus {
+    outline: none;
+}
+
 .left-side-panel__widgets-box div {
     display: flex;
     align-items: center;
@@ -226,7 +235,7 @@
     opacity: 0;
 }
 
-#main__response-background {
+#responses-background {
     max-width: none;
     position: fixed;
     top: 0;
@@ -242,7 +251,7 @@
     right: 425px
 }
 
-#response-background__responses-container {
+#responses-container {
     width: 425px;
     z-index: 2;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;

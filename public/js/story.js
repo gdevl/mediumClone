@@ -1,8 +1,8 @@
 const responseTextArea = document.querySelector('.form-content__text-area--sm');
 const responseHeader = document.getElementById('new-response__header');
 const responseFormBtn = document.getElementById('new-response-form__buttons');
-const responseBackground = document.getElementById('main__response-background');
-const responsePanel = document.getElementById('response-background__responses-container')
+const responseBackground = document.getElementById('responses-background');
+const responsePanel = document.getElementById('responses-container')
 
 //*************************************************************/
 
@@ -63,16 +63,27 @@ document
 
 document
     .querySelector('.buttons__cancel')
-    .addEventListener('click', () => {
-        
+    .addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         showCompactResponseForm();
 })
 
-// document
-//     .getElementById('main__response-background')
-//     .addEventListener('click', () => {
+document
+    .getElementById('responses-background')
+    .addEventListener('click', (event) => {
+        event.stopPropagation();
         
-//         showCompactResponseForm();
-//         hideResponsePanel()
-// })
+        const targetId = event.target.id
+        console.log("targetId", targetId)
+        
+        if (targetId === 'responses-background' ||
+            targetId === 'responses-close-btn' ||
+            targetId === 'responses-close-icon'
+            ) {
+                
+                console.log('CLOSE CLICK')
+                hideResponsePanel()
+            }
+})
 
