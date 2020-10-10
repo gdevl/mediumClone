@@ -15,19 +15,20 @@
             #new-response-form__buttons.hidden
                 button.buttons__cancel Cancel
                 button.buttons__respond(type="submit" disabled) Respond
-.responses-container__responses-display#response-container
+.responses-container__responses-display#story-responses
     if story.responsesCount > 0
         for response in story.responses
-            .responses-display__response-info
-                .response-info__author
-                    img.author__image(src=response.user.avatarUrl, alt="")
-                .response-info__container
-                    .container__author-name #{response.user.firstName} #{response.user.lastName}
-                    .container__date=response.updatedAt
-            .responses-display__content=response.content
-            .responses-display__icons
-                img.icons__claps(src="/images/clapping1.png", alt="clap")
-                .icons__claps-count=response.numClaps
+            .responses-display__container
+                .container__response-info
+                    .response-info__author
+                        img.author__image(src=response.User.avatarUrl, alt="")
+                    .response-info__container
+                        .container__author-name #{response.User.firstName} #{response.User.lastName}
+                        .container__date=response.date
+                .container__content=response.content
+                .container__icons
+                    img.icons__claps(src="/images/clapping1.png", alt="clap")
+                    .icons__claps-count=response.numClaps
     else
         .responses-display__no-responses Be the first response!
 

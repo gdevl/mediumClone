@@ -55,6 +55,12 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
             },
         ],
     });
+    
+    storyResponses.rows.map(response => {
+        response.dataValues.date = formatDate(response.dataValues.updatedAt)
+        console.log("storyResponses", response.User)
+    })
+    
 
     const story = {
         id: storyData.id,
@@ -71,7 +77,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         bio: storyData.User.bio,
         clapsCount: storyClaps.count,
         responsesCount: storyResponses.count,
-        responses: storyResponses,      
+        responses: storyResponses.rows,      
         isClapped,
         imageClapped,
     }

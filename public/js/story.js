@@ -9,7 +9,6 @@ const responsePanel = document.getElementById('responses-container');
 //***************************** Functions ******************************************/
 
 const showCompactResponseForm = () => {
-    console.log('Compact Click')
     responseTextArea.classList.add('form-content__text-area--sm'); 
     responseTextArea.classList.remove('form-content__text-area--lg'); 
     responseHeader.classList.add('hidden');
@@ -96,23 +95,65 @@ responseTextArea.addEventListener('input', () => {
 
 document
     .querySelector('.form-container__new-response-form')
-    .addEventListener('submit', async () => {
+    .addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
         const url = window.location.pathname;
+        const userId = localStorage.getItem('MEDIUM_CLONE_CURRENT_USER_ID');
         const storyId = url.match(/\d+$/)[0];
+        const responseContent = { content: responseTextArea.value, userId: userId, storyId: storyId };
+        
+        
         try {
-            await fetch(`../../api/stories/${storyId}/responses`, {
+            const res = await fetch(`/api/stories/${storyId}/responses/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(responseTextArea.value)
+                body: JSON.stringify(responseContent)
             });
-            
-            const res = await fetch(`/stories/${storyId}/responses`);
-            
+
             if (!res.ok) {
-                console.log('YES!!!!')
+                throw new Error(res)
             }
             else {
-                throw new Error(res)
+                const div = document.createElement('div');
+                div.classList.add('responses-display__container');
+                
+                const response = await res.json();
+                console.log('RESPONSE: ', response)
+                
+                const userRes = await fetch(`/users/${userId}`);
+                const user = await userRes.json();
+                console.log("user", user)
+                
+                response.User = user;
+                
+                
+                
+                console.log(response.date)
+                
+                div.innerHTML = 
+                
+                    `<div class="container__response-info">
+                        <div class="response-info__author">
+                            <img class="author__image" src=${response.User.avatarUrl}/>
+                        </div>
+                        <div class="response-info__container">
+                            <div class="container__author-name">
+                                ${response.User.firstName} ${response.User.lastName}
+                            </div>
+                            <div class="container__date"> ${response.date}
+                        </div>
+                    <div class="container__content">
+                        ${response.content}
+                    </div>
+                    <div class="container__icons">
+                        <img class="icon__claps" src="/images/clapping1.png"/>
+                        <div class="icons__clap-count>${response.numClaps}</div>
+                    </div>
+                    </div>`;
+                
+                
+                document.getElementById('story-responses').prepend(div)
             }
         }
         catch (err) {
@@ -121,5 +162,4 @@ document
 })
 
 
-//***************************** Fetch Calls ****************************************/
 
