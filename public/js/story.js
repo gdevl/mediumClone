@@ -17,7 +17,6 @@ const showCompactResponseForm = () => {
 }
  
 const showFullResponseForm = () => {
-    console.log('Full Click')
     responseTextArea.classList.remove('form-content__text-area--sm'); 
     responseTextArea.classList.add('form-content__text-area--lg');        
     responseHeader.classList.remove('hidden');
@@ -63,7 +62,6 @@ document
 document
     .querySelector('.form-container__new-response-form')
     .addEventListener('click', () => {
-        console.log(responseTextArea.classList.value)
         if (responseTextArea.classList.value === 'form-content__text-area--sm') {
             showFullResponseForm();
         }
