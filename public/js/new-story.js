@@ -21,9 +21,9 @@ createStoryForm.addEventListener("submit", async (e) => {
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem(
-          "MEDIUM_CLONE_ACCESS_TOKEN"
-        )}`,
+        // Authorization: `Bearer ${localStorage.getItem(
+        //   "MEDIUM_CLONE_ACCESS_TOKEN"
+        // )}`,
       },
     });
 

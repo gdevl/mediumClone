@@ -4,6 +4,8 @@
       a(href="/").brand Medium
     .nav-bar__inner-links-container
       if user
+        a(href="/stories/create" class="newStoryLink")
+          i(class="fa fa-plus nav-bar__new-story-btn" data-tooltip="New Story")
         i(class="fa fa-sign-out nav-bar__log-out-btn" data-tooltip="Log Out")
       else
         i(class="fa fa-user-plus nav-bar__sign-up-btn" data-tooltip="Sign Up")
