@@ -1,22 +1,24 @@
 .footer {
-    background-color: rgba(0, 0, 0, 0.9);
-    width: 100%;
-    max-width: initial;
-    margin-top: 30px;
-    bottom: 0;
-    height: 150px;
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  max-width: initial;
+  margin-top: 30px;
+  bottom: 0;
+  height: 150px;
 }
 
 .footer__container {
-    max-width: 1200px;
-    margin: auto;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr) repeat(4, minmax(48px, 1fr));
+  max-width: 1200px;
+  margin: auto;
 }
 
 .footer__title {
-    position: relative;
-    top: 25px;
-    color: white;
-    font-size: 42px;
-    max-width: 1200px;
-    font-family: 'Playfair Display', serif;
+  position: relative;
+  top: 25px;
+  color: white;
+  font-size: 42px;
+  grid-column: 2 / span 2;
+  font-family: "Playfair Display", serif;
 }

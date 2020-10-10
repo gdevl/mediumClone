@@ -47,19 +47,22 @@
 
 .nav-bar__sign-up-btn,
 .nav-bar__log-in-btn,
-.nav-bar__log-out-btn {
+.nav-bar__log-out-btn,
+.nav-bar__new-story-btn {
   font-size: 1.25em;
 }
 
 .nav-bar__sign-up-btn:hover,
 .nav-bar__log-in-btn:hover,
-.nav-bar__log-out-btn:hover {
+.nav-bar__log-out-btn:hover,
+.nav-bar__new-story-btn:hover {
   color: lightgray;
 }
 
 .nav-bar__sign-up-btn:hover::after,
 .nav-bar__log-in-btn:hover::after,
-.nav-bar__log-out-btn:hover::after {
+.nav-bar__log-out-btn:hover::after,
+.nav-bar__new-story-btn:hover::after {
   font-family: "Fira Sans", sans-serif;
   font-size: 60%;
   position: absolute;
@@ -87,6 +90,28 @@
   font-family: "Fira Sans", sans-serif;
   font-weight: 600;
   color: #4d4d4d;
+}
+
+.newStoryLink {
+  color: black;
+}
+
+.new-story-form-container {
+  margin: 0 auto;
+  padding: 0 64px;
+  width: 600px;
+}
+
+.new-story-form {
+  width: 90%;
+}
+
+.story-form-title {
+  font-family: "Fira Sans", sans-serif;
+}
+
+.make-it-black {
+  background-color: black;
 }
 
 .feed-container {
@@ -176,7 +201,6 @@
 }
 .home-grid {
   display: grid;
-  /* grid-template-columns: repeat(13, 1fr); */
   grid-template-columns: repeat(8, 1fr) repeat(4, minmax(48px, 1fr));
   grid-template-rows: 1fr;
   font-weight: 400;
@@ -311,5 +335,13 @@
   }
   .nav-bar {
     padding: 0 32px;
+  }
+  .new-story-form-container {
+    width: 80%;
+    /* padding: 0 32px; */
+  }
+  .story-container__story {
+    margin: 0 auto;
+    width: 75%;
   }
 }

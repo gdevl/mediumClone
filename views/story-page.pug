@@ -8,9 +8,9 @@ block content
         .left-side-panel__widgets-box
             .widgets-box__claps
                 if story.imageClapped
-                    img.claps__img#claps__img(src="/images/clapped3.png" alt="clapped" data-value=story.isClapped data-story-id= story.id)
+                    img#claps__img.claps__img(src="/images/clapped3.png" alt="clapped" data-value=story.isClapped data-story-id= story.id)
                 else
-                    img.claps__img#claps__img(src="/images/clapping1.png" alt="clap" data-value=story.isClapped data-story-id= story.id)
+                    img#claps__img.claps__img(src="/images/clapping1.png" alt="clap" data-value=story.isClapped data-story-id= story.id)
                 span.claps__claps-count #{story.clapsCount}
             .widgets-box__responses
                 i.responses__icon(class="fa fa-comment-o fa-lg" aria-hidden="true")
@@ -40,9 +40,9 @@ block content
                 .below-content__content-icons
                     .content-icons__claps
                         if story.imageClapped
-                            img.claps__img#claps__img(src="/images/clapped3.png" alt="clapped" data-value=story.isClapped data-story-id= story.id)
+                            img#claps__img.claps__img(src="/images/clapped3.png" alt="clapped" data-value=story.isClapped data-story-id= story.id)
                         else
-                            img.claps__img#claps__img(src="/images/clapping1.png" alt="clap" data-value=story.isClapped data-story-id= story.id)
+                            img#claps__img.claps__img(src="/images/clapping1.png" alt="clap" data-value=story.isClapped data-story-id= story.id)
                         span.claps__claps-count.story-claps #{story.clapsCount}
                     .content-icons__responses
                         i.responses__icon(class="fa fa-comment-o fa-2x" aria-hidden="true")

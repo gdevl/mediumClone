@@ -23,7 +23,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const storyClaps = await StoryClap.findAndCountAll({
         where: { storyId: storyId }
     });
-
+    let imageClapped;
     let isClapped;
     let currentUser;
     if (req.user) {
@@ -36,11 +36,13 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         })
         if (!isStoryClapped) {
             isClapped = 'toBeClapped'
+            imageClapped = false
         } else {
             isClapped = 'unclap'
+            imageClapped = true;
         }
     } else {
-        isClapped = "NoUser";
+        isClapped = null;
     }
 
     const storyResponses = await Response.findAndCountAll({
@@ -71,7 +73,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         responsesCount: storyResponses.count,
         responses: storyResponses,      
         isClapped,
-        // imageClapped
+        imageClapped,
     }
     res.render('story-page', { story, currentUser });
 }));

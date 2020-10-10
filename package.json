@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect -r dotenv/config bin/www"
+    "start": "node bin/www",
+    "start-dev": "nodemon --inspect -r dotenv/config bin/www"
   },
   "repository": {
     "type": "git",
