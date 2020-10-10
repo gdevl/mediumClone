@@ -65,11 +65,12 @@
   transition: color 250ms ease-in-out;
 }
 
-/* .author__follow-button:hover,
+.author__follow-button:hover,
 .follow-container__follow-button:hover {
-    background-color: rgba(3, 168, 124, 1);
-    color: white;
-} */
+  color: #008000;
+  border-color: #008000;
+  fill: #008000;
+}
 
 .container__story-data {
   color: rgba(117, 117, 117, 1);
@@ -179,7 +180,7 @@
 }
 
 .follow-container__follow-button {
-  width: 68px;
+  min-width: 68px;
   height: 32px;
   border-radius: 5px;
   padding: 5px;
@@ -190,7 +191,7 @@
 .main__left-side-panel {
   position: fixed;
   top: 100px;
-  width: 100%;
+  width: 12%;
   font-family: "Fira Sans", sans-serif;
 }
 

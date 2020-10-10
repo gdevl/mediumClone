@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const { asyncHandler, formatDate, determineReadTime } = require("../utils");
-const { User, Story, StoryClap, Response } = require('../db/models');
+const { User, Story, StoryClap, Response, Follow } = require('../db/models');
 
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
@@ -16,8 +16,11 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const storyClaps = await StoryClap.findAndCountAll({
         where: { storyId: storyId }
     });
+
     let imageClapped;
     let isClapped;
+    let followBtnText;
+
     if (req.user) {
         const currentUser = req.user.id;
         const isStoryClapped = await StoryClap.findOne({
@@ -32,6 +35,14 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         } else {
             isClapped = 'unclap'
             imageClapped = true;
+        }
+        const follows = await Follow.findAll({
+            where: { followerId: req.user.id, followedId: req.params.id },
+        });
+        if (follows.length > 0) {
+            followBtnText = 'Following'
+        } else {
+            followBtnText = 'Follow'
         }
     } else {
         isClapped = null;
@@ -58,7 +69,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         isClapped,
         imageClapped,
     }
-    res.render('story-page', { story });
+    res.render('story-page', { story, followBtnText });
 }));
 
 

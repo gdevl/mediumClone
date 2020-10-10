@@ -1,10 +1,11 @@
 import { handleErrors } from "./utils.js";
 
-const followBtn = document.getElementById("follow");
-
 document.addEventListener("DOMContentLoaded", () => {
-  if (followBtn) {
-    followBtn.addEventListener("click", () => isFollowing(followBtn));
+  const followBtns = document.querySelectorAll(".follow");
+  if (followBtns) {
+    followBtns.forEach(btn => {
+      btn.addEventListener("click", () => isFollowing(btn, followBtns));
+    })
   }
 });
 
@@ -28,12 +29,16 @@ const postFollow = async (val) => {
   }
 };
 
-const isFollowing = (element) => {
+const isFollowing = (element, btns) => {
   if (element.innerHTML === "Follow") {
-    element.innerHTML = "Following";
+    btns.forEach(btn => {
+      btn.innerHTML = "Following";
+    })
     postFollow(element.value);
   } else {
-    element.innerHTML = "Follow";
+    btns.forEach(btn => {
+      btn.innerHTML = "Follow";
+    })
     destroyFollow(element.value);
   }
 };
