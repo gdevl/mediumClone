@@ -130,7 +130,7 @@ document
                 document.querySelector('.form-container__new-response-form').reset();
                 responseFormBtn.setAttribute.disabled = true;
                 showCompactResponseForm();
-                
+                document.querySelector('.responses-display__no-responses').classList.add('hidden');
                 
                 
                 const responsesDisplay = document.createElement('div');
@@ -200,30 +200,6 @@ document
                         
                         
                 document.getElementById('story-responses').prepend(responsesDisplay);
-                
-                
-                // const innerDivs = 
-                    
-                //     `<div class="container__response-info">
-                //         <div class="response-info__author">
-                //             <img class="author__image" src=${response.user.avatarUrl}/>
-                //         </div>
-                //         <div class="response-info__container">
-                //             <div class="container__author-name">
-                //                 ${response.user.firstName} ${response.user.lastName}
-                //             </div>
-                //             <div class="container__date"> ${response.date}
-                //         </div>
-                //     <div class="container__content">
-                //         ${response.newResponse.content}
-                //     </div>
-                //     <div class="container__icons">
-                //         <img class="icon__claps" src="/images/clapping1.png"/>
-                //         <div class="icons__clap-count>${response.newResponse.numClaps}</div>
-                //     </div>
-                //     </div>`;
-                
-                // div.appendChild(innerDivs);
             }
         }
         catch (err) {
