@@ -5,7 +5,7 @@ import { handleErrors } from "./utils.js";
 const fetchPostUserAndStoreToken = async (user, overlay) => {
   try {
     const res = await fetch(`/api/users/${overlay}`, {
-      method: "Post",
+      method: "POST",
       body: JSON.stringify(user),
       headers: { "Content-Type": "application/json" },
     });

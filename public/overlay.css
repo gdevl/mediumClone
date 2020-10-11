@@ -52,11 +52,12 @@
     height: 100%;
 }
 
-.overlay-body__center {
+/* .overlay-body__center {
     width: 300px;
     justify-items: center;
     height: auto;
-}
+} */
+
 
 .center__welcome {
     font-family: 'Playfair Display', Georgia, Cambria, "Times New Roman", Times, serif;
@@ -79,11 +80,6 @@
 
 .sign-up-form__log-in-link {
     margin-left: 10px;
-}
-
-.sign-up-link {
-    margin-left: 10px;
-    margin-top: 20px;
 }
 
 .hidden {
@@ -126,4 +122,28 @@
     border-radius: 5px;
     border: 0;
     padding: 7px;
+}
+
+.center-box__log-in-errors-container,
+.center-box__sign-up-errors-container {
+    position: relative;
+    background-color: lavender;
+    border: 1px black;
+    top: -60px;
+    border-radius: 20px;
+    width: 430px;
+    margin: 0 auto;
+}
+
+.auth-errors-sign-up {
+    font-size: 13px;
+    color: black;
+    padding: 8px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.auth-errors-log-in {
+    font-size: 13px;
+    color: black;
+    padding: 8px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

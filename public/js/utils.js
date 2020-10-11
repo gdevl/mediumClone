@@ -1,23 +1,23 @@
 export const handleErrors = async (err, overlay) => {
     if (err.status >= 400 && err.status < 600) {
-        const errorRes = await err.json();
+        const errorRes = await err.json(); //.center-box__log-in-errors-container
         const errorsContainer = document.querySelector(`.center-box__${overlay}-errors-container`);
         let errorsHtml = [
             `
-                <div class="errors">
+                <li class="errors">
                     Something went wrong. Please try again.
-                </div>
+                </li>
             `,
         ];
         const { errors } = errorRes;
         if (errors && Array.isArray(errors)) {
-            errorsHtml = errors.map(message => {
+            errorsHtml = errors.map((message) =>
                 `
-                    <div class="errors">
+                    <li class="auth-errors-${overlay}">
                         ${message}
-                    </div>
+                    </li>
                 `
-            })
+            );
         }
         errorsContainer.innerHTML = errorsHtml.join("");
     }
@@ -25,4 +25,3 @@ export const handleErrors = async (err, overlay) => {
         alert('Something went wrong. Please check your internet connection and try again.');
     };
 }
-
