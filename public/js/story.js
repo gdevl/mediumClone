@@ -7,6 +7,7 @@ const responseHeader = document.getElementById('new-response__header');
 const responseFormBtn = document.getElementById('new-response-form__buttons');
 const responseBackground = document.getElementById('responses-background');
 const responsePanel = document.getElementById('responses-container');
+const leftSidePanel = document.querySelector('.main__left-side-panel');
 
 //***************************** Functions ******************************************/
 
@@ -44,8 +45,14 @@ const toggleRespondSubmitBtn = () => {
 
 //***************************** DOM Manipulation ***********************************/
 
+if (window.pageYOffset > 300) {
+    leftSidePanel.style.opacity = 1;
+}
+else {
+    leftSidePanel.style.opacity = 0;
+}
+
 document.addEventListener('scroll', () => {
-    const leftSidePanel = document.querySelector('.main__left-side-panel');
     
     if (window.pageYOffset > 300) {
         leftSidePanel.style.opacity = 1;
@@ -106,7 +113,6 @@ document
         const storyId = url.match(/\d+$/)[0];
         const responseContent = { content: responseTextArea.value, userId: userId, storyId: storyId };
         
-        
         try {
             const res = await fetch(`/api/stories/${storyId}/responses/create`, {
                 method: 'POST',
@@ -119,6 +125,12 @@ document
             }
             else {
                 const response = await res.json();
+                
+                responseTextArea.innerHTML = '';
+                document.querySelector('.form-container__new-response-form').reset();
+                responseFormBtn.setAttribute.disabled = true;
+                showCompactResponseForm();
+                
                 
                 
                 const responsesDisplay = document.createElement('div');

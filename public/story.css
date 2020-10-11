@@ -204,7 +204,7 @@
 .main__left-side-panel {
     position: fixed;
     top: 100px;
-    width: 100%;
+    width: 20%;
     font-family: 'Fira Sans', sans-serif;
     opacity: 0;
     
