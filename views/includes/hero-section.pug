@@ -1,0 +1,41 @@
+.hero-section
+    .hero-section__feature-section
+        .feature-section__img-container
+            img.img-container__img(src= hero.imageUrl)
+        .feature-section__author
+            img.author__avatar(src= hero.User.avatarUrl)
+            a.author__name(href=`/user/${hero.User.id}`) #{hero.User.firstName} #{hero.User.lastName}
+        .feature-section__title= hero.title
+        .feature-section__article-hint= hero.content
+        .feature-section__article-footer
+            a.article-footer__link(href=`/story/${hero.id}`)
+            .article-footer__read-time= hero.readTime
+            .article-footer__star
+                i.star__icon(class="fa fa-star fa-xs" aria-hidden="true")
+    .hero-section__articles-section
+        each article in heroStories
+            .articles-section__article
+                .article__text-box
+                    .text-box__author
+                        img.author__avatar(src= article.User.avatarUrl)
+                        span.author__name #{article.User.firstName} #{article.User.lastName}
+                    .text-box__title= article.title
+                    .text-box__footer
+                        .footer__date= article.date
+                        .footer__read-time= article.readTime
+                        .footer__star
+                            i.star__icon(class="fa fa-star fa-xs" aria-hidden="true")   
+                .article__articles-img
+                    img.articles-img__img(src= article.imageUrl)
+    .hero-section__follow-section
+        .follow-section__header CREATORS TO FOLLOW
+        each author in authors
+            .follow-section__authors
+                a(href=`/users/${author.id}`).follow-section__author-info
+                    .author-info__author-img
+                        img.img__img(src= author.avatarUrl)
+                    .author-info__author-text
+                        .author-text__name #{author.firstName} #{author.lastName}
+                        span.author-text__bio= author.bio
+                button.follow-section__button Follow
+                    

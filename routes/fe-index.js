@@ -1,13 +1,23 @@
 const express = require("express");
 
 const { User, Story, StoryClap, sequelize } = require("../db/models");
-const { asyncHandler, createTrendingStories, formatDate } = require("../utils");
+const { asyncHandler, createTrendingStories, formatDate, determineReadTime } = require("../utils");
 
 const router = express.Router();
 
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
+    
+    const randomNums = Array.from({ length: 6 }, () => Math.floor(Math.random()*41));
+    
+    //******** Async Calls
+    
+    const heroStories = await Story.findAll({
+      where: { id: randomNums },
+      include: User
+    })
+    
     let topStoryClaps = await Story.findAll({
       group: ["Story.id", "User.id"],
       include: [
@@ -31,11 +41,7 @@ router.get(
       ],
       order: [[sequelize.literal("num_claps"), "DESC"]],
     });
-
-    topStoryClaps = topStoryClaps.splice(0, 6);
-
-    const trendingStoriesData = createTrendingStories(topStoryClaps);
-
+    
     const stories = await Story.findAll({
       limit: 10,
       order: [["userId", "DESC"]],
@@ -43,7 +49,25 @@ router.get(
         model: User,
       },
     });
-
+    
+    //********** Sync functions
+    const authorsUnfiltered = []
+    
+    heroStories.map(story => {
+      story.readTime = determineReadTime(story.content);
+      story.date = formatDate(story.updatedAt);
+      authorsUnfiltered.push(story.User)
+    });
+    
+    // filter any repeated authors
+    const authors = authorsUnfiltered.filter((_, i, self) => i === self.indexOf(i))
+    
+    const hero = heroStories.pop();
+    
+    topStoryClaps = topStoryClaps.splice(0, 6);
+    const trendingStoriesData = createTrendingStories(topStoryClaps);
+    
+    console.log('TESTING!!!!!!!!!!!!!!!!   ', heroStories[0].User.avatarUrl)  //!  << DELETE THIS >>
     const storiesData = (query) => {
       return query.map((story) => {
         return {
@@ -59,8 +83,11 @@ router.get(
     };
 
     res.render("home", {
-      storiesData: storiesData(stories),
+      hero,
+      heroStories,
+      authors,
       trendingStoriesData,
+      storiesData: storiesData(stories),
       user: req.user,
     });
   })
