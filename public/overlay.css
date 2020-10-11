@@ -123,13 +123,13 @@
 
 .center-box__log-in-errors-container,
 .center-box__sign-up-errors-container {
-    position: flex;
+    position: relative;
     background-color: lavender;
     border: 1px solid black;
     top: -30px;
     border-radius: 25px;
-    width: 270px;
-    justify-content: center;
+    width: 330px;
+    margin: 0 auto;
 }
 
 .auth-errors {
