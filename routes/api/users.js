@@ -18,6 +18,17 @@ router.post(
   handleValidationErrors,
   asyncHandler(async (req, res, next) => {
     const { username, password, email, firstName, lastName } = req.body;
+
+    const usernameCheck = await User.findOne({ where: { username: username } });
+
+    if (usernameCheck) {
+      const err = new Error("Sign-up failed");
+      err.status = 409;
+      err.title = "Sign-up failed";
+      err.errors = ["Username is already in use"];
+      return next(err);
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({
       username,
@@ -38,8 +49,8 @@ router.post(
 
 router.post(
   "/log-in",
-  loginValidator,
-  handleValidationErrors,
+  // loginValidator,
+  // handleValidationErrors,
   asyncHandler(async (req, res, next) => {
     const { username, password } = req.body;
 
@@ -50,10 +61,10 @@ router.post(
       !user ||
       !bcrypt.compareSync(password, user.hashedPassword.toString())
     ) {
-      const err = new Error("Login failed.");
+      const err = new Error("Login failed");
       err.status = 401;
-      err.title = "Login failed.";
-      err.errors = ["The provided credentials were invalid"];
+      err.title = "Login failed";
+      err.errors = ["Provided credentials are invalid"];
       return next(err);
     }
 
