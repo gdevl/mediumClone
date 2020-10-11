@@ -3,14 +3,14 @@ const express = require("express");
 const router = express.Router();
 
 const { asyncHandler, formatDate, determineReadTime, createTrendingStories } = require("../utils");
-const { 
-    User, 
-    Story, 
-    StoryClap, 
+const {
+    User,
+    Story,
+    StoryClap,
     Response,
     ResponseClap,
     Follow,
-    sequelize 
+    sequelize
 } = require('../db/models');
 
 
@@ -29,6 +29,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     let isClapped;
     let currentUser;
     let followBtnText;
+
 
     if (req.user) {
         currentUser = req.user;
@@ -67,12 +68,45 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
             },
         ],
     });
-    
-    storyResponses.rows.map(response => {
+
+
+    storyResponses.rows.map( async (response) => {
         response.date = formatDate(response.dataValues.updatedAt)
+        const responseId = response.dataValues.id;
+
+        const totalResponseClaps = await ResponseClap.findAll({
+            where: {
+                responseId: responseId,
+            }
+        });
+        response.numResponseClaps = totalResponseClaps.length;
+
+        let responseClapStatus;
+        let responseImageClapped;
+
+        if (req.user) {
+            currentUser = req.user;
+            const isResponseClappedByUser = await ResponseClap.findOne({
+                where: {
+                    responseId: responseId,
+                    userId: currentUser.id,
+                }
+            })
+            if (!isResponseClappedByUser) {
+                responseClapStatus = 'toBeClapped'
+                responseImageClapped = false
+            } else {
+                responseClapStatus = 'unclap'
+                responseImageClapped = true;
+            }
+            response.responseClapStatus = responseClapStatus;
+            response.responseImageClapped = responseImageClapped;
+        } else {
+            isClapped = null;
+        }
         console.log("storyResponses", response)
     })
-    
+
 
     const story = {
         id: storyData.id,
@@ -89,11 +123,11 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         bio: storyData.User.bio,
         clapsCount: storyClaps.count,
         responsesCount: storyResponses.count,
-        responses: storyResponses.rows,      
+        responses: storyResponses.rows,
         isClapped,
         imageClapped,
     }
-    
+
     let topStoryClaps = await Story.findAll({
         group: ["Story.id", "User.id"],
         include: [
@@ -121,8 +155,8 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     topStoryClaps = topStoryClaps.splice(0, 6);
 
     const trendingStoriesData = createTrendingStories(topStoryClaps);
-    
-    
+
+
     res.render('story-page', { story, currentUser, followBtnText, trendingStoriesData });
 }));
 

@@ -27,8 +27,12 @@
                         .container__date=response.date
                 .container__content=response.content
                 .container__icons
-                    img.icons__claps(src="/images/clapping1.png", alt="clap")
-                    .icons__claps-count=response.numClaps
+                    if response.responseImageClapped
+                        img#icons__claps.icons_claps(src="/images/clapped3.png" alt="clapped" data-value=response.responseClapStatus data-response-id= response.id)
+                    else
+                        img#icons__claps.icons_claps(src="/images/clapping1.png" alt="clap" data-value=response.responseClapStatus data-response-id= response.id)
+                    span.icons__claps-count=response.numResponseClaps
     else
         .responses-display__no-responses Be the first response!
 
+script(type="module" src="/js/responseClap.js")
