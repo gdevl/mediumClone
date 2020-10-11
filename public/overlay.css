@@ -9,8 +9,8 @@
     justify-content: center;
     align-items: center;
     bottom: 0px;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
 }
 
 .sign-up-overlay__center-box,
@@ -42,7 +42,7 @@
 .close-overlay {
     height: 30px;
     align-items: center;
-    
+
 }
 
 .center-box__overlay-body {
