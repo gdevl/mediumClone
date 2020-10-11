@@ -1,17 +1,9 @@
 const express = require('express');
 const { StoryClap } = require('../../db/models');
-const {asyncHandler} = require('../../utils')
+const {asyncHandler, clapAlreadyExistsError } = require('../../utils')
+
 
 const router = express.Router();
-
-
-// clap already exists error handler
-function clapAlreadyExistsError(id) {
-    let error = new Error(`Story with ${id} has already been clapped.`);
-    error.title = "Clap already exists.";
-    error.status = 400;
-    return error;
-}
 
 
 // clap creation route
@@ -38,7 +30,7 @@ router.post('/', asyncHandler (async (req, res, next) => {
 
         res.status(201).json({newStoryClap, numClaps: numClaps}); // include number of current likes
     } else {
-        next(clapAlreadyExistsError(storyId))
+        next(clapAlreadyExistsError(storyId, "Story"))
     }
 }));
 
