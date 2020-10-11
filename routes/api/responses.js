@@ -22,9 +22,7 @@ router.post('/create', responseValidator, handleValidationErrors, asyncHandler(a
     });
     
     const user = await User.findByPk(userId)
-    console.log('CREATED AT: ', newResponse.createdAt)
     const date = formatDate(newResponse.createdAt)
-    console.log("newResponse.date", newResponse.date)
     
     res.status(201).json({ newResponse, user, date });
 }))
