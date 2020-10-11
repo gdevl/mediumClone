@@ -40,7 +40,7 @@
 .close-overlay {
     height: 30px;
     align-items: center;
-    
+
 }
 
 .center-box__overlay-body {
@@ -119,4 +119,19 @@
     border-radius: 5px;
     border: 0;
     padding: 7px;
+}
+
+.center-box__log-in-errors-container,
+.center-box__sign-up-errors-container {
+    position: relative;
+    background-color: lavender;
+    border: 1px solid black;
+    top: -30px;
+    padding: 15px;
+
+}
+
+.auth-errors {
+    color: red;
+    text-align: center;
 }

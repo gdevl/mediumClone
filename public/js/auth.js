@@ -21,7 +21,6 @@ const fetchPostUserAndStoreToken = async (user, overlay) => {
     window.location = "/";
   } catch (err) {
     // only demo log in works
-    console.log(err);
     handleErrors(err, overlay);
   }
 };
