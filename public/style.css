@@ -300,7 +300,18 @@
   align-items: center;
   justify-content: center;
 }
-
+.userFollows{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  margin-top: -5px;
+}
+.userFollows div{
+  font-family: "Fira Sans", sans-serif;
+  font-size: 13px;
+  margin-right: 15px;
+}
 .clap_btn:hover {
   color: grey;
 }
