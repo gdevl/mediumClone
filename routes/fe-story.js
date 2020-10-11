@@ -2,8 +2,16 @@ const express = require("express");
 
 const router = express.Router();
 
-const { asyncHandler, formatDate, determineReadTime } = require("../utils");
-const { User, Story, StoryClap, Response, Follow } = require('../db/models');
+const { asyncHandler, formatDate, determineReadTime, createTrendingStories } = require("../utils");
+const { 
+    User, 
+    Story, 
+    StoryClap, 
+    Response,
+    ResponseClap,
+    Follow,
+    sequelize 
+} = require('../db/models');
 
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
@@ -19,14 +27,15 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
 
     let imageClapped;
     let isClapped;
+    let currentUser;
     let followBtnText;
 
     if (req.user) {
-        const currentUser = req.user.id;
+        currentUser = req.user;
         const isStoryClapped = await StoryClap.findOne({
             where: {
                 storyId: storyId,
-                userId: currentUser,
+                userId: currentUser.id,
             }
         })
         if (!isStoryClapped) {
@@ -49,8 +58,21 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     }
 
     const storyResponses = await Response.findAndCountAll({
-        where: { storyId: storyId }
+        where: { storyId: storyId },
+        include: [
+            User,
+            {
+                model: ResponseClap,
+                attributes: [],
+            },
+        ],
     });
+    
+    storyResponses.rows.map(response => {
+        response.date = formatDate(response.dataValues.updatedAt)
+        console.log("storyResponses", response)
+    })
+    
 
     const story = {
         id: storyData.id,
@@ -61,15 +83,47 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         readTime: determineReadTime(storyData.content),
         date: formatDate(storyData.updatedAt),
         authorId: storyData.User.id,
+        authorUsername: storyData.User.username,
         authorName: `${storyData.User.firstName} ${storyData.User.lastName}`,
         avatarUrl: storyData.User.avatarUrl,
         bio: storyData.User.bio,
         clapsCount: storyClaps.count,
         responsesCount: storyResponses.count,
+        responses: storyResponses.rows,      
         isClapped,
         imageClapped,
     }
-    res.render('story-page', { story, followBtnText });
+    
+    let topStoryClaps = await Story.findAll({
+        group: ["Story.id", "User.id"],
+        include: [
+            {
+                model: StoryClap,
+                attributes: [],
+            },
+            {
+                model: User,
+                attributes: ["id", "firstName", "lastName", "avatarUrl", "bio"],
+            },
+        ],
+        attributes: [
+            "id",
+            "title",
+            "subtitle",
+            "userId",
+            "updatedAt",
+            "content",
+            [sequelize.fn("COUNT", sequelize.col("StoryClaps.id")), "num_claps"],
+        ],
+        order: [[sequelize.literal("num_claps"), "DESC"]],
+    });
+
+    topStoryClaps = topStoryClaps.splice(0, 6);
+
+    const trendingStoriesData = createTrendingStories(topStoryClaps);
+    
+    
+    res.render('story-page', { story, currentUser, followBtnText, trendingStoriesData });
 }));
 
 

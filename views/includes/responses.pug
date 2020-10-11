@@ -1,26 +1,34 @@
-h2 Responses
+.responses-container__header
+    h3 Responses
+    #responses-close-btn.header__close-button
+        i#responses-close-icon(class="fa fa-times" aria-hidden="true")
 .responses-container__new-response
-    .new-response__header--hidden
+    #new-response__header.hidden
         .header__user-img
-            img(src= user.username)
+            img.user-img__img(src= currentUser.avatarUrl)
         .header__user-name
-            span.user-name__fullName #{user.firstName} #{user.lastName}
-    form.new-response__new-response-form
-        .new-response-form__content
-            input(type="textarea", name="content", placeholder="What are your thoughts?")
-        .new-response-form__buttons--hidden
-            button.buttons__cancel Cancel
-            button(type="submit") Respond
-div(id='response-container')
-    for response in responseObjs
-        .responses__response-info
-            .response-info__author
-                img.author__image(src=response.user.avatarUrl, alt="")
-            .response-info__container
-                .container__author-name #{response.user.firstName response.user.lastName}
-                .container__date=response.updatedAt
-        .responses__content=response.content
-        .responses__icons
-            img.icons__claps(src="/images/clapping1.png", alt="clap")
-            .icons__claps-count=response.numClaps
+            span.user-name__fullName #{currentUser.firstName} #{currentUser.lastName}
+    .new-response__form-container
+        form.form-container__new-response-form
+            .new-response-form__content
+                textarea#responses-textarea.form-content__text-area--sm(name="content", placeholder="What are your thoughts?")
+            #new-response-form__buttons.hidden
+                button.buttons__cancel Cancel
+                button.buttons__respond(type="submit" disabled) Respond
+.responses-container__responses-display#story-responses
+    if story.responsesCount > 0
+        for response in story.responses
+            .responses-display__container
+                .container__response-info
+                    .response-info__author
+                        img.author__image(src=response.User.avatarUrl, alt="")
+                    .response-info__container
+                        a.container__author-name(href=`/users/${response.User.username}`) #{response.User.firstName} #{response.User.lastName}
+                        .container__date=response.date
+                .container__content=response.content
+                .container__icons
+                    img.icons__claps(src="/images/clapping1.png", alt="clap")
+                    .icons__claps-count=response.numClaps
+    else
+        .responses-display__no-responses Be the first response!
 
