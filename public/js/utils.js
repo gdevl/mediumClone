@@ -13,7 +13,7 @@ export const handleErrors = async (err, overlay) => {
         if (errors && Array.isArray(errors)) {
             errorsHtml = errors.map((message) =>
                 `
-                    <li class="auth-errors">
+                    <li class="auth-errors-${overlay}">
                         ${message}
                     </li>
                 `
