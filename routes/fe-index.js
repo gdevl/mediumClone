@@ -51,16 +51,16 @@ router.get(
     });
     
     //********** Sync functions
-    const authorsUnfiltered = []
+    const authors = []
     
     heroStories.map(story => {
       story.readTime = determineReadTime(story.content);
       story.date = formatDate(story.updatedAt);
-      authorsUnfiltered.push(story.User)
+      authors.push(story.User)
     });
     
     // filter any repeated authors
-    const authors = authorsUnfiltered.filter((_, i, self) => i === self.indexOf(i))
+    // const authors = authorsUnfiltered.filter((_, i, self) => i === self.indexOf(i))
     
     const hero = heroStories.pop();
     
