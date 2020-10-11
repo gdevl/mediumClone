@@ -69,8 +69,8 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     });
     
     storyResponses.rows.map(response => {
-        response.dataValues.date = formatDate(response.dataValues.updatedAt)
-        console.log("storyResponses", response.User)
+        response.date = formatDate(response.dataValues.updatedAt)
+        console.log("storyResponses", response)
     })
     
 
