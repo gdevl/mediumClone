@@ -38,7 +38,8 @@ router.post(
 
 router.post(
   "/log-in",
-  loginValidator,
+  // loginValidator,
+  // handleValidationErrors,
   asyncHandler(async (req, res, next) => {
     const { username, password } = req.body;
 

@@ -4,18 +4,18 @@ export const handleErrors = async (err, overlay) => {
         const errorsContainer = document.querySelector(`.center-box__${overlay}-errors-container`);
         let errorsHtml = [
             `
-                <div class="errors">
+                <li class="errors">
                     Something went wrong. Please try again.
-                </div>
+                </li>
             `,
         ];
         const { errors } = errorRes;
         if (errors && Array.isArray(errors)) {
             errorsHtml = errors.map((message) =>
                 `
-                    <div class="auth-errors">
+                    <li class="auth-errors">
                         ${message}
-                    </div>
+                    </li>
                 `
             );
         }
