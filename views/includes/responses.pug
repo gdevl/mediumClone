@@ -28,9 +28,9 @@
                 .container__content=response.content
                 .container__icons
                     if response.responseImageClapped
-                        img#icons__claps.icons_claps(src="/images/clapped3.png" alt="clapped" data-value= response.responseClapStatus data-response-id= response.id)
+                        img#icons__claps.icons_claps(src="/images/clapped3.png" alt="clapped" value=response.responseClapStatus data-response-id=response.id)
                     else
-                        img#icons__claps.icons_claps(src="/images/clapping1.png" alt="clap" data-value= response.responseClapStatus data-response-id= response.id)
+                        img#icons__claps.icons_claps(src="/images/clapping1.png" alt="clap" value=response.responseClapStatus data-response-id= response.id)
                     span(class=`icons__claps-count-${response.id}`)=response.numResponseClaps
     else
         .responses-display__no-responses Be the first response!
