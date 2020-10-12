@@ -15,6 +15,11 @@ block content
             .userDetails
               p.userBio= storiesData[0].bio
               img(src=`${storiesData[0].avatarUrl}`).userAvatar
+            .userFollows
+              div
+                p #{following} Following
+              div
+                p #{followers} Followers
           .user-feed-container
               include includes/feed
   script(type="module" src="/js/follow.js")
