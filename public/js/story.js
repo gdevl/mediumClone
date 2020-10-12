@@ -111,6 +111,8 @@ document
         const url = window.location.pathname;
         const userId = localStorage.getItem('MEDIUM_CLONE_CURRENT_USER_ID');
         const storyId = url.match(/\d+$/)[0];
+
+
         const responseContent = { content: responseTextArea.value, userId: userId, storyId: storyId };
 
         try {
