@@ -68,17 +68,11 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
             },
         ],
     });
-    // new responseClap properties;
-    const allResponses = await Response.findAll({
-        where: {
-            storyId: storyId,
-        }
-    })
-    let responseArr = [];
+
     if (currentUser) {
-        for (let i = 0; i < allResponses.length; i++) {
+        for (let i = 0; i < storyResponses.rows.length; i++) {
             let newObj = {};
-            let currentResponse = allResponses[i];
+            let currentResponse = storyResponses.rows[i];
             let responseClapStatus;
             let responseImageClapped;
             const responseId = currentResponse.dataValues.id;
@@ -105,9 +99,49 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
             }
             newObj.responseClapStatus = responseClapStatus;
             newObj.responseImageClapped = responseImageClapped;
-            responseArr.push(newObj);
+            currentResponse.obj = newObj;
         }
     }
+    console.log(storyResponses.rows);
+    // const allResponses = await Response.findAll({
+    //     where: {
+    //         storyId: storyId,
+    //     }
+    // })
+    // let responseArr = [];
+    // if (currentUser) {
+        //     for (let i = 0; i < allResponses.length; i++) {
+    //         let newObj = {};
+    //         let currentResponse = allResponses[i];
+    //         let responseClapStatus;
+    //         let responseImageClapped;
+    //         const responseId = currentResponse.dataValues.id;
+
+    //         const totalResponseClaps = await ResponseClap.findAll({
+    //             where: {
+    //                 responseId: responseId,
+    //             }
+    //         });
+    //         newObj.numResponseClaps = totalResponseClaps.length;
+
+    //         const isResponseClappedByUser = await ResponseClap.findOne({
+    //             where: {
+    //                 responseId: responseId,
+    //                 userId: currentUser.id,
+    //             }
+    //         })
+    //         if (!isResponseClappedByUser) {
+    //             responseClapStatus = 'toBeClapped'
+    //             responseImageClapped = false
+    //         } else {
+    //             responseClapStatus = 'unclap'
+    //             responseImageClapped = true;
+    //         }
+    //         newObj.responseClapStatus = responseClapStatus;
+    //         newObj.responseImageClapped = responseImageClapped;
+    //         responseArr.push(newObj);
+    //     }
+    // }
     // console.log("RESPONSE ARR:  ", responseArr)
 
 
@@ -167,7 +201,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const trendingStoriesData = createTrendingStories(topStoryClaps);
 
 
-    res.render('story-page', { story, currentUser, followBtnText, trendingStoriesData, user: req.user, responseArr });
+    res.render('story-page', { story, currentUser, followBtnText, trendingStoriesData, user: req.user });
 }));
 
 
