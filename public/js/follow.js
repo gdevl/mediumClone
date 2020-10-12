@@ -70,7 +70,6 @@ const destroyFollow = async (val) => {
       return;
     }
     const resJson = await res.json();
-    console.log('json: ',resJson)
     const followers = document.querySelectorAll(".followers")
     if (followers) {
       followers.forEach(followField => {
