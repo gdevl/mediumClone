@@ -12,14 +12,8 @@ const leftSidePanel = document.querySelector('.main__left-side-panel');
 //***************************** Functions ******************************************/
 
 const showCompactResponseForm = () => {
-<<<<<<< HEAD
-    console.log('Compact Click')
     responseTextArea.classList.add('form-content__text-area--sm');
     responseTextArea.classList.remove('form-content__text-area--lg');
-=======
-    responseTextArea.classList.add('form-content__text-area--sm');
-    responseTextArea.classList.remove('form-content__text-area--lg');
->>>>>>> master
     responseHeader.classList.add('hidden');
     responseFormBtn.classList.add('hidden');
 }
