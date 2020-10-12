@@ -70,6 +70,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     });
 
 
+    // storyResponses.rows.map( async (response) => {
     storyResponses.rows.map( async (response) => {
         response.date = formatDate(response.dataValues.updatedAt)
         const responseId = response.dataValues.id;
@@ -85,25 +86,26 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         let responseImageClapped;
 
         if (currentUser) {
+            console.log("CURRENT USER:  ", currentUser);
             const isResponseClappedByUser = await ResponseClap.findOne({
                 where: {
                     responseId: responseId,
                     userId: currentUser.id,
                 }
             })
-            if (!isResponseClappedByUser) {
+            if (isResponseClappedByUser.length === 0) {
                 responseClapStatus = 'toBeClapped'
                 responseImageClapped = false
             } else {
                 responseClapStatus = 'unclap'
                 responseImageClapped = true;
             }
-            response.responseClapStatus = responseClapStatus;
-            response.responseImageClapped = responseImageClapped;
         } else {
             responseClapStatus = null;
         }
-        console.log("storyResponses", response)
+        response.responseClapStatus = responseClapStatus;
+        response.responseImageClapped = responseImageClapped;
+
     })
 
 
@@ -126,6 +128,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         isClapped,
         imageClapped,
     }
+    console.log("STORY RESPONSES:  ", story.responses)
 
     let topStoryClaps = await Story.findAll({
         group: ["Story.id", "User.id"],
