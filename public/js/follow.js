@@ -32,12 +32,16 @@ const postFollow = async (val) => {
 const isFollowing = (element, btns) => {
   if (element.innerHTML === "Follow") {
     btns.forEach(btn => {
-      btn.innerHTML = "Following";
+      if(element.value === btn.value){
+        btn.innerHTML = "Following";
+      }
     })
     postFollow(element.value);
   } else {
     btns.forEach(btn => {
-      btn.innerHTML = "Follow";
+      if (element.value === btn.value) {
+        btn.innerHTML = "Follow";
+      }
     })
     destroyFollow(element.value);
   }
