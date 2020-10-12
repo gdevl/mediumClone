@@ -11,7 +11,7 @@ userInfoForm.addEventListener("submit", async (e) => {
     const lastName = formData.get("last-name");
     const email = formData.get("email");
     const bio = formData.get("bio");
-    const avatarUrl = formData.get("avatarUrl");
+    const avatarUrl = formData.get("avatar-url");
 
     const userId = localStorage.getItem("MEDIUM_CLONE_CURRENT_USER_ID");
 
