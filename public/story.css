@@ -500,11 +500,3 @@
     
 }
 
-.trending-bar {
-    margin: 50px 0;
-}
-
-.trending-bar__content {
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
-    padding: 40px 0;
-}

@@ -32,6 +32,13 @@ router.get(
       });
     };
 
+    const following = await Follow.findAll({
+      where: { followerId: id }
+    })
+    const followers = await Follow.findAll({
+      where: { followedId: id }
+    })
+
     if (req.user) {
       const follows = await Follow.findAll({
         where: { followerId: req.user.id, followedId: req.params.id },
@@ -44,7 +51,8 @@ router.get(
       }
       res.render("user", {
         storiesData: storiesData(stories),
-        follows,
+        following: following.length,
+        followers: followers.length,
         followBtnText,
         user: req.user,
       });

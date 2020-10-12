@@ -31,4 +31,3 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Story;
 };
-
