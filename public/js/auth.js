@@ -18,7 +18,7 @@ const fetchPostUserAndStoreToken = async (user, overlay) => {
     localStorage.setItem("MEDIUM_CLONE_CURRENT_USER_ID", id);
 
     document.querySelector(`.${overlay}-overlay`).classList.add("hidden");
-    window.location = "/";
+    window.location = window.location.href;
   } catch (err) {
     // only demo log in works
     handleErrors(err, overlay);
