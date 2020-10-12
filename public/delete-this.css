@@ -1,0 +1,29 @@
+@media screen and (max-width: 1200px) {
+    .hero-section {
+        flex-wrap: wrap;
+    }
+    
+    .hero-section__follow-section {
+        /* flex-flow: row; */
+        border-left: none;
+    }
+    
+    .follow-section__header {
+        display: block;
+    }
+    
+    .follow-section__articles-container {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        
+    }
+    
+    .follow-section__article {
+    }
+    
+    .follow-section__authors {
+        
+        margin: 10px;
+    }
+}

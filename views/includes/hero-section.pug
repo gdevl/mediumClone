@@ -29,13 +29,15 @@
                     img.articles-img__img(src= article.imageUrl)
     .hero-section__follow-section
         .follow-section__header CREATORS TO FOLLOW
-        each author in authors
-            .follow-section__authors
-                a(href=`/users/${author.id}`).follow-section__author-info
-                    .author-info__author-img
-                        img.img__img(src= author.avatarUrl)
-                    .author-info__author-text
-                        .author-text__name #{author.firstName} #{author.lastName}
-                        span.author-text__bio= author.bio
-                button.follow-section__button Follow
+        .follow-section__articles-container
+            each author in authors
+                .follow-section__article
+                    .follow-section__authors
+                        a(href=`/users/${author.id}`).follow-section__author-info
+                            .author-info__author-img
+                                img.img__img(src= author.avatarUrl)
+                            .author-info__author-text
+                                .author-text__name #{author.firstName} #{author.lastName}
+                                span.author-text__bio= author.bio
+                        button.follow-section__button Follow
                     
