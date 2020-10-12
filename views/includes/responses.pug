@@ -24,7 +24,7 @@
                     .response-info__author
                         img.author__image(src=response.User.avatarUrl, alt="")
                     .response-info__container
-                        a.container__author-name(href=`/users/${response.User.username}`) #{response.User.firstName} #{response.User.lastName}
+                        a.container__author-name(href=`/users/${response.User.id}`) #{response.User.firstName} #{response.User.lastName}
                         .container__date=response.date
                 .container__content=response.content
                 .container__icons
