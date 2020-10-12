@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { User, Story, StoryClap, sequelize } = require("../db/models");
+const { User, Story, StoryClap, sequelize, Follow } = require("../db/models");
 const { asyncHandler, createTrendingStories, formatDate, determineReadTime } = require("../utils");
 
 const router = express.Router();
@@ -62,12 +62,42 @@ router.get(
     });
     
     // filter any repeated authors
-    const authors = authorsUnfiltered.filter(ele => {
+    const authorsFiltered = authorsUnfiltered.filter(ele => {
       if (!seen.has(ele.id)) {
         seen.add(ele.id);
         return ele.id;
       }
     });
+
+    
+    const addFollowData = async (authorsArray) => {
+      let auths = [];
+      if (req.user) {
+        for(let i=0; i<authorsArray.length; i++){
+          const follows = await Follow.findAll({
+            where: { followerId: req.user.id, followedId: authorsArray[i].id },
+          });
+          if (follows.length > 0) {
+            authorsArray[i].followBtnText = 'Following';
+          } else {
+            authorsArray[i].followBtnText = 'Follow';
+          }
+          auths.push(authorsArray[i]);
+        }
+        return auths
+      }else{
+        return authorsArray;
+      }
+    }
+
+    const authors = await addFollowData(authorsFiltered);
+    // console.log(authors);
+
+    authors.forEach(author => {
+      console.log('author id: ',author.id)
+      console.log('author.followBtnTxt: ',author.followBtnText)
+    })
+
     
     
     const hero = heroStories.pop();
