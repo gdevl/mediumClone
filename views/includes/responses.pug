@@ -28,10 +28,11 @@
                         .container__date=response.date
                 .container__content=response.content
                 .container__icons
-                    if response.obj.responseImageClapped
-                        img#icons__claps.icons__claps(src="/images/clapped3.png" alt="clapped" data-value=response.obj.responseClapStatus data-response-id=response.id)
-                    else
-                        img#icons__claps.icons__claps(src="/images/clapping1.png" alt="clap" data-value=response.obj.responseClapStatus data-response-id= response.id)
-                    span(class=`icons__claps-count-${response.id}`)=response.obj.numResponseClaps
+                    if user
+                        if response.obj.responseImageClapped
+                            img#icons__claps.icons__claps(src="/images/clapped3.png" alt="clapped" data-value=response.obj.responseClapStatus data-response-id=response.id)
+                        else
+                            img#icons__claps.icons__claps(src="/images/clapping1.png" alt="clap" data-value=response.obj.responseClapStatus data-response-id= response.id)
+                        span(class=`icons__claps-count-${response.id}`)=response.obj.numResponseClaps
     else
         .responses-display__no-responses Be the first response!
