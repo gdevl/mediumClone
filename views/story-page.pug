@@ -4,7 +4,7 @@ block content
     .main__left-side-panel
         .left-side-panel__follow-box
             a(href=`/users/${story.authorId}`).follow-box__author= story.authorName
-            button.follow-box__follow-button Follow
+            button.follow-box__follow-button(value=`${story.authorId}`) #{followBtnText}
         .left-side-panel__widgets-box
             .widgets-box__claps
                 if story.imageClapped

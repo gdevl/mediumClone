@@ -46,7 +46,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
             imageClapped = true;
         }
         const follows = await Follow.findAll({
-            where: { followerId: req.user.id, followedId: req.params.id },
+            where: { followerId: req.user.id, followedId: storyData.User.id },
         });
         if (follows.length > 0) {
             followBtnText = 'Following'
