@@ -69,7 +69,6 @@ router.get(
 router.get('/:id(\\d+)/user-info', asyncHandler(async(req, res, next) => {
   const id = req.params.id;
   const user = await User.findByPk(id);
-  console.log("user", user.email)
   res.render('user-info', { user });
 }))
 
