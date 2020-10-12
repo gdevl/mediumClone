@@ -94,6 +94,7 @@
     border-left: 1 solid rgba(0, 0, 0, 0.1);
     display: flex;
     flex-flow: column;
+    min-width: 350px;
 }
 
 .articles-section__article {
@@ -103,9 +104,9 @@
     margin-bottom: 15px;
 }
 
-.article__text-box {
+/* .article__text-box {
 
-}
+} */
 
 .text-box__author {
     display: flex;
@@ -131,6 +132,7 @@
     flex-flow: column;
     padding-left: 20px;
     border-left: 1px solid rgba(0, 0, 0, 0.15);
+    min-width: 325px;
 }
 
 .follow-section__header {
@@ -184,8 +186,8 @@
     font-weight: 400;
     line-height: 20px;
     color: rgba(117, 117, 117, 1);
-    width: 200px;
-    white-space: nowrap;
+    width: 150px;
+    /* white-space: nowrap; */
     word-wrap: normal;
     display: block;
     
@@ -210,3 +212,6 @@
 .footer__read-time {
     margin: 0 20px;
 }
+
+
+

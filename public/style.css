@@ -369,4 +369,17 @@
     margin: 0 auto;
     width: 75%;
   }
+  
+  .hero-section {
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .hero-section__feature-section,
+  .hero-section__articles-section,
+  .hero-section__follow-section {
+    width: 100%;
+    max-width: none;
+  }
 }
