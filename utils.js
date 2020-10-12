@@ -5,7 +5,7 @@ const formatDate = date => {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getFullYear();
-    
+
     switch (month) {
         case 01:
             return `Jan ${day}, ${year}`;
@@ -42,7 +42,7 @@ const determineReadTime = content => {
 
 const createTrendingStories = searchReturn => {
     return searchReturn.map(story => {
-        return { 
+        return {
             id: story.id,
             title: story.title,
             authorId: story.User.id,
@@ -54,9 +54,19 @@ const createTrendingStories = searchReturn => {
     })
 }
 
+
+// clap already exists error handler
+function clapAlreadyExistsError(id, type) {
+    let error = new Error(`${type} with ID ${id} has already been clapped.`);
+    error.title = "Clap already exists.";
+    error.status = 400;
+    return error;
+}
+
 module.exports = {
     asyncHandler,
     formatDate,
     determineReadTime,
-    createTrendingStories
+    createTrendingStories,
+    clapAlreadyExistsError,
 }

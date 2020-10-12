@@ -11,6 +11,7 @@ const storiesAPIRouter = require("./routes/api/stories");
 const responsesAPIRouter = require("./routes/api/responses");
 const followAPIRouter = require("./routes/api/follow");
 const storyClapAPIRouter = require("./routes/api/storyClap");
+const responseClapAPIRouter = require('./routes/api/responseClap');
 
 const usersFERouter = require("./routes/fe-users");
 const createStoriesFERouter = require('./routes/fe-createStories');
@@ -32,6 +33,7 @@ app.use("/api/stories/:id(\\d+)/responses", responsesAPIRouter);
 app.use("/api/stories", storiesAPIRouter);
 app.use("/api/follow", followAPIRouter);
 app.use("/api/stories/:id(\\d+)/clap", storyClapAPIRouter);
+app.use("/api/responses/:id(\\d+)/clap", responseClapAPIRouter);
 
 app.use("/stories", createStoriesFERouter);
 app.use('/story', storyFERouter);
@@ -68,4 +70,3 @@ app.use((err, req, res, next) => {
 /************************************************/
 
 module.exports = app;
-
