@@ -10,7 +10,16 @@ router.get(
   asyncHandler(async (req, res, next) => {
     
     const randomNums = Array.from({ length: 6 }, () => Math.floor(Math.random()*35 + 1));
-    console.log("randomNums", randomNums)
+    
+    if (randomNums.includes(25)) {
+      const index = randomNums.indexOf(25);
+      randomNums.splice(index, 1);
+    }
+    
+    if (randomNums.includes(13)) {
+      const index = randomNums.indexOf(13);
+      randomNums.splice(index, 1);
+    }
     
     //******** Async Calls
     
