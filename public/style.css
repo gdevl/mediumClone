@@ -1,5 +1,5 @@
 .body__main {
-  color: rgba(0, 0, 0, 1);
+  color: rgba(41, 41, 41, 1);
   max-width: 1200px;
   margin: auto;
 }
@@ -7,8 +7,9 @@
 .brand {
   color: inherit;
   font-family: "Playfair Display", serif;
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 700;
+  color: rgba(0, 0, 0, 0.9);
   text-decoration: none;
 }
 .nav-bar {
@@ -20,6 +21,7 @@
   justify-content: space-between;
   height: 48px;
   padding: 0 22px;
+  margin: 10px 0;
 }
 
 .nav-bar__inner {
@@ -30,6 +32,7 @@
 
 .nav-bar__inner-brand-container {
   grid-column: 1;
+  
 }
 
 .nav-bar__inner-links-container {
@@ -318,6 +321,16 @@
 
 .clap_pressed {
   fill: black;
+}
+
+@media screen and (max-width: 1200px) {
+  .hero-section {
+    flex-wrap: wrap;
+  }
+  
+  .hero-section__follow-section {
+    flex-flow: row;
+  }
 }
 
 @media screen and (max-width: 800px) {
