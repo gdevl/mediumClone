@@ -207,7 +207,7 @@
     width: 20%;
     font-family: 'Fira Sans', sans-serif;
     opacity: 0;
-    
+    margin-left: 5px;
 }
 
 .left-side-panel__follow-box {
@@ -234,7 +234,10 @@
 .follow-box__author:hover {
     text-decoration: underline;
 }
-
+.follow-box__follow-button-container{
+  margin: 0px;
+  padding: 0px;
+}
 .follow-box__follow-button {
     background-color: white;
     color: rgba(3, 168, 124, 1);
@@ -242,7 +245,7 @@
     border-radius: 3px;
     padding: 5px 10px;
     margin: 25px 0;
-    width: 68px;
+    min-width: 68px;
     height: 32px;
 }
 
