@@ -1,4 +1,4 @@
-
+// import { showSignUpBox, hideSignUpBox, showLogInBox, hideLogInBox } from './utils';
 
 //***************************** Global Variables ***********************************/
 
@@ -12,9 +12,14 @@ const leftSidePanel = document.querySelector('.main__left-side-panel');
 //***************************** Functions ******************************************/
 
 const showCompactResponseForm = () => {
+<<<<<<< HEAD
     console.log('Compact Click')
     responseTextArea.classList.add('form-content__text-area--sm');
     responseTextArea.classList.remove('form-content__text-area--lg');
+=======
+    responseTextArea.classList.add('form-content__text-area--sm');
+    responseTextArea.classList.remove('form-content__text-area--lg');
+>>>>>>> master
     responseHeader.classList.add('hidden');
     responseFormBtn.classList.add('hidden');
 }
@@ -37,11 +42,11 @@ const hideResponsePanel = () => {
     responsePanel.classList.remove('slide-left');
 }
 
-const toggleRespondSubmitBtn = () => {
-    if (responseTextArea.value === '') {
-        document.querySelector('.')
-    }
-}
+// const toggleRespondSubmitBtn = () => {
+//     if (responseTextArea.value === '') {
+//         document.querySelector('.')
+//     }
+// }
 
 //***************************** DOM Manipulation ***********************************/
 
@@ -132,7 +137,8 @@ document
                 document.querySelector('.form-container__new-response-form').reset();
                 responseFormBtn.setAttribute.disabled = true;
                 showCompactResponseForm();
-                document.querySelector('.responses-display__no-responses').classList.add('hidden');
+                const noResponses = document.querySelector('.responses-display__no-responses')
+                    if (noResponses) noResponses.classList.add('hidden');
 
 
                 const responsesDisplay = document.createElement('div');
@@ -202,6 +208,12 @@ document
 
 
             document.getElementById('story-responses').prepend(responsesDisplay);
+
+            const responseCountContainer = document.querySelector('.responses__responses-count');
+            let responseCount = responseCountContainer.innerHTML;
+            responseCount = parseInt(responseCount);
+            responseCount++;
+            responseCountContainer.innerHTML = responseCount
 }
 }
         catch (err) {

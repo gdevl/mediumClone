@@ -83,3 +83,10 @@ router.delete(
   })
 );
 module.exports = router;
+
+
+router.post('/update', asyncHandler(async (req, res, next) => {
+  const user = await User.findByPk(req.body.userId);
+  await user.update(req.body)
+  res.status(201).json(user);
+}))
