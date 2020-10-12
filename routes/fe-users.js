@@ -59,6 +59,8 @@ router.get(
     } else {
       res.render("user", {
         storiesData: storiesData(stories),
+        following: following.length,
+        followers: followers.length,
       });
     }
   })
