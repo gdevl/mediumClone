@@ -33,21 +33,21 @@ router.get(
     };
 
     const following = await Follow.findAll({
-      where: { followerId: id }
-    })
+      where: { followerId: id },
+    });
     const followers = await Follow.findAll({
-      where: { followedId: id }
-    })
+      where: { followedId: id },
+    });
 
     if (req.user) {
       const follows = await Follow.findAll({
         where: { followerId: req.user.id, followedId: req.params.id },
       });
       let followBtnText;
-      if(follows.length > 0){
-        followBtnText = 'Following'
-      }else{
-        followBtnText = 'Follow'
+      if (follows.length > 0) {
+        followBtnText = "Following";
+      } else {
+        followBtnText = "Follow";
       }
       res.render("user", {
         storiesData: storiesData(stories),
@@ -64,11 +64,15 @@ router.get(
   })
 );
 
-router.get('/:id(\\d+)/user-info', asyncHandler(async(req, res, next) => {
-  const id = req.params.id;
-  const user = await User.findByPk(id);
-  console.log("user", user.email)
-  res.render('user-info', { user });
-}))
+router.get(
+  "/:id(\\d+)/user-info",
+  asyncHandler(async (req, res, next) => {
+    const id = req.params.id;
+    const user = await User.findByPk(id);
+    // console.log("user", user.email)
+    console.log("user", user.bio);
+    res.render("user-info", { user });
+  })
+);
 
 module.exports = router;

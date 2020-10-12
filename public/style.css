@@ -4,6 +4,14 @@
   margin: auto;
 }
 
+.bookmark__icon {
+  opacity: 0;
+}
+
+.hide-the-followers {
+  opacity: 0;
+}
+
 .brand {
   color: inherit;
   font-family: "Playfair Display", serif;
@@ -50,21 +58,25 @@
 .nav-bar__sign-up-btn,
 .nav-bar__log-in-btn,
 .nav-bar__log-out-btn,
-.nav-bar__new-story-btn {
+.nav-bar__new-story-btn,
+.nav-bar__user-avatar {
   font-size: 1.25em;
 }
 
 .nav-bar__sign-up-btn:hover,
 .nav-bar__log-in-btn:hover,
 .nav-bar__log-out-btn:hover,
-.nav-bar__new-story-btn:hover {
+.nav-bar__new-story-btn:hover,
+.nav-bar__user-avatar:hover {
   color: lightgray;
+  cursor: pointer;
 }
 
 .nav-bar__sign-up-btn:hover::after,
 .nav-bar__log-in-btn:hover::after,
 .nav-bar__log-out-btn:hover::after,
-.nav-bar__new-story-btn:hover::after {
+.nav-bar__new-story-btn:hover::after,
+.nav-bar__user-avatar:hover::after {
   font-family: "Fira Sans", sans-serif;
   font-size: 60%;
   position: absolute;
@@ -322,6 +334,11 @@
   fill: black;
 }
 
+.user-info-form-container {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (max-width: 1200px) {
   .hero-section {
     flex-wrap: wrap;
@@ -379,5 +396,9 @@
   .hero-section__follow-section {
     width: 100%;
     max-width: none;
+  }
+
+  .below-content__author-info {
+    margin: 50px 0;
   }
 }

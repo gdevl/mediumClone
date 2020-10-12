@@ -39,5 +39,6 @@
                             .author-info__author-text
                                 .author-text__name #{author.firstName} #{author.lastName}
                                 span.author-text__bio= author.bio
-                        button.follow-section__button.follow(value=`${author.id}`) #{author.followBtnText}
+                        if user
+                          button.follow-section__button.follow(value=`${author.id}`) #{author.followBtnText}
                     

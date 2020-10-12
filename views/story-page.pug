@@ -5,7 +5,8 @@ block content
         .left-side-panel__follow-box
             a(href=`/users/${story.authorId}`).follow-box__author= story.authorName
             .follow-box__follow-button-container
-                button.follow-box__follow-button.follow(value=`${story.authorId}`) #{followBtnText}
+                if user
+                  button.follow-box__follow-button.follow(value=`${story.authorId}`) #{followBtnText}
         .left-side-panel__widgets-box
             .widgets-box__claps
                 if story.imageClapped
@@ -14,7 +15,7 @@ block content
                     img#claps__img.claps__img(src="/images/clapping1.png" alt="clap" data-value=story.isClapped data-story-id= story.id)
                 span.claps__claps-count #{story.clapsCount}
             .widgets-box__responses
-                i.responses__icon(class="fa fa-comment-o fa-lg" aria-hidden="true")
+                i.responses__icon(id="side-panel__responses-btn" class="fa fa-comment-o fa-lg")
                 span.responses__responses-count #{story.responsesCount}
             .widgets-box__bookmark
                 i.bookmark__icon(class="fa fa-bookmark-o fa-lg" aria-hidden="true")
@@ -27,7 +28,8 @@ block content
                 .information__container
                     .container__author
                         a.author__name-link(href=`/users/${story.authorId}`)= story.authorName
-                        button.author__follow-button.follow(value=`${story.authorId}`) #{followBtnText}
+                        if user
+                          button.author__follow-button.follow(value=`${story.authorId}`) #{followBtnText}
                     .container__story-data
                         span.story-data__date= story.date
                         span.story-data__read-time= story.readTime
@@ -46,7 +48,7 @@ block content
                             img#claps__img.claps__img(src="/images/clapping1.png" alt="clap" data-value=story.isClapped data-story-id= story.id)
                         span.claps__claps-count.story-claps #{story.clapsCount}
                     .content-icons__responses
-                        i.responses__icon(class="fa fa-comment-o fa-2x" aria-hidden="true")
+                        i.responses__icon(id="bottom-panel__responses-btn" class="fa fa-comment-o fa-2x" aria-hidden="true")
                         span.responses__responses-count #{story.responsesCount}
                     .content-icons__bookmark
                         i.bookmark__icon(class="fa fa-bookmark-o fa-2x" aria-hidden="true")
@@ -58,7 +60,8 @@ block content
                         a.author-text__name(href=`/users/${story.authorId}`)= story.authorName
                         .author-text__bio= story.bio
                     .author-info__follow-container
-                        button.follow-container__follow-button.follow(value=`${story.authorId}`) #{followBtnText}
+                        if user
+                          button.follow-container__follow-button.follow(value=`${story.authorId}`) #{followBtnText}
     #responses-background.main__responses-background.hidden
         #responses-container
             include includes/responses

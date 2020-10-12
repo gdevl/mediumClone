@@ -10,8 +10,8 @@
       else
         i(class="fa fa-user-plus nav-bar__sign-up-btn" data-tooltip="Sign Up")
         i(class="fa fa-sign-in  nav-bar__log-in-btn" data-tooltip="Log In")
-      div(class="nav-bar__user-avatar")
+      div(class="nav-bar__user-avatar" data-tooltip="User Profile")
         if user
-          span(class="nav-bar__user-avatar__initials") #{user.firstName[0]}#{user.lastName[0]}
+          i(class="nav-bar__user-avatar__initials") #{user.firstName[0]}#{user.lastName[0]}
         else
-          span(class="nav-bar__user-avatar__initials")
+          i(class="nav-bar__user-avatar__initials")
