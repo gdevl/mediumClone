@@ -91,13 +91,6 @@ router.get(
     }
 
     const authors = await addFollowData(authorsFiltered);
-    // console.log(authors);
-
-    authors.forEach(author => {
-      console.log('author id: ',author.id)
-      console.log('author.followBtnTxt: ',author.followBtnText)
-    })
-
     
     
     const hero = heroStories.pop();

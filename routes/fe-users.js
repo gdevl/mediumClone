@@ -59,6 +59,8 @@ router.get(
     } else {
       res.render("user", {
         storiesData: storiesData(stories),
+        following: following.length,
+        followers: followers.length,
       });
     }
   })
@@ -69,8 +71,6 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const id = req.params.id;
     const user = await User.findByPk(id);
-    // console.log("user", user.email)
-    console.log("user", user.bio);
     res.render("user-info", { user });
   })
 );
