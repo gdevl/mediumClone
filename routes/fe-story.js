@@ -162,7 +162,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const trendingStoriesData = createTrendingStories(topStoryClaps);
 
 
-    res.render('story-page', { story, currentUser, followBtnText, trendingStoriesData });
+    res.render('story-page', { story, currentUser, followBtnText, trendingStoriesData, user: req.user });
 }));
 
 
