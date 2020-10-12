@@ -68,25 +68,28 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
             },
         ],
     });
+    // new responseClap properties;
+    const allResponses = await Response.findAll({
+        where: {
+            storyId: storyId,
+        }
+    })
+    let responseArr = [];
+    if (currentUser) {
+        for (let i = 0; i < allResponses.length; i++) {
+            let newObj = {};
+            let currentResponse = allResponses[i];
+            let responseClapStatus;
+            let responseImageClapped;
+            const responseId = currentResponse.dataValues.id;
 
+            const totalResponseClaps = await ResponseClap.findAll({
+                where: {
+                    responseId: responseId,
+                }
+            });
+            newObj.numResponseClaps = totalResponseClaps.length;
 
-    // storyResponses.rows.map( async (response) => {
-    storyResponses.rows.map( async (response) => {
-        response.date = formatDate(response.dataValues.updatedAt)
-        const responseId = response.dataValues.id;
-
-        const totalResponseClaps = await ResponseClap.findAll({
-            where: {
-                responseId: responseId,
-            }
-        });
-        response.numResponseClaps = totalResponseClaps.length;
-
-        let responseClapStatus;
-        let responseImageClapped;
-
-        if (currentUser) {
-            // console.log("CURRENT USER:  ", currentUser);
             const isResponseClappedByUser = await ResponseClap.findOne({
                 where: {
                     responseId: responseId,
@@ -100,17 +103,20 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
                 responseClapStatus = 'unclap'
                 responseImageClapped = true;
             }
-        } else {
-            responseClapStatus = null;
+            newObj.responseClapStatus = responseClapStatus;
+            newObj.responseImageClapped = responseImageClapped;
+            responseArr.push(newObj);
         }
-        response.responseClapStatus = responseClapStatus;
-        response.responseImageClapped = responseImageClapped;
-        // console.log(response);
+    }
+    // console.log("RESPONSE ARR:  ", responseArr)
+
+
+    // storyResponses.rows.map( async (response) => {
+    storyResponses.rows.map( async (response) => {
+        response.date = formatDate(response.dataValues.updatedAt)
 
     })
-    storyResponses.forEach((response) => {
 
-    })
 
     const story = {
         id: storyData.id,
@@ -131,7 +137,6 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         isClapped,
         imageClapped,
     }
-    console.log("STORY RESPONSES:  ", story.responses[0])
 
     let topStoryClaps = await Story.findAll({
         group: ["Story.id", "User.id"],
@@ -162,7 +167,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const trendingStoriesData = createTrendingStories(topStoryClaps);
 
 
-    res.render('story-page', { story, currentUser, followBtnText, trendingStoriesData, user: req.user });
+    res.render('story-page', { story, currentUser, followBtnText, trendingStoriesData, user: req.user, responseArr });
 }));
 
 
