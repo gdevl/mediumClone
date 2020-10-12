@@ -7,17 +7,17 @@ const router = express.Router();
 //clap creation route
 
 router.post('/', asyncHandler (async (req, res, next) => {
-    const { userId, responseId } = req.body;
+    const { responseId } = req.body;
     const userClap = await ResponseClap.findAll({
         where: {
-            userId: userId,
+            userId: req.user.id,
             responseId: responseId,
         }
     });
 
     if (userClap.length === 0) {
         const newResponseClap = await ResponseClap.create({
-            userId,
+            userId: req.user.id,
             responseId,
         });
         const totalClaps = await ResponseClap.findAll({
@@ -28,18 +28,18 @@ router.post('/', asyncHandler (async (req, res, next) => {
 
         const numClaps = totalClaps.length;
 
-        res.status(201).json({newResponseClap, numClaps})
+        res.status(201).json({newResponseClap, numClaps: numClaps})
     } else {
         next(clapAlreadyExistsError(responseId, "Response"));
     }
 }))
 
 router.delete('/', asyncHandler( async (req, res, next) => {
-    const { userId, responseId } = req.body;
+    const { responseId } = req.body;
     const userClap = await ResponseClap.findOne({
         where: {
             responseId: responseId,
-            userId: userId,
+            userId: req.user.id
         }
     });
     let removeClap = await userClap.destroy();
@@ -50,8 +50,7 @@ router.delete('/', asyncHandler( async (req, res, next) => {
         }
     });
     const numClaps = totalClaps.length;
-
-    res.status(201).json({numClaps})
+    res.status(201).json({numClaps: numClaps})
 }));
 
 

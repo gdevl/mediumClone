@@ -102,50 +102,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
             currentResponse.obj = newObj;
         }
     }
-    console.log(storyResponses.rows);
-    // const allResponses = await Response.findAll({
-    //     where: {
-    //         storyId: storyId,
-    //     }
-    // })
-    // let responseArr = [];
-    // if (currentUser) {
-        //     for (let i = 0; i < allResponses.length; i++) {
-    //         let newObj = {};
-    //         let currentResponse = allResponses[i];
-    //         let responseClapStatus;
-    //         let responseImageClapped;
-    //         const responseId = currentResponse.dataValues.id;
 
-    //         const totalResponseClaps = await ResponseClap.findAll({
-    //             where: {
-    //                 responseId: responseId,
-    //             }
-    //         });
-    //         newObj.numResponseClaps = totalResponseClaps.length;
-
-    //         const isResponseClappedByUser = await ResponseClap.findOne({
-    //             where: {
-    //                 responseId: responseId,
-    //                 userId: currentUser.id,
-    //             }
-    //         })
-    //         if (!isResponseClappedByUser) {
-    //             responseClapStatus = 'toBeClapped'
-    //             responseImageClapped = false
-    //         } else {
-    //             responseClapStatus = 'unclap'
-    //             responseImageClapped = true;
-    //         }
-    //         newObj.responseClapStatus = responseClapStatus;
-    //         newObj.responseImageClapped = responseImageClapped;
-    //         responseArr.push(newObj);
-    //     }
-    // }
-    // console.log("RESPONSE ARR:  ", responseArr)
-
-
-    // storyResponses.rows.map( async (response) => {
     storyResponses.rows.map( async (response) => {
         response.date = formatDate(response.dataValues.updatedAt)
 
