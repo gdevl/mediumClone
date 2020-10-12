@@ -96,6 +96,9 @@ const logUserOut = async () => {
         "Content-Type": "application/json",
       },
     });
+
+    localStorage.clear();
+
     if (res.status === 401) {
       return;
     }
