@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    .errors-container
+    .user-info-form-container
+        form(class="new-story-form pure-form pure-form-stacked")
+            fieldset
+                .form-group
+                    input(class="pure-input-1" type="text", name="username", placeholder="username" required value=user.username)
+                .form-group
+                    input(class="pure-input-1" type="text", name="first-name", placeholder="first-name" required value= user.firstName)
+                .form-group
+                    input(class="pure-input-1" type="text", name="last-name", placeholder="last-name" required value= user.lastName)
+                .form-group
+                    input(class="pure-input-1" type="email", name="email", placeholder="you@email.com" required value= user.email)
+                .form-group
+                    if user.bio
+                        textarea(rows="25" class="pure-input-1 user-info-textarea" name="bio", placeholder="Tell us about you..." value= user.bio)
+                    else
+                        textarea(rows="25" class="pure-input-1 user-info-textarea" name="bio", placeholder="Tell us about you...")
+                .form-group
+                    label(for="avatarUrl") Add an image
+                    if user.avatarUrl
+                        input(class="pure-input-1" type="url", name="avatar-url", placeholder="https://example.com/image.jpg" value= user.avatarUrl)
+                    else
+                        input(class="pure-input-1" type="url", name="avatar-url", placeholder="https://example.com/image.jpg")
+                button(type="submit" class="make-it-black pure-button pure-button-primary") Update
+    script(type="module" src="/js/user-info.js")

@@ -18,23 +18,30 @@ document.addEventListener("DOMContentLoaded", () => {
   if (closeLogInBtn) {
     closeLogInBtn.addEventListener("click", hideLogInBox);
   }
+  
+  const userId = localStorage.getItem('MEDIUM_CLONE_CURRENT_USER_ID');
+  const userBtn = document.querySelector('.nav-bar__user-avatar__initials');
+  if (userId) userBtn.addEventListener('click', () => {
+    window.location.href = `/users/${userId}/user-info`;
+  });
+  
 });
 
-const showSignUpBox = () => {
+export const showSignUpBox = () => {
   document.querySelector(".center-box__sign-up-errors-container").innerHTML =
     "";
   document.querySelector(".sign-up-overlay").classList.remove("hidden");
 };
 
-const hideSignUpBox = () => {
+export const hideSignUpBox = () => {
   document.querySelector(".sign-up-overlay").classList.add("hidden");
 };
 
-const showLogInBox = () => {
+export const showLogInBox = () => {
   document.querySelector(".center-box__log-in-errors-container").innerHTML = "";
   document.querySelector(".log-in-overlay").classList.remove("hidden");
 };
 
-const hideLogInBox = () => {
+export const hideLogInBox = () => {
   document.querySelector(".log-in-overlay").classList.add("hidden");
 };
