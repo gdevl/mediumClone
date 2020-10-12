@@ -99,7 +99,7 @@ const logUserOut = async () => {
     if (res.status === 401) {
       return;
     }
-    window.location.reload();
+    window.location.href = "/";
   } catch (err) {
     handleErrors(err);
   }
