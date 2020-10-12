@@ -174,34 +174,34 @@ document
                     responsesDisplay.appendChild(iconsContainer);
                         
                         
-                        const clapsImg = document.createElement('img');
-                        clapsImg.className = 'claps__img';
-                        clapsImg.id = 'claps__img';
-                        clapsImg.dataset.value = response.isClapped;
-                        clapsImg.dataset.storyId = response.id;
-                        
-                        if (response.imageClapped) {
-                            clapsImg.src = `/images/clapped3.png`;
-                        }
-                        else {
-                            clapsImg.src = `/images/clapping1.png`;
-                        }
-                        
-                        iconsContainer.appendChild(clapsImg);
-                        
-                        const clapCount = document.createElement('div');
-                        if (response.newResponse.numClaps) {
-                            clapCount.innerHTML = response.newResponse.numClaps;                            
-                        }
-                        // else {
-                        //     clapCount.innerHTML = '0';
-                        // }
-                        iconsContainer.appendChild(clapCount);
-                        
-                        
-                document.getElementById('story-responses').prepend(responsesDisplay);
+            const clapsImg = document.createElement('img');
+            clapsImg.className = 'claps__img';
+            clapsImg.id = 'claps__img';
+            clapsImg.dataset.value = response.isClapped;
+            clapsImg.dataset.storyId = response.id;
+            
+            if (response.imageClapped) {
+                clapsImg.src = `/images/clapped3.png`;
             }
-        }
+            else {
+                clapsImg.src = `/images/clapping1.png`;
+            }
+            
+            iconsContainer.appendChild(clapsImg);
+            
+            const clapCount = document.createElement('div');
+            if (response.newResponse.numClaps) {
+                clapCount.innerHTML = response.newResponse.numClaps;                            
+            }
+            // else {
+            //     clapCount.innerHTML = '0';
+            // }
+            iconsContainer.appendChild(clapCount);
+            
+            
+            document.getElementById('story-responses').prepend(responsesDisplay);
+}
+}
         catch (err) {
             console.error(err)
         }
