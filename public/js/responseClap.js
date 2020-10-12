@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
     const clapImgs = document.querySelectorAll(".icons__claps");
 
     clapImgs.forEach((clapImg) => {
-        // console.log(clapImg);
         clapImg.addEventListener("click", (e) => responseClapping(clapImg));
 
     });

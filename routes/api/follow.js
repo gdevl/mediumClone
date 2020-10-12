@@ -9,9 +9,6 @@ router.post(
   "/",
   asyncHandler(async (req, res, next) => {
     const { followerId, followedId } = req.body;
-    console.log("followerId: ", followerId);
-    console.log("followedId: ", followedId); // undefined
-    console.log("req.body: ", req.body);
 
     const newFollow = await Follow.create({ followerId, followedId });
     const followersArr = await Follow.findAll({
@@ -41,7 +38,6 @@ router.delete(
       }
     })
     const followers = `${followersArr.length} Followers`;
-    console.log('followers: ', followers);
     res.status(201).json({message: "Follow deleted", followers});
   })
 );
