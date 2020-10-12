@@ -2,13 +2,38 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-flow: column;
+    padding: 30px 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    margin: 0px 22px;
+}
+
+.trending-bar__trending-header {
+    display: flex;
+    align-items: center;
+    color: rgba(41, 41, 41, 1);
+}
+
+.trending-bar__trending-header > div {
+    padding: 0 10px;
+}
+
+.trending-header__icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 7px;
+}
+
+.trending-header__text {
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .trending-bar__content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 20px;
 }
 
 .content__story {
@@ -47,7 +72,7 @@
     font-size: 13px;
     font-weight: bold;
     text-decoration: none;
-    color: black;
+    color: rgba(41, 41, 41, 1);
 }
 
 .author__name {
@@ -59,7 +84,7 @@
     font-weight: bold;
     font-family: 'Fira Sans', sans-serif;
     text-decoration: none;
-    color: black;
+    color: rgba(41, 41, 41, 1);
     margin: 5px 0;
 }
 
