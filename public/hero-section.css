@@ -203,6 +203,10 @@
     height: 32px;
 }
 
+.follow-section__button:hover {
+  cursor: pointer;
+}
+
 .follow-section__button:focus {
   outline: none;
 }
