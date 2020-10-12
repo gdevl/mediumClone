@@ -105,12 +105,12 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         }
         response.responseClapStatus = responseClapStatus;
         response.responseImageClapped = responseImageClapped;
-        console.log(response);
+        // console.log(response);
 
     })
-    // storyResponses.forEach((response) => {
+    storyResponses.forEach((response) => {
 
-    // })
+    })
 
     const story = {
         id: storyData.id,
@@ -131,7 +131,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         isClapped,
         imageClapped,
     }
-    // console.log("STORY RESPONSES:  ", story.responses)
+    console.log("STORY RESPONSES:  ", story.responses[0])
 
     let topStoryClaps = await Story.findAll({
         group: ["Story.id", "User.id"],
