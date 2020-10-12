@@ -9,7 +9,8 @@ router.get(
   "/",
   asyncHandler(async (req, res, next) => {
     
-    const randomNums = Array.from({ length: 6 }, () => Math.floor(Math.random()*41));
+    const randomNums = Array.from({ length: 6 }, () => Math.floor(Math.random()*35 + 1));
+    console.log("randomNums", randomNums)
     
     //******** Async Calls
     
@@ -51,23 +52,31 @@ router.get(
     });
     
     //********** Sync functions
-    const authors = []
+    const authorsUnfiltered = []
+    const seen = new Set();
     
     heroStories.map(story => {
       story.readTime = determineReadTime(story.content);
       story.date = formatDate(story.updatedAt);
-      authors.push(story.User)
+      authorsUnfiltered.push(story.User)
     });
     
     // filter any repeated authors
-    // const authors = authorsUnfiltered.filter((_, i, self) => i === self.indexOf(i))
+    const authors = authorsUnfiltered.filter(ele => {
+      if (!seen.has(ele.id)) {
+        seen.add(ele.id);
+        return ele.id;
+      }
+    });
+    
     
     const hero = heroStories.pop();
+    heroStories.splice(4);
     
     topStoryClaps = topStoryClaps.splice(0, 6);
     const trendingStoriesData = createTrendingStories(topStoryClaps);
     
-    console.log('TESTING!!!!!!!!!!!!!!!!   ', heroStories[0].User.avatarUrl)  //!  << DELETE THIS >>
+    
     const storiesData = (query) => {
       return query.map((story) => {
         return {

@@ -5,10 +5,10 @@
         .feature-section__author
             img.author__avatar(src= hero.User.avatarUrl)
             a.author__name(href=`/user/${hero.User.id}`) #{hero.User.firstName} #{hero.User.lastName}
-        .feature-section__title= hero.title
+        a.feature-section__title(href=`/story/${hero.id}`)= hero.title
         .feature-section__article-hint= hero.content
         .feature-section__article-footer
-            a.article-footer__link(href=`/story/${hero.id}`)
+            a.article-footer__link(href=`/story/${hero.id}`) Read More
             .article-footer__read-time= hero.readTime
             .article-footer__star
                 i.star__icon(class="fa fa-star fa-xs" aria-hidden="true")
@@ -18,8 +18,8 @@
                 .article__text-box
                     .text-box__author
                         img.author__avatar(src= article.User.avatarUrl)
-                        span.author__name #{article.User.firstName} #{article.User.lastName}
-                    .text-box__title= article.title
+                        a.author__name(href=`/users/${article.User.id}`) #{article.User.firstName} #{article.User.lastName}
+                    a.text-box__title(href=`/story/${article.id}`)= article.title
                     .text-box__footer
                         .footer__date= article.date
                         .footer__read-time= article.readTime

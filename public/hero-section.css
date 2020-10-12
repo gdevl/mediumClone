@@ -3,6 +3,7 @@
     font-family: "Fira Sans", sans-serif;
     flex-flow: row;
     margin: 0 22px;
+    margin-bottom: 40px;
 }
 
 .hero-section > div {
@@ -13,13 +14,54 @@
     display: flex;
     flex-flow: column;
     margin-right: 20px;
-    /* width: 300px; */
+}
+
+.hero-section__feature-section > div {
+    margin: 7px 0;
 }
 
 .img-container__img {
     width: 100%;
     height: auto;
+    margin-bottom: 15px;
 }
+
+.feature-section__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(41, 41, 41, 1);
+    text-decoration: none;
+}
+
+.feature-section__article-hint {
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgba(41, 41, 41, 1);
+    line-height: 28px;
+    max-height: 84px;
+}
+
+.article-footer__link {
+    text-decoration: none;
+    color: rgba(117, 117, 117, 1);
+}
+
+.article-footer__link:hover {
+    color: rgba(41, 41, 41, 1);
+}
+
+.article-footer__read-time {
+    margin: 0 20px;
+}
+
+.articles-img__img {
+    width: 100px;
+    height: 100px;
+    
+}
+
+/************* Shared ***/
 
 .author__avatar {
     width: 20px;
@@ -29,37 +71,8 @@
 .author__name {
     font-size: 12px;
     font-weight: bold;
-}
-
-.feature-section__title {
-    font-size: 20px;
-    font-weight: 600;
-    color: rgba(41, 41, 41, 1);
-}
-
-.feature-section__article-hint {
-    font-size: 16px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: rgba(41, 41, 41, 1);
-    line-height: 28px;
-}
-
-.article-footer__link {
     text-decoration: none;
 }
-
-.article-footer__link:hover {
-    color: rgba(41, 41, 41, 1);
-}
-
-.articles-img__img {
-    width: 100px;
-    height: 100px;
-    
-}
-
-/****************/
 
 .feature-section__article-footer,
 .text-box__footer {
@@ -70,9 +83,10 @@
 }
 
 .star__icon {
+    opacity: 0.55;
 }
 
-/****************/
+/************ Middle Section ****/
 
 .hero-section__articles-section {
     margin: 0 20px;
@@ -85,10 +99,17 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
+    margin-bottom: 15px;
 }
 
-.articles__text-box {
+.article__text-box {
 
+}
+
+.text-box__author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
 .text-box__title {
@@ -98,14 +119,17 @@
     text-decoration: none;
 }
 
-.text-box__footer
+.text-box__footer{
+    margin-top: 15px;
+}
 
-/****************/
+/************ Right Section ****/
 
 .hero-section__follow-section {
     display: flex;
     flex-flow: column;
-    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .follow-section__header {
@@ -180,4 +204,8 @@
 
 .follow-section__button:focus {
     outline: none;
+}
+
+.footer__read-time {
+    margin: 0 20px;
 }
