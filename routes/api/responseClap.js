@@ -20,7 +20,7 @@ router.post('/', asyncHandler (async (req, res, next) => {
             userId,
             responseId,
         });
-        const totalClaps = await StoryClap.findAll({
+        const totalClaps = await ResponseClap.findAll({
             where: {
                 responseId: responseId,
             }

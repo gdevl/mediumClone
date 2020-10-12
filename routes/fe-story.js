@@ -84,8 +84,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
         let responseClapStatus;
         let responseImageClapped;
 
-        if (req.user) {
-            currentUser = req.user;
+        if (currentUser) {
             const isResponseClappedByUser = await ResponseClap.findOne({
                 where: {
                     responseId: responseId,
@@ -102,7 +101,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
             response.responseClapStatus = responseClapStatus;
             response.responseImageClapped = responseImageClapped;
         } else {
-            isClapped = null;
+            responseClapStatus = null;
         }
         console.log("storyResponses", response)
     })
