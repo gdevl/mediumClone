@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 const responseClapping = (element) => {
     console.log("ELEMENT: ", element);
-    console.log(element.value);
+    console.log(element.dataset.value);
     console.log(element.dataset.responseId);
-    if (element.value === "toBeClapped") {
-        element.value = "unclap";
+    if (element.dataset.value === "toBeClapped") {
+        element.dataset.value = "unclap";
         element.src = "/images/clapped3.png";
         postResponseClap(element.dataset.responseId);
-    } else if (element.value === "unclap") {
-        element.value = "toBeClapped";
+    } else if (element.dataset.value === "unclap") {
+        element.dataset.value = "toBeClapped";
         element.src = "/images/clapping1.png";
         deleteResponseClap(element.dataset.responseId);
     } else {
