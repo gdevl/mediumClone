@@ -24,6 +24,13 @@ const postFollow = async (val) => {
     if (res.status === 401) {
       return;
     }
+    const resJson = await res.json();
+    const followers = document.querySelectorAll(".followers")
+    if(followers){
+      followers.forEach(followField => {
+        followField.innerHTML = resJson.followers;
+      })
+    }
   } catch (err) {
     handleErrors(err);
   }
@@ -61,6 +68,14 @@ const destroyFollow = async (val) => {
     });
     if (res.status === 401) {
       return;
+    }
+    const resJson = await res.json();
+    console.log('json: ',resJson)
+    const followers = document.querySelectorAll(".followers")
+    if (followers) {
+      followers.forEach(followField => {
+        followField.innerHTML = resJson.followers;
+      })
     }
   } catch (err) {
     handleErrors(err);

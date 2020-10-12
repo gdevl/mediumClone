@@ -14,8 +14,14 @@ router.post(
     console.log("req.body: ", req.body);
 
     const newFollow = await Follow.create({ followerId, followedId });
+    const followersArr = await Follow.findAll({
+      where: {
+        followedId : followedId
+      }
+    })
+    const followers = `${followersArr.length} Followers`
 
-    res.status(201).json({ newFollow });
+    res.status(201).json({ newFollow, followers });
   })
 );
 
@@ -29,7 +35,14 @@ router.delete(
         followedId,
       },
     });
-    res.status(201).json("Follow deleted");
+    const followersArr = await Follow.findAll({
+      where: {
+        followedId: followedId
+      }
+    })
+    const followers = `${followersArr.length} Followers`;
+    console.log('followers: ', followers);
+    res.status(201).json({message: "Follow deleted", followers});
   })
 );
 
