@@ -201,9 +201,7 @@ document
         if (response.newResponse.numClaps) {
           clapCount.innerHTML = response.newResponse.numClaps;
         }
-        // else {
-        //     clapCount.innerHTML = '0';
-        // }
+        
         iconsContainer.appendChild(clapCount);
 
         document.getElementById("story-responses").prepend(responsesDisplay);
