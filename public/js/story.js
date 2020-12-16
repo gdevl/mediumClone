@@ -39,10 +39,50 @@ const hideResponsePanel = () => {
   responsePanel.classList.remove("slide-left");
 };
 
-const deleteResponse = id => {
-  const response = document.getElementById(`response-${id}`);
-  response.remove();
+
+const deleteResponse = async id => {
+  const res = await fetch(`/api/stories/${storyId}/responses/${id}`, { 
+    method: 'DELETE' 
+  });
+      
+  if (res.ok) {
+    const response = document.getElementById(`response-${id}`);
+    response.remove();
+    document
+      .querySelectorAll('.responses__responses-count')
+      .forEach(countDiv => {
+        let count = countDiv.innerHTML;
+        count = parseInt(count, 10);
+        count--;
+        countDiv.innerHTML = count;
+      });
+  }
+  
 }
+
+const listenToTrashBins = () => {
+  document
+    .querySelectorAll('.trash-bin-container__trash-bin')
+    .forEach(trashBin => {
+      trashBin.addEventListener('click', (e) => {
+        const id = e.target.id.slice(e.target.id.indexOf('-') + 1);
+        const confirmDelete = document.getElementById(`confirmDelete-${id}`);
+        confirmDelete.classList.remove("hidden")
+      });
+    });
+}
+
+const listenToConfirmDeletes = () => {
+  document
+    .querySelectorAll('.trash-bin-container__confirm-delete')
+    .forEach(confirmDelete => {
+      confirmDelete.addEventListener('click', async e => {
+        const id = e.target.id.slice(e.target.id.indexOf('-') + 1);
+        await deleteResponse(id)
+      });
+    });
+}
+  
 
 // const toggleRespondSubmitBtn = () => {
 //     if (responseTextArea.value === '') {
@@ -115,6 +155,9 @@ responseTextArea.addEventListener("input", () => {
     : (responseFormSubmitBtn.disabled = false);
 });
 
+listenToTrashBins();
+listenToConfirmDeletes();
+
 document
   .querySelector(".form-container__new-response-form")
   .addEventListener("submit", async (event) => {
@@ -153,6 +196,7 @@ document
 
         const responsesDisplay = document.createElement("div");
         responsesDisplay.classList.add("responses-display__container");
+        responsesDisplay.id = `response-${response.newResponse.id}`
 
           const responseHeader = document.createElement("div");
           responseHeader.classList.add("container__response-header");
@@ -238,13 +282,22 @@ document
 
         document.getElementById("story-responses").prepend(responsesDisplay);
 
-        const responseCountContainer = document.querySelector(
-          ".responses__responses-count"
-        );
+        const responseCountContainer = document.querySelector(".responses__responses-count");
+        
         let responseCount = responseCountContainer.innerHTML;
         responseCount = parseInt(responseCount);
         responseCount++;
         responseCountContainer.innerHTML = responseCount;
+        
+        const newTrashBin = document.getElementById(`trashBin-${response.newResponse.id}`);
+        newTrashBin.addEventListener('click', (e) => {
+          newTrashBin.style.marginRight = '20px'
+          const id = e.target.id.slice(e.target.id.indexOf('-') + 1);
+          const confirmDelete = document.getElementById(`confirmDelete-${id}`);
+          confirmDelete.classList.remove("hidden")
+        });
+        listenToConfirmDeletes();
+        
       }
     } catch (err) {
       console.error(err);
@@ -252,40 +305,8 @@ document
   });
 
 
-document
-  .querySelectorAll('.trash-bin-container__trash-bin')
-  .forEach(trashBin => {
-    trashBin.addEventListener('click', (e) => {
-      const id = e.target.id.slice(e.target.id.indexOf('-') + 1);
-      const confirmDelete = document.getElementById(`confirmDelete-${id}`);
-      confirmDelete.classList.remove("hidden")
-    });
-  });
   
-  
-  document
-  .querySelectorAll('.trash-bin-container__confirm-delete')
-  .forEach(confirmDelete => {
-    confirmDelete.addEventListener('click', async e => {
-      const id = e.target.id.slice(e.target.id.indexOf('-') + 1);
-      console.log('confirm delete: ', id)
-      const res = await fetch(`/api/stories/${storyId}/responses/${id}`, { method: 'DELETE' });
-      
-      if (res.ok) {
-        const response = document.getElementById(`response-${id}`);
-        response.remove();
-        document
-          .querySelectorAll('.responses__responses-count')
-          .forEach(countDiv => {
-            let count = countDiv.innerHTML;
-            count = parseInt(count, 10);
-            count--;
-            countDiv.innerHTML = count;
-          });
-      }
-    });
-  });
-  
+
   
   
 document.querySelector(".icons__claps");
