@@ -521,15 +521,6 @@
   cursor: pointer;
 }
 
-.trash-bin-container__new-trash-bin {
-  max-width: 20px;
-  max-height: 20px;
-  opacity: .50;
-  margin-right: 40px;
-  transition: opacity 300ms ease-in-out;
-  cursor: pointer;
-}
-
 .trash-bin-container__trash-bin:hover {
   opacity: 1;
   

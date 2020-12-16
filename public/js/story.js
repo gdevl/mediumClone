@@ -82,7 +82,18 @@ const listenToConfirmDeletes = () => {
       });
     });
 }
-  
+
+const listenForCloseConfirmDeletes = () => {
+  document.addEventListener('click', event => {
+    const id = event.target.id
+    if (id.startsWith('trashBin-')) return
+    const confirmDeletes = document.querySelectorAll('.trash-bin-container__confirm-delete');
+    confirmDeletes.forEach(confirm => {
+      if (confirm.id !== id)
+      confirm.classList.add('hidden')
+    });  
+  });
+}
 
 // const toggleRespondSubmitBtn = () => {
 //     if (responseTextArea.value === '') {
@@ -157,6 +168,8 @@ responseTextArea.addEventListener("input", () => {
 
 listenToTrashBins();
 listenToConfirmDeletes();
+listenForCloseConfirmDeletes();
+
 
 document
   .querySelector(".form-container__new-response-form")
@@ -245,7 +258,6 @@ document
               const trashBinIcon = document.createElement("img");
               trashBinIcon.src = '../images/trash_bin.svg';
               trashBinIcon.className = "trash-bin-container__trash-bin";
-              trashBinIcon.classList.add("new-trash-bin");
               trashBinIcon.id = `trashBin-${response.newResponse.id}`;
               trashBinContainer.appendChild(trashBinIcon);
               
@@ -297,6 +309,7 @@ document
           confirmDelete.classList.remove("hidden")
         });
         listenToConfirmDeletes();
+        listenForCloseConfirmDeletes();
         
       }
     } catch (err) {
