@@ -491,7 +491,7 @@
   font-size: 13px;
 }
 
-.author-info__trash-bin-container {
+.response-header__trash-bin-container {
   display: flex;
   flex-flow: row;
   align-items: center;
@@ -517,6 +517,10 @@
   margin-right: 20px;
   transition: opacity 300ms ease-in-out;
   cursor: pointer;
+}
+
+.new-trash-bin {
+  margin-right: 40px;
 }
 
 .trash-bin-container__trash-bin:hover {

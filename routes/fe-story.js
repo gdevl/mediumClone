@@ -67,6 +67,8 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
                 attributes: [],
             },
         ],
+        order: [["createdAt", "DESC"]],
+        
     });
 
     if (currentUser) {

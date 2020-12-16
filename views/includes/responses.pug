@@ -28,7 +28,7 @@
                             a.container__author-name(href=`/users/${response.User.id}`) #{response.User.firstName} #{response.User.lastName}
                             .container__date=response.date
                     if currentUser.id === response.User.id
-                        .author-info__trash-bin-container
+                        .response-header__trash-bin-container
                             .trash-bin-container__confirm-delete(id=`confirmDelete-${response.id}` class='hidden') Confirm Delete
                             img.trash-bin-container__trash-bin(id=`trashBin-${response.id}` src='../images/trash_bin.png')
                 .container__content=response.content

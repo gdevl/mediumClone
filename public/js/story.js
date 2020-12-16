@@ -193,7 +193,7 @@ document
               const confirmDelete = document.createElement("div");
               confirmDelete.className = "trash-bin-container__confirm-delete";
               confirmDelete.classList.add("hidden");
-              confirmDelete.id = `confirmDelete-${response.id}`
+              confirmDelete.id = `confirmDelete-${response.newResponse.id}`
               confirmDelete.innerHTML = "Confirm Delete"
               trashBinContainer.appendChild(confirmDelete);
               
@@ -201,7 +201,8 @@ document
               const trashBinIcon = document.createElement("img");
               trashBinIcon.src = '../images/trash_bin.svg';
               trashBinIcon.className = "trash-bin-container__trash-bin";
-              trashBinIcon.id = `trashBin-${response.id}`;
+              trashBinIcon.classList.add("new-trash-bin");
+              trashBinIcon.id = `trashBin-${response.newResponse.id}`;
               trashBinContainer.appendChild(trashBinIcon);
               
 
