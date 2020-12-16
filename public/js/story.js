@@ -273,6 +273,14 @@ document
       if (res.ok) {
         const response = document.getElementById(`response-${id}`);
         response.remove();
+        document
+          .querySelectorAll('.responses__responses-count')
+          .forEach(countDiv => {
+            let count = countDiv.innerHTML;
+            count = parseInt(count, 10);
+            count--;
+            countDiv.innerHTML = count;
+          });
       }
     });
   });
