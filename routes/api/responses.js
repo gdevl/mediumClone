@@ -25,9 +25,15 @@ router.post('/create', responseValidator, handleValidationErrors, asyncHandler(a
     const date = formatDate(newResponse.createdAt)
     
     res.status(201).json({ newResponse, user, date });
-}))
+}));
 
 
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const response = await Response.findByPk(id);
+    await response.destroy();
+    res.status(200).json({ message: `Response Id: ${id} has been deleted`});
+}));
 
 
 module.exports = router;

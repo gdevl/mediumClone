@@ -19,13 +19,18 @@
 .responses-container__responses-display#story-responses
     if story.responsesCount > 0
         for response in story.responses
-            .responses-display__container
-                .container__response-info
-                    .response-info__author
-                        img.author__image(src=response.User.avatarUrl, alt="")
-                    .response-info__container
-                        a.container__author-name(href=`/users/${response.User.id}`) #{response.User.firstName} #{response.User.lastName}
-                        .container__date=response.date
+            .responses-display__container(id=`response-${response.id}`)
+                .container__response-header
+                    .response-header__author-info
+                        .author-info__container
+                            img.author__image(src=response.User.avatarUrl, alt="")
+                        .author-info__container
+                            a.container__author-name(href=`/users/${response.User.id}`) #{response.User.firstName} #{response.User.lastName}
+                            .container__date=response.date
+                    if currentUser.id === response.User.id
+                        .author-info__trash-bin-container
+                            .trash-bin-container__confirm-delete(id=`confirmDelete-${response.id}` class='hidden') Confirm Delete
+                            img.trash-bin-container__trash-bin(id=`trashBin-${response.id}` src='../images/trash_bin.png')
                 .container__content=response.content
                 .container__icons
                     if user

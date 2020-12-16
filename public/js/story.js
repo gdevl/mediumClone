@@ -1,4 +1,5 @@
 // import { showSignUpBox, hideSignUpBox, showLogInBox, hideLogInBox } from './utils';
+// import trashBin from '../images/trash_bin.svg';
 
 //***************************** Global Variables ***********************************/
 
@@ -35,6 +36,11 @@ const hideResponsePanel = () => {
   responseBackground.classList.add("hidden");
   responsePanel.classList.remove("slide-left");
 };
+
+const deleteResponse = id => {
+  const response = document.getElementById(`response-${id}`);
+  response.remove();
+}
 
 // const toggleRespondSubmitBtn = () => {
 //     if (responseTextArea.value === '') {
@@ -146,42 +152,65 @@ document
         const responsesDisplay = document.createElement("div");
         responsesDisplay.classList.add("responses-display__container");
 
-        const responseInfo = document.createElement("div");
-        responseInfo.classList.add("container__response-info");
-        responsesDisplay.appendChild(responseInfo);
+          const responseHeader = document.createElement("div");
+          responseHeader.classList.add("container__response-header");
+          responsesDisplay.appendChild(responseHeader);
 
-        const authorImgContainer = document.createElement("div");
-        authorImgContainer.className = 'class="response-info__author';
-        responseInfo.appendChild(authorImgContainer);
+            const responseAuthorInfo = document.createElement("div");
+            responseAuthorInfo.classList.add("response-header__author-info")
+            responseHeader.appendChild(responseAuthorInfo)
+        
+              const authorImgContainer = document.createElement("div");
+              authorImgContainer.className = 'class="author-info__author';
+              responseAuthorInfo.appendChild(authorImgContainer);
 
-        const authorImg = document.createElement("img");
-        authorImg.className = "author__image";
-        authorImg.src = response.user.avatarUrl;
-        authorImgContainer.appendChild(authorImg);
+                const authorImg = document.createElement("img");
+                authorImg.className = "author__image";
+                authorImg.src = response.user.avatarUrl;
+                authorImgContainer.appendChild(authorImg);
 
-        const responseInfoContainer = document.createElement("div");
-        responseInfoContainer.className = "response-info__container";
-        responseInfo.appendChild(responseInfoContainer);
+              const authorInfoContainer = document.createElement("div");
+              authorInfoContainer.className = "author-info__container";
+              responseAuthorInfo.appendChild(authorInfoContainer);
 
-        const authorName = document.createElement("a");
-        authorName.className = "container__author-name";
-        authorName.href = `/users/${response.user.username}`;
-        authorName.innerHTML = `${response.user.firstName} ${response.user.lastName}`;
-        responseInfoContainer.appendChild(authorName);
+                const authorName = document.createElement("a");
+                authorName.className = "container__author-name";
+                authorName.href = `/users/${response.user.username}`;
+                authorName.innerHTML = `${response.user.firstName} ${response.user.lastName}`;
+                authorInfoContainer.appendChild(authorName);
 
-        const date = document.createElement("div");
-        date.className = "container__date";
-        date.innerHTML = response.date;
-        responseInfoContainer.appendChild(date);
+                const date = document.createElement("div");
+                date.className = "container__date";
+                date.innerHTML = response.date;
+                authorInfoContainer.appendChild(date);
+              
+            const trashBinContainer = document.createElement("div");
+            trashBinContainer.className = "response-header__trash-bin-container";
+            responseHeader.appendChild(trashBinContainer);
+            
+              const confirmDelete = document.createElement("div");
+              confirmDelete.className = "trash-bin-container__confirm-delete";
+              confirmDelete.classList.add("hidden");
+              confirmDelete.id = `confirmDelete-${response.id}`
+              confirmDelete.innerHTML = "Confirm Delete"
+              trashBinContainer.appendChild(confirmDelete);
+              
+            
+              const trashBinIcon = document.createElement("img");
+              trashBinIcon.src = '../images/trash_bin.svg';
+              trashBinIcon.className = "trash-bin-container__trash-bin";
+              trashBinIcon.id = `trashBin-${response.id}`;
+              trashBinContainer.appendChild(trashBinIcon);
+              
 
-        const content = document.createElement("div");
-        content.className = "container__content";
-        content.innerHTML = response.newResponse.content;
-        responsesDisplay.appendChild(content);
+          const content = document.createElement("div");
+          content.className = "container__content";
+          content.innerHTML = response.newResponse.content;
+          responsesDisplay.appendChild(content);
 
-        const iconsContainer = document.createElement("div");
-        iconsContainer.className = "container__icons";
-        responsesDisplay.appendChild(iconsContainer);
+          const iconsContainer = document.createElement("div");
+          iconsContainer.className = "container__icons";
+          responsesDisplay.appendChild(iconsContainer);
 
         const clapsImg = document.createElement("img");
         clapsImg.className = "claps__img";
@@ -219,4 +248,32 @@ document
     }
   });
 
+
+document
+  .querySelectorAll('.trash-bin-container__trash-bin')
+  .forEach(trashBin => {
+    trashBin.addEventListener('click', (e) => {
+      const id = e.target.id.slice(e.target.id.indexOf('-') + 1);
+      const confirmDelete = document.getElementById(`confirmDelete-${id}`);
+      confirmDelete.classList.remove("hidden")
+    });
+  });
+  
+  
+  document
+  .querySelectorAll('.trash-bin-container__confirm-delete')
+  .forEach(confirmDelete => {
+    confirmDelete.addEventListener('click', async e => {
+      const id = e.target.id.slice(e.target.id.indexOf('-') + 1);
+      const res = await fetch(`/api/responses/${id}`, { method: 'DELETE' });
+      
+      if (res.ok) {
+        const response = document.getElementById(`response-${id}`);
+        response.remove();
+      }
+    });
+  });
+  
+  
+  
 document.querySelector(".icons__claps");
