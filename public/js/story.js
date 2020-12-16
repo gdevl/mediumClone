@@ -95,12 +95,6 @@ const listenForCloseConfirmDeletes = () => {
   });
 }
 
-// const toggleRespondSubmitBtn = () => {
-//     if (responseTextArea.value === '') {
-//         document.querySelector('.')
-//     }
-// }
-
 //***************************** DOM Manipulation ***********************************/
 
 if (window.pageYOffset > 300) {
