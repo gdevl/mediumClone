@@ -22,7 +22,11 @@ module.exports = (sequelize, DataTypes) => {
     Response.belongsTo(models.User, { foreignKey: "userId" });
     Response.belongsTo(models.Story, { foreignKey: "storyId" });
 
-    Response.hasMany(models.ResponseClap, { foreignKey: 'responseId'});
+    Response.hasMany(models.ResponseClap, { 
+      foreignKey: 'responseId',
+      onDelete: 'CASCADE',
+      hooks: true
+    });
   };
   return Response;
 };

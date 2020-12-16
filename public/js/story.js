@@ -9,6 +9,8 @@ const responseFormBtn = document.getElementById("new-response-form__buttons");
 const responseBackground = document.getElementById("responses-background");
 const responsePanel = document.getElementById("responses-container");
 const leftSidePanel = document.querySelector(".main__left-side-panel");
+const url = window.location.pathname;
+const storyId = url.match(/\d+$/)[0];
 
 //***************************** Functions ******************************************/
 
@@ -119,8 +121,8 @@ document
     event.preventDefault();
 
     const url = window.location.pathname;
-    const userId = localStorage.getItem("MEDIUM_CLONE_CURRENT_USER_ID");
     const storyId = url.match(/\d+$/)[0];
+    const userId = localStorage.getItem("MEDIUM_CLONE_CURRENT_USER_ID");
 
     const responseContent = {
       content: responseTextArea.value,
@@ -265,7 +267,8 @@ document
   .forEach(confirmDelete => {
     confirmDelete.addEventListener('click', async e => {
       const id = e.target.id.slice(e.target.id.indexOf('-') + 1);
-      const res = await fetch(`/api/responses/${id}`, { method: 'DELETE' });
+      console.log('confirm delete: ', id)
+      const res = await fetch(`/api/stories/${storyId}/responses/${id}`, { method: 'DELETE' });
       
       if (res.ok) {
         const response = document.getElementById(`response-${id}`);
