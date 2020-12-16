@@ -12,13 +12,14 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const id = req.params.id;
     // const story = await Story.findByPK(id);
-    const responsesJson = await Response.findAll({
+    const responses = await Response.findAll({
       where: { storyId: id },
       order: [["createdAt", "DESC"]],
       include: [{ model: User, as: "user" }],
     });
-
-    const responseObjs = res.json(responsesJson);
+    
+    console.log(re)
+    const responseObjs = res.json(responses);
     res.render("responses", { responseObjs, user: req.user });
   })
 );
