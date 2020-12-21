@@ -80,10 +80,10 @@ Medium allows users to:
 
   * [JavaScript](https://www.javascript.com/)
   * [Pugjs](https://pugjs.org/api/getting-started.html)
-  * [Express.js](#https://expressjs.com/)
-  * [Node.js](#https://nodejs.org/en/)
-  * [Sequelize ORM](#https://sequelize.org/)
-  * [PostgreSQL](#https://www.postgresql.org/)
+  * [Express.js](https://expressjs.com/)
+  * [Node.js](https://nodejs.org/en/)
+  * [Sequelize ORM](https://sequelize.org/)
+  * [PostgreSQL](https://www.postgresql.org/)
 
 ---
 
