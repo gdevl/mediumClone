@@ -45,13 +45,9 @@
 .nav-bar__inner-links-container {
   align-items: center;
   grid-column: 13;
-}
-
-.nav-bar__inner-links-container {
-  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   position: relative;
   width: 5rem;
 }
@@ -173,6 +169,11 @@
 .title a {
   color: inherit;
   text-decoration: none;
+}
+
+.follow:hover {
+  background-color: #008000;
+  color: white;
 }
 
 .title a:hover {
@@ -410,5 +411,9 @@
 
   .below-content__author-info {
     margin: 50px 0;
+  }
+
+  .follow-container__follow-button {
+    margin-left: 0px;
   }
 }

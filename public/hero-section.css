@@ -165,8 +165,9 @@
 .author-info__author-text {
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  height: 64px;
+  justify-content: space-evenly;
+  height: auto;
+  padding: 0 0 0.5rem;
 }
 
 .author-text__name {
@@ -192,15 +193,15 @@
 }
 
 .follow-section__button {
-    color: rgba(2, 158, 116, 1);
-    border: 1px solid rgba(2, 158, 116, 1);
-    background-color: white;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: 400;
-    padding: 5px 12px;
-    min-width: 68px;
-    height: 32px;
+  color: rgba(2, 158, 116, 1);
+  border: 1px solid rgba(2, 158, 116, 1);
+  background-color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 5px 12px;
+  min-width: 68px;
+  height: 32px;
 }
 
 .follow-section__button:hover {
