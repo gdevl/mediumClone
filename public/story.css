@@ -61,10 +61,17 @@
   background-color: white;
   color: rgba(3, 168, 124, 1);
   border: rgba(3, 168, 124, 1) solid 1px;
-  border-radius: 3px;
-  margin-left: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Fira Sans", sans-serif;
+  height: 32px;
+  min-width: 68px;
   padding: 3px 7px;
   transition: color 250ms ease-in-out;
+}
+
+.author__follow-button {
+  margin-left: 15px;
 }
 
 .author__follow-button:focus,
@@ -81,7 +88,10 @@
 
 .container__story-data {
   color: rgba(117, 117, 117, 1);
+  display: flex;
+  flex-flow: row nowrap;
   font-size: 14px;
+  justify-content: space-between;
 }
 
 .story-data__read-time {
@@ -129,10 +139,16 @@
   align-items: center;
 }
 
-.claps__img,
 .responses__icon {
-  height: 33px;
-  width: 33px;
+  cursor: pointer;
+}
+
+.responses__icon:hover {
+  color: #008000;
+}
+
+.claps__img:hover {
+  color: #008000;
 }
 
 .claps__claps-count,
@@ -196,7 +212,7 @@
 .follow-container__follow-button {
   min-width: 68px;
   height: 32px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 3px 7px;
 }
 
@@ -243,8 +259,9 @@
   background-color: white;
   color: rgba(3, 168, 124, 1);
   border: rgba(3, 168, 124, 1) solid 1px;
-  border-radius: 3px;
-  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 3px 7px;
   margin: 25px 0;
   min-width: 68px;
   height: 32px;
@@ -373,11 +390,11 @@
   resize: none;
   display: flex;
   align-items: center;
-  transition: height 300ms ease-in-out, margin 300ms ease-in-out ;
+  transition: height 300ms ease-in-out, margin 300ms ease-in-out;
 }
 
 .form-content__text-area--lg {
-  transition: height 300ms ease-in-out, margin 300ms ease-in-out ;
+  transition: height 300ms ease-in-out, margin 300ms ease-in-out;
   width: 100%;
   border: 0;
   /* margin: 10px 0; */
@@ -515,7 +532,7 @@
 .trash-bin-container__trash-bin {
   max-width: 20px;
   max-height: 20px;
-  opacity: .50;
+  opacity: 0.5;
   margin-right: 20px;
   transition: opacity 300ms ease-in-out;
   cursor: pointer;
@@ -523,7 +540,6 @@
 
 .trash-bin-container__trash-bin:hover {
   opacity: 1;
-  
 }
 
 .container__content {
