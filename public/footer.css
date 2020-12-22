@@ -8,17 +8,74 @@
 }
 
 .footer__container {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr) repeat(4, minmax(48px, 1fr));
-  max-width: 1200px;
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  height: 90%;
+  /* grid-template-columns: repeat(8, 1fr) repeat(4, minmax(48px, 1fr)); */
+  /* max-width: 1200px; */
   margin: auto;
 }
 
-.footer__title {
-  position: relative;
-  top: 25px;
+.footer__container .devs {
+  display: flex;
+  flex-flow: row nowrap;
+  /* outline: 1px solid white; */
+  padding: 0.5rem;
+}
+
+.footer__brand-link {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "Fira Sans", serif;
+  font-size: 0.875rem;
+  font-style: italic;
+  text-decoration: none;
+}
+
+.footer__brand-link:hover {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
   color: white;
-  font-size: 42px;
-  grid-column: 2 / span 2;
+  font-style: normal;
+}
+
+.footer__brand-link-spacer {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0.25em;
+}
+
+.footer__header {
+}
+
+.footer__title {
+  color: white;
+  font-size: 2rem;
   font-family: "Playfair Display", serif;
+  margin: 0;
+}
+
+.footer__subtitle {
+  color: gray;
+  font-size: 0.875rem;
+  margin: 0.25rem 0;
+  text-align: right;
+}
+
+.footer__brand {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: 0.875rem;
+}
+
+.footer__brand > .dev {
+  align-self: center;
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 0.875rem;
+  justify-content: space-between;
+  outline: 1px dotted white;
+  padding: 0.25em;
+  width: 200px;
 }
