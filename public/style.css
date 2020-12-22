@@ -48,11 +48,21 @@
 }
 
 .nav-bar__inner-links-container {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   position: relative;
-  width: 100px;
+  width: 5rem;
+}
+
+.nav-bar__new-story-btn {
+  line-height: normal;
+  padding: 0.5rem 0;
+}
+
+.nav-bar__log-out-btn {
+  padding: 0.25rem;
 }
 
 .nav-bar__sign-up-btn,
@@ -92,11 +102,11 @@
   align-items: center;
   box-sizing: border-box;
   display: flex;
-  border: 2px solid #4d4d4d;
+  border: 1px solid #4d4d4d;
   border-radius: 50%;
-  height: 20px;
+  height: 1.25rem;
   justify-content: center;
-  width: 20px;
+  width: 1.25rem;
 }
 
 .nav-bar__user-avatar__initials {
