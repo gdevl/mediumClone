@@ -416,4 +416,9 @@
   .follow-container__follow-button {
     margin-left: 0px;
   }
+
+  #hsfs_fsa {
+    display: flex !important;
+    margin-bottom: 0.75rem !important;
+  }
 }

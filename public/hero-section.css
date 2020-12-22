@@ -165,9 +165,8 @@
 .author-info__author-text {
   display: flex;
   flex-flow: column;
-  justify-content: space-evenly;
-  height: auto;
-  padding: 0 0 0.5rem;
+  justify-content: center;
+  height: 64px;
 }
 
 .author-text__name {

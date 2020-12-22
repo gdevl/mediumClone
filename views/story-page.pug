@@ -58,9 +58,9 @@ block content
                     .author-info__author-text
                         .author-text__written-by WRITTEN BY
                         a.author-text__name(href=`/users/${story.authorId}`)= story.authorName
-                        .author-info__follow-container
-                            if user
-                            button.follow-container__follow-button.follow(value=`${story.authorId}`) #{followBtnText}
+                        if user
+                            .author-info__follow-container
+                                button.follow-container__follow-button.follow(value=`${story.authorId}`) #{followBtnText}
                         //- .author-text__bio= story.bio
     #responses-background.main__responses-background.hidden
     #responses-container

@@ -2,7 +2,7 @@
     .hero-section__feature-section
         .feature-section__img-container
             img.img-container__img(src= hero.imageUrl)
-        .feature-section__author
+        .feature-section__author(id="hsfs_fsa")
             img.author__avatar(src= hero.User.avatarUrl)
             a.author__name(href=`/user/${hero.User.id}`) #{hero.User.firstName} #{hero.User.lastName}
         a.feature-section__title(href=`/story/${hero.id}`)= hero.title
