@@ -32,11 +32,9 @@ createStoryForm.addEventListener("submit", async (e) => {
     return;
   }
   if (res.status === 400) {
-    console.log("RES STATUS", res)
     handleStoryErrors(res);
   }
-  // window.location.href = "/";
-  // story-view page not created yet
-
-
+  const newStory = await res.json()
+  console.log(newStory)
+  window.location.href = `/story/${newStory.story.id}`;
 });

@@ -28,9 +28,8 @@ export const handleErrors = async (err, overlay) => {
 
 export const handleStoryErrors = async (err) => {
     const errorRes = await err.json();
-    console.log("ERROR RES", errorRes);
     const { errors } = errorRes;
-    console.log("ERRORRRS", errors);
+
     const errorsContainer = document.querySelector('.story-errors-list');
     let errorsHtml = [];
     if (errors && Array.isArray(errors)) {
