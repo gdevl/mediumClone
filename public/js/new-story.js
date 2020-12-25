@@ -35,6 +35,6 @@ createStoryForm.addEventListener("submit", async (e) => {
     handleStoryErrors(res);
   }
   const newStory = await res.json()
-  console.log(newStory)
+  // console.log(newStory)
   window.location.href = `/story/${newStory.story.id}`;
 });
