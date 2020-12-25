@@ -1,4 +1,4 @@
-import { handleErrors } from "./utils.js";
+import { handleStoryErrors } from "./utils.js";
 
 const createStoryForm = document.querySelector(".new-story-form");
 
@@ -15,24 +15,28 @@ createStoryForm.addEventListener("submit", async (e) => {
 
   const body = { title, subtitle, content, imageUrl, userId };
 
-  try {
-    const res = await fetch("/api/stories", {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-        // Authorization: `Bearer ${localStorage.getItem(
-        //   "MEDIUM_CLONE_ACCESS_TOKEN"
-        // )}`,
-      },
-    });
 
-    if (res.status === 401) {
-      window.location.href = "/index";
-      return;
-    }
-    window.location.href = "/"; // story-view page not created yet
-  } catch (err) {
-    handleErrors(err);
+  const res = await fetch("/api/stories", {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      // Authorization: `Bearer ${localStorage.getItem(
+      //   "MEDIUM_CLONE_ACCESS_TOKEN"
+      // )}`,
+    },
+  });
+
+  if (res.status === 401) {
+    window.location.href = "/index";
+    return;
   }
+  if (res.status === 400) {
+    console.log("RES STATUS", res)
+    handleStoryErrors(res);
+  }
+  // window.location.href = "/";
+  // story-view page not created yet
+
+
 });

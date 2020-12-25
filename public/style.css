@@ -130,6 +130,29 @@
   font-family: "Fira Sans", sans-serif;
 }
 
+.story-errors-container {
+  position: relative;
+  /* background-color: lavender; */
+  /* border: 1px solid black; */
+  top: 0px;
+  border-radius: 20px;
+  margin: 0 auto;
+  padding: 0 64px;
+  width: 600px;
+}
+
+.story-errors-list {
+  color: red;
+  /* font-weight: bold; */
+}
+
+.red-errorbox {
+  border: red;
+}
+.red-errorbox::placeholder {
+  color: red;
+}
+
 .make-it-black {
   background-color: black;
 }
