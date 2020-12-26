@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     });
 });
 
-const responseClapping = (element) => {
+export function responseClapping(element) {
     let responseId = Number(element.dataset.responseId);
     if (element.dataset.value === "toBeClapped") {
         element.dataset.value = "unclap";
@@ -28,6 +28,7 @@ const postResponseClap = async (responseId) => {
     const userId = localStorage.getItem("MEDIUM_CLONE_CURRENT_USER_ID");
 
     const body = { userId, responseId };
+
     try {
         const res = await fetch(`/api/responses/${responseId}/clap`, {
             method: "POST",
@@ -40,8 +41,7 @@ const postResponseClap = async (responseId) => {
             return;
         };
 
-        const responseJson = await res.json();
-
+        const responseJson = await res.json();;
         const numResponseClaps = responseJson.numClaps;
 
         const spanCount = document.querySelectorAll(`.icons__claps-count-${responseId}`);

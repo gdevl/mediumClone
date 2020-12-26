@@ -1,5 +1,6 @@
 // import { showSignUpBox, hideSignUpBox, showLogInBox, hideLogInBox } from './utils';
 // import trashBin from '../images/trash_bin.svg';
+import { responseClapping } from './responseClap.js';
 
 //***************************** Global Variables ***********************************/
 
@@ -41,10 +42,10 @@ const hideResponsePanel = () => {
 
 
 const deleteResponse = async id => {
-  const res = await fetch(`/api/stories/${storyId}/responses/${id}`, { 
-    method: 'DELETE' 
+  const res = await fetch(`/api/stories/${storyId}/responses/${id}`, {
+    method: 'DELETE'
   });
-      
+
   if (res.ok) {
     const response = document.getElementById(`response-${id}`);
     response.remove();
@@ -57,7 +58,7 @@ const deleteResponse = async id => {
         countDiv.innerHTML = count;
       });
   }
-  
+
 }
 
 const listenToTrashBins = () => {
@@ -91,7 +92,7 @@ const listenForCloseConfirmDeletes = () => {
     confirmDeletes.forEach(confirm => {
       if (confirm.id !== id)
       confirm.classList.add('hidden')
-    });  
+    });
   });
 }
 
@@ -212,7 +213,7 @@ document
             const responseAuthorInfo = document.createElement("div");
             responseAuthorInfo.classList.add("response-header__author-info")
             responseHeader.appendChild(responseAuthorInfo)
-        
+
               const authorImgContainer = document.createElement("div");
               authorImgContainer.className = 'class="author-info__author';
               responseAuthorInfo.appendChild(authorImgContainer);
@@ -236,25 +237,25 @@ document
                 date.className = "container__date";
                 date.innerHTML = response.date;
                 authorInfoContainer.appendChild(date);
-              
+
             const trashBinContainer = document.createElement("div");
             trashBinContainer.className = "response-header__trash-bin-container";
             responseHeader.appendChild(trashBinContainer);
-            
+
               const confirmDelete = document.createElement("div");
               confirmDelete.className = "trash-bin-container__confirm-delete";
               confirmDelete.classList.add("hidden");
               confirmDelete.id = `confirmDelete-${response.newResponse.id}`
               confirmDelete.innerHTML = "Confirm Delete"
               trashBinContainer.appendChild(confirmDelete);
-              
-            
+
+
               const trashBinIcon = document.createElement("img");
               trashBinIcon.src = '../images/trash_bin.svg';
               trashBinIcon.className = "trash-bin-container__trash-bin";
               trashBinIcon.id = `trashBin-${response.newResponse.id}`;
               trashBinContainer.appendChild(trashBinIcon);
-              
+
 
           const content = document.createElement("div");
           content.className = "container__content";
@@ -267,9 +268,12 @@ document
 
         const clapsImg = document.createElement("img");
         clapsImg.className = "claps__img";
+        clapsImg.classList.add("icons__claps")
+
         clapsImg.id = "claps__img";
-        clapsImg.dataset.value = response.isClapped;
-        clapsImg.dataset.storyId = response.id;
+        clapsImg.dataset.value = "toBeClapped";
+        clapsImg.dataset.storyId = response.newResponse.storyId;
+        clapsImg.dataset.responseId = response.newResponse.id;
 
         if (response.imageClapped) {
           clapsImg.src = `/images/clapped3.png`;
@@ -277,24 +281,27 @@ document
           clapsImg.src = `/images/clapping1.png`;
         }
 
+        clapsImg.addEventListener("click", (e) => responseClapping(clapsImg));
+
         iconsContainer.appendChild(clapsImg);
 
-        const clapCount = document.createElement("div");
+        const clapCount = document.createElement("span");
+        clapCount.className = `icons__claps-count-${response.newResponse.id}`
         if (response.newResponse.numClaps) {
           clapCount.innerHTML = response.newResponse.numClaps;
         }
-        
+
         iconsContainer.appendChild(clapCount);
 
         document.getElementById("story-responses").prepend(responsesDisplay);
 
         const responseCountContainer = document.querySelector(".responses__responses-count");
-        
+
         let responseCount = responseCountContainer.innerHTML;
         responseCount = parseInt(responseCount);
         responseCount++;
         responseCountContainer.innerHTML = responseCount;
-        
+
         const newTrashBin = document.getElementById(`trashBin-${response.newResponse.id}`);
         newTrashBin.addEventListener('click', (e) => {
           newTrashBin.style.marginRight = '20px'
@@ -304,7 +311,7 @@ document
         });
         listenToConfirmDeletes();
         listenForCloseConfirmDeletes();
-        
+
       }
     } catch (err) {
       console.error(err);
@@ -312,8 +319,8 @@ document
   });
 
 
-  
 
-  
-  
+
+
+
 document.querySelector(".icons__claps");
