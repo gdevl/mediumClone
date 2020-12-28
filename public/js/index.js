@@ -18,13 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (closeLogInBtn) {
     closeLogInBtn.addEventListener("click", hideLogInBox);
   }
-  
-  const userId = localStorage.getItem('MEDIUM_CLONE_CURRENT_USER_ID');
-  const userBtn = document.querySelector('.nav-bar__user-avatar__initials');
-  if (userId) userBtn.addEventListener('click', () => {
-    window.location.href = `/users/${userId}/user-info`;
-  });
-  
+
+  const userId = localStorage.getItem("MEDIUM_CLONE_CURRENT_USER_ID");
+  const userBtn = document.querySelector(".nav-bar__user-avatar__initials");
+  if (userId)
+    userBtn.addEventListener("click", () => {
+      window.location.href = `/users/${userId}/user-info`;
+    });
 });
 
 export const showSignUpBox = () => {

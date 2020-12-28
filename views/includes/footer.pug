@@ -1,12 +1,35 @@
 .footer
   .footer__container
+    .footer__header_brand
       p.footer__title Mediumm
-      p.footer__subtitle Made with ❤️ by:
-      .devs
-        a(href="https://www.linkedin.com/in/daveyclee/" class="footer__brand-link") Brian
-        span.footer__brand-link-spacer |
-        a(href="https://www.linkedin.com/in/daveyclee/" class="footer__brand-link") David
-        span.footer__brand-link-spacer |
-        a(href="https://www.linkedin.com/in/gabriel-lane-4120651bb/" class="footer__brand-link") Gabriel
-        span.footer__brand-link-spacer |
-        a(href="https://www.linkedin.com/in/mark-mcclatchy-155367bb/" class="footer__brand-link") Mark
+      a(href="https://github.com/gdevl/mediumClone")
+        i(class="footer__project_link fa fa-github fa-2x" aria-hidden="true" data-tooltip="Project Repo")
+    p.footer__subtitle Made with ❤️ by:
+    .devs(id="fbl_devs")
+        button(id="fbl_brian_button" class="footer__brand-button") Brian
+        .footer__brand-link-box(id="fbl_brian_box" class="hidden")
+            a(href="https://github.com/Awodfkai" class="footer__brand-link")
+                i(class="fa fa-github" aria-hidden="true" data-tooltip="Brian's Github")
+            a(href="https://github.com/Awodfkai" class="footer__brand-link")
+                i(class="fa fa-linkedin" aria-hidden="true" data-tooltip="Brian's LinkedIn")
+        //- span.footer__brand-link-spacer |
+        button(id="fbl_david_button" class="footer__brand-button") David
+        .footer__brand-link-box(id="fbl_david_box" class="hidden")
+            a(href="https://github.com/dyclee" class="footer__brand-link")
+                i(class="fa fa-github" aria-hidden="true" data-tooltip="David's Github")
+            a(href="https://www.linkedin.com/in/daveyclee/" class="footer__brand-link")
+                i(class="fa fa-linkedin" aria-hidden="true" data-tooltip="David's LinkedIn")
+        //- span.footer__brand-link-spacer |
+        button(id="fbl_gabriel_button" class="footer__brand-button") Gabriel
+        .footer__brand-link-box(id="fbl_gabriel_box" class="hidden")
+            a(href="https://github.com/gdevl" class="footer__brand-link")
+                i(class="fa fa-github" aria-hidden="true" data-tooltip="Gabriel's Github")
+            a(href="https://www.linkedin.com/in/gabriel-lane-4120651bb/" class="footer__brand-link")
+                i(class="fa fa-linkedin" aria-hidden="true" data-tooltip="Gabriel's LinkedIn")
+        //- span.footer__brand-link-spacer |
+        button(id="fbl_mark_button" class="footer__brand-button") Mark
+        .footer__brand-link-box(id="fbl_mark_box" class="hidden")
+            a(href="https://github.com/mmcclatchy" class="footer__brand-link")
+                i(class="fa fa-github" aria-hidden="true" data-tooltip="Mark's Github")
+            a(href="https://www.linkedin.com/in/mark-mcclatchy-155367bb/" class="footer__brand-link")
+                i(class="fa fa-linkedin" aria-hidden="true" data-tooltip="Mark's LinkedIn")
