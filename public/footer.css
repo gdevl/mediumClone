@@ -48,7 +48,8 @@
   align-items: center;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  width: 200px;
 }
 
 .footer__project_link {
