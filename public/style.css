@@ -256,7 +256,7 @@
 .home-feed-container {
   display: block;
   grid-row-start: 1;
-  grid-column: 1 / span 7;
+  grid-column: 3 / span 8;
 }
 .home-reading-list-container {
   display: block;
