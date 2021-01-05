@@ -8,7 +8,7 @@ block content
           .userProfile
             .userProfile__header
               h2.userName= storiesData[0].authorName
-              if user
+              if user && user.id !== story.authorId
                 .user-followButton-container
                   .user-followButton
                     button.follow(value=`${storiesData[0].authorId}`) #{followBtnText}
