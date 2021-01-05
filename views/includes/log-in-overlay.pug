@@ -1,23 +1,15 @@
 .log-in-overlay__center-box
     .center-box__close
-        button.log-in-form__demo-login Demo Login
         button.close__log-in
             i(class="fa fa-times" aria-hidden="true")
     .center-box__overlay-body
         .overlay-body__center
-            .center__welcome Welcome Back.
+            h1.center__welcome Welcome Back.
             ul.center-box__log-in-errors-container
             form.center__log-in-form
-                //- div
-                //-     label(for="username") Username
-                div
-                    input(type="text" name='username' placeholder='Username' required)
-                //- div
-                //-     label(for='password') Password
-                div
-                    input(type='password' name='password' placeholder='Password' required)
-                div
+                .log-in-form__input-wrapper
+                    input.input-wrapper__username(type="text" name='username' placeholder='Username' required)
+                    input.input-wrapper__password(type='password' name='password' placeholder='Password' required)
+                .log-in-form__button-wrapper
                     button.log-in-form__submit(type="submit") Continue
-                //- div
-                //-     span No account?
-                //-     a.sign-up-link(href="") Create one
+                    button.log-in-form__demo-login Demo Login
