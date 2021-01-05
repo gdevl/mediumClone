@@ -1,41 +1,21 @@
 .sign-up-overlay__center-box
     .center-box__close
-        button.sign-up-form__demo-login Demo Login 
         button.close__sign-up
             i(class="fa fa-times" aria-hidden="true")
     .center-box__overlay-body
         .overlay-body__center
-            .center__welcome Join Medium.
+            h1.center__welcome Join Mediumm
             .center-box__sign-up-errors-container
             form(id="signupForm").center__sign-up-form
-                //- div
-                //-     label(for="firstName") First Name
-                div
+                .sign-up-form__input-wrapper
                     input(type="text" name='firstName' placeholder='First Name' required)
-                //- div
-                //-     label(for="lastName") Last Name
-                div
                     input(type="text" name='lastName' placeholder='Last Name' required)
-                //- div
-                //-     label(for="username") Username
-                div
                     input(type="text" name='username' placeholder='Username' required)
-                //- div
-                //-     label(for='email') Email
-                div
                     input(type='email' name='email' placeholder='Email Address' required)
-                //- div
-                //-     label(for='password') Password
-                div
                     input(type='password' name='password' placeholder='Password' required)
-                //- div
-                //-     label(for='confirmPassword') Confirm Password
-                div
                     input(type='password' name='confirmPassword' placeholder='Confirm Password' required)
-                .sign_up_form__btn-container
+                .sign-up-form__button-wrapper
                     button.sign-up-form__submit(type="submit") Sign Up!
-                //- div
-                //- span Already have an account?
-                //- a.sign-up-form__log-in-link(href="") Log in.
+                    button.sign-up-form__demo-login Demo Login 
     
 
