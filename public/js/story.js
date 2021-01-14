@@ -125,6 +125,12 @@ document
   });
 
 document
+  .querySelector(".header__close-button")
+  .addEventListener("click", () => {
+    hideResponsePanel();
+  })
+
+document
   .querySelector(".form-container__new-response-form")
   .addEventListener("click", () => {
     if (responseTextArea.classList.value === "form-content__text-area--sm") {
