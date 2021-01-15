@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const userEditBtn = document.querySelector(".findUserPage");
-  if (userId) {
+  if (userId && userEditBtn) {
     userEditBtn.addEventListener("click", () => {
       window.location.href = `/users/${userId}/user-info`;
-    })
+    });
   }
 });
 
