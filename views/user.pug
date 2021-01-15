@@ -12,6 +12,11 @@ block content
                 .user-followButton-container
                   .user-followButton
                     button.follow(value=`${author.id}`) #{followBtnText}
+              else if user && user.id === author.id
+                .user-editButton-container
+                  .user-editButton
+                    button.findUserPage(value=`${author.id}`) Edit
+
             .userDetails
               p.userBio #{author.bio}
               img(src=`${author.avatarUrl}`).userAvatar
