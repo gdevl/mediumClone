@@ -7,14 +7,19 @@ block content
         .user-grid
           .userProfile
             .userProfile__header
-              h2.userName= storiesData[0].authorName
-              if user && user.id !== story.authorId
+              h2.userName #{author.firstName} #{author.lastName}
+              if user && user.id !== author.id
                 .user-followButton-container
                   .user-followButton
-                    button.follow(value=`${storiesData[0].authorId}`) #{followBtnText}
+                    button.follow(value=`${author.id}`) #{followBtnText}
+              else if user && user.id === author.id
+                .user-editButton-container
+                  .user-editButton
+                    button.findUserPage(value=`${author.id}`) Edit
+
             .userDetails
-              p.userBio= storiesData[0].bio
-              img(src=`${storiesData[0].avatarUrl}`).userAvatar
+              p.userBio #{author.bio}
+              img(src=`${author.avatarUrl}`).userAvatar
             .userFollows
               div
                 p #{following} Following

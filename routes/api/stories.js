@@ -22,8 +22,8 @@ router.post('/', storyValidator, handleValidationErrors, asyncHandler(async (req
             content,
             imageUrl,
         });
-        console.log("STORY", story);
-        // res.status(201).json({story})
+        // console.log("STORY", story);
+        res.status(201).json({story})
 
     } catch (e) {
         console.log(e);
