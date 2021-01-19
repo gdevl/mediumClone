@@ -333,9 +333,26 @@
   background: 0;
 }
 .user-followButton button:hover {
-  color: #008000;
+  color: white;
   border-color: #008000;
   fill: #008000;
+}
+.user-editButton {
+  margin-left: 20px;
+}
+.user-editButton button {
+  margin: 0;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 15px;
+  /* fill: rgba(3, 168, 124, 1); */
+  color: black;
+  background: 0;
+}
+.user-editButton button:hover {
+  border:none;
+  background-color: black;
+  color: white;
 }
 .user-item {
   padding-bottom: 48px;

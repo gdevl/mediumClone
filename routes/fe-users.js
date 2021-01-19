@@ -16,6 +16,8 @@ router.get(
       include: { model: User },
     });
 
+    const author = await User.findByPk(id);
+
     const storiesData = (query) => {
       return query.map((story) => {
         return {
@@ -55,12 +57,14 @@ router.get(
         followers: followers.length,
         followBtnText,
         user: req.user,
+        author: author,
       });
     } else {
       res.render("user", {
         storiesData: storiesData(stories),
         following: following.length,
         followers: followers.length,
+        author: author,
       });
     }
   })

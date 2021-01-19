@@ -21,10 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const userId = localStorage.getItem("MEDIUM_CLONE_CURRENT_USER_ID");
   const userBtn = document.querySelector(".nav-bar__user-avatar__initials");
-  if (userId)
+  if (userId && userBtn) {
     userBtn.addEventListener("click", () => {
+      window.location.href = `/users/${userId}`;
+    });
+  }
+
+  const userEditBtn = document.querySelector(".findUserPage");
+  if (userId && userEditBtn) {
+    userEditBtn.addEventListener("click", () => {
       window.location.href = `/users/${userId}/user-info`;
     });
+  }
 });
 
 export const showSignUpBox = () => {
