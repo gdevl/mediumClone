@@ -10,8 +10,9 @@
           .feed-item_text
             h3.title 
               a(href=`/story/${story.id}`) #{story.title}
-            p.subtitle #{story.subtitle}
-            p.subtitle #{story.date}
-        .feed-item_img(style={'background-image':`url(${story.image})`})
+            a.feed-item_text_info(href=`/story/${story.id}`)
+              p.subtitle #{story.subtitle}
+              p.subtitle #{story.date}
+        a.feed-item_img(style={'background-image':`url(${story.image})`} href=`/story/${story.id}`)
   else
     p There are no stories
