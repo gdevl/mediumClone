@@ -34,16 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   
-  document
-    .querySelectorAll('.articles-section__article')
-    .forEach(article => {
-      article.addEventListener('click', e => {
-        // id = e.target.id.split('hero-article-')[1]
-        console.log('ARTICLE ', e.target)
-        // window.location.href = `story/${id}`
-      })
-    })
-  
 });
 
 export const showSignUpBox = () => {
