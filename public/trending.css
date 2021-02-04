@@ -74,6 +74,10 @@
   color: rgba(41, 41, 41, 1);
 }
 
+.author__name:hover {
+  text-decoration: underline;
+}
+
 .author__name {
   text-decoration: underline;
 }

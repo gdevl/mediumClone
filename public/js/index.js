@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = `/users/${userId}/user-info`;
     });
   }
+  
 });
 
 export const showSignUpBox = () => {
@@ -53,3 +54,5 @@ export const showLogInBox = () => {
 export const hideLogInBox = () => {
   document.querySelector(".log-in-overlay").classList.add("hidden");
 };
+
+

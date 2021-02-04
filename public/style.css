@@ -203,6 +203,11 @@
   border-bottom: 1px solid black;
 }
 
+.feed-item_text_info {
+  
+  text-decoration: none;
+}
+
 .subtitle {
   font-size: 12px;
   color: rgb(117, 117, 117);
@@ -234,6 +239,10 @@
   margin: 0px;
   color: inherit;
   text-decoration: inherit;
+  transition: font-weight 200ms ease-in-out;
+}
+.author:hover {
+  font-weight: bold;
 }
 .home-grid-section {
   justify-content: center;
