@@ -1,3 +1,5 @@
+<img src="readme/homepage.PNG" alt="home">
+
 # Mediumm
 
 Check out the app: [Live Demo](https://mediumm.herokuapp.com/)
@@ -38,14 +40,24 @@ Medium allows users to:
 
 ## **MVPs**
 
+<img src="readme/loginGIF.gif" alt="login" width="50%" align="right">
+
 * Authentication and Authorization
 
   * Uses Bcrypt hashing to authenticate users while not storing passwords in the database
   * Ensure that any personal information can only be obtained by themselves and nobody else
 
+<br clear="both">
+
+<img src="readme/storyPageGIF.gif" alt="login" width="50%" align="left">
+
 * Stories
 
   * Create / Read / Update / Delete Stories
+
+<br clear="both">
+
+<img src="readme/commentLikeGIF.gif" alt="login" width="100%" align="center">
 
 * Responses
 
