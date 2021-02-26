@@ -51,7 +51,7 @@ Medium allows users to:
 
 ---
 
-<img src="readme/storyPageGIF.gif" alt="login" width="50%" align="left">
+<img src="readme/storyPageGIF.gif" alt="login" width="50%" align="right">
 
 * Stories
 
