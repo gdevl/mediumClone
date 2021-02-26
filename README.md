@@ -71,11 +71,11 @@ Medium allows users to:
   * Able to clap a story
   * Able to clap a response
 
-<img src="readme/commentLikeGIF.gif" alt="login" width="100%" align="center">
-
 * Follows
 
   * Able to follow an author
+
+<img src="readme/commentLikeGIF.gif" alt="login" width="100%" align="center">
 
 ---
 
