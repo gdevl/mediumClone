@@ -49,6 +49,8 @@ Medium allows users to:
 
 <br clear="both">
 
+---
+
 <img src="readme/storyPageGIF.gif" alt="login" width="50%" align="left">
 
 * Stories
@@ -57,7 +59,8 @@ Medium allows users to:
 
 <br clear="both">
 
-<img src="readme/commentLikeGIF.gif" alt="login" width="100%" align="center">
+---
+
 
 * Responses
 
@@ -67,6 +70,8 @@ Medium allows users to:
 
   * Able to clap a story
   * Able to clap a response
+
+<img src="readme/commentLikeGIF.gif" alt="login" width="100%" align="center">
 
 * Follows
 
