@@ -33,9 +33,15 @@
     /* width: 500px; */
 }
 
+.log-in-overlay-M {
+    font-family: 'Playfair Display', Georgia, Cambria, "Times New Roman", Times, serif;
+    margin: 1rem;
+}
+
 .center-box__close {
+    align-items: center;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: 10px;
     margin-right: 10px;
     margin-left: 10px;
@@ -43,6 +49,10 @@
 
 .close__sign-up,
 .close__log-in {
+    background-color: transparent;  
+    border: none;
+    cursor: pointer;
+    margin: 0 1rem;
     width: 30px;
     height: 30px;
 }
@@ -109,7 +119,7 @@
 .sign-up-form__input-wrapper input {
     margin: 15px 0;
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     font-size: x-large;
 }
 

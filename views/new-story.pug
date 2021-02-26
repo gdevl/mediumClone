@@ -8,14 +8,14 @@ block content
       form(class="new-story-form pure-form pure-form-stacked")
         fieldset
           .form-group
-              input(class="pure-input-1 storytitle-input" type="text", name="title", placeholder="Title")
+              input(class="pure-input-1 storytitle-input erase-border" type="text", name="title", placeholder="Title")
           .form-group
-              input(class="pure-input-1 storysubtitle-input" type="text", name="subtitle", placeholder="Subtitle")
+              input(class="pure-input-1 storysubtitle-input erase-border" type="text", name="subtitle", placeholder="Subtitle")
           .form-group
-              textarea(rows="25" class="pure-input-1 new-story-textarea storycontent-input" name="content", placeholder="Tell your story...")
+              textarea(rows="25" class="pure-input-1 new-story-textarea storycontent-input erase-border" name="content", placeholder="Tell your story...")
           .form-group
-              label(for="imageUrl") Add an image
-              input(class="pure-input-1" type="url", name="imageUrl", placeholder="https://example.com/image.jpg")
+              label(for="imageUrl" class="color-me-gray") Add an image
+              input(class="pure-input-1 erase-border" type="url", name="imageUrl", placeholder="https://example.com/image.jpg")
           button(type="submit" class="make-it-black pure-button pure-button-primary") Publish
 
   script(type="module" src="/js/new-story.js")

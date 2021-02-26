@@ -564,3 +564,14 @@
   margin: 0 auto;
   color: rgba(0, 0, 0, 0.5);
 }
+
+.erase-border {
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: none !important;
+}
+
+.color-me-gray {
+    color: gray;
+}
